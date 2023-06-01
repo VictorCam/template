@@ -6,11 +6,11 @@ import webfontDownload from 'vite-plugin-webfont-dl'
 export default defineConfig({
   plugins: [
     sveltekit(),
-    webfontDownload([])
+    webfontDownload([]) //https://www.cdnfonts.com/
   ],
   css: {
     postcss: {
-      plugins: [postcssPresetEnv({ stage: 2 })]
+      plugins: [postcssPresetEnv({ stage: 2 })] //https://preset-env.cssdb.org/features/#stage-2
     }
   },
   server: {
