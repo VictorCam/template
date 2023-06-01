@@ -20,7 +20,7 @@
   "type": "module",
   "dependencies": {
     "js-cookie": "^3.0.5",
-    "normalize.css": "^8.0.1",
+    "modern-normalize": "^2.0.0",
     "phin": "^3.7.0"
   }
 }
