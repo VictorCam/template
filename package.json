@@ -12,8 +12,11 @@
     "@sveltejs/kit": "^1.5.0",
     "autoprefixer": "^10.4.14",
     "dotenv": "^16.0.3",
+    "sharp": "^0.32.1",
     "svelte": "^3.54.0",
+    "svgo": "^3.0.2",
     "vite": "^4.3.0",
+    "vite-plugin-image-optimizer": "^1.1.6",
     "vite-plugin-webfont-dl": "^3.7.4"
   },
   "type": "module",
