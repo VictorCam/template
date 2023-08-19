@@ -23,6 +23,7 @@
   "dependencies": {
     "axios": "^1.4.0",
     "js-cookie": "^3.0.5",
-    "normalize.css": "^8.0.1"
+    "normalize.css": "^8.0.1",
+    "workerpool": "^6.4.1"
   }
 }
