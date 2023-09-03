@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build",
+    "build": "vite build && jampack ./build",
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@divriots/jampack": "^0.15.0",
     "@sveltejs/adapter-static": "^2.0.2",
     "@sveltejs/kit": "^1.22.3",
     "autoprefixer": "^10.4.14",
