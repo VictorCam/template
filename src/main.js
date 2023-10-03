@@ -8,6 +8,9 @@ import { createRouter, createWebHistory } from "vue-router";
 import App from "./App.vue";
 import Home from "./routes/Home.vue";
 import Page from "./routes/Page.vue";
+import NotFound from "./routes/404.vue";
+
+import cookie from "js-cookie";
 
 const routes = [
   {
@@ -20,12 +23,26 @@ const routes = [
     name: "page",
     component: Page,
   },
+  {
+    path: "/:catchAll(.*)",
+    name: "NotFound",
+    component: NotFound,
+  },
 ];
 
 const router = createRouter({
   history: createWebHistory(),
   routes: routes,
 });
+
+// router.beforeEach((to, from, next) => {
+//   if (cookie.get("token")) next();
+//   if (!cookie.get("token")) {
+//     cookie.remove("token");
+//     next("/");
+//   }
+//   next();
+// });
 
 const pinia = createPinia();
 const app = createApp(App);
