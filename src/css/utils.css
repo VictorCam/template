@@ -1,0 +1,30 @@
+.stack {
+    display: grid;
+}
+
+.stack>* {
+    grid-area: 1/1;
+}
+
+.stack-center {
+    place-items: center;
+}
+
+.svg {
+    background: var(--bg) no-repeat;
+    background-size: 100% 100%;
+    background-color: transparent;
+    width: 1.2em;
+    height: 1.2em;
+}
+
+.svg-color {
+    -webkit-mask: var(--bg) no-repeat;
+    mask: var(--bg) no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    background-color: currentColor;
+    color: inherit;
+    width: 1.2em;
+    height: 1.2em;
+}
