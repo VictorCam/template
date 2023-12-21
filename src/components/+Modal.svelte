@@ -5,15 +5,13 @@
             on:click|self={(e) => {
                 let modal = e.target.parentElement.parentElement;
                 modal.classList.add("hidden");
-            }}><div class="svg-color close" /></button
+            }}><div class="close svg-bw" /></button
         >
-        <div class="content">
-        </div>
+        <div class="content"></div>
     </div>
 </div>
 
 <style>
-
     .modal {
         position: absolute;
         display: grid;

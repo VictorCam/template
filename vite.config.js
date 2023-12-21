@@ -20,7 +20,7 @@ export default defineConfig({
       svg: {
         js2svg: {
           useShortTags: true,
-          pretty: false
+          pretty: false,
         }
       }
     }),

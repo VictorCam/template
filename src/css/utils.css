@@ -27,6 +27,10 @@ h3 {
   font-weight: bold !important;
 }
 
+h4 {
+  font-weight: bold !important;
+}
+
 button>* {
   pointer-events: none;
   user-select: none;
@@ -63,6 +67,17 @@ button>* {
 }
 
 .svg-color {
+  -webkit-mask: var(--bg) no-repeat;
+  mask: var(--bg) no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  background-color: currentColor;
+  color: inherit;
+  width: 1.2em;
+  height: 1.2em;
+}
+
+.svg-bw {
   -webkit-mask: var(--bg) no-repeat;
   mask: var(--bg) no-repeat;
   -webkit-mask-size: 100% 100%;
