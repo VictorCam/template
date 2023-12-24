@@ -14,8 +14,18 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()],
     }),
     webfontDownload([]), //https://www.cdnfonts.com/
-    ViteImageOptimizer({ png: {}, jpg: {}, jpeg: {}, webp: {}, svg: {} }),
-  ],
+    ViteImageOptimizer({
+      png: { quality: 40, effort: 9 },
+      jpg: { quality: 40, effort: 9 },
+      jpeg: { quality: 40, effort: 9 },
+      webp: { quality: 5, effort: 6 },
+      svg: {
+        js2svg: {
+          useShortTags: true,
+          pretty: false,
+        }
+      }
+    })],
   css: {
     postcss: {
       plugins: [autoPrefixer()],

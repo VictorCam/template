@@ -1,0 +1,97 @@
+button {
+    cursor: pointer;
+}
+
+p {
+    line-height: 1.2em !important;
+}
+
+b {
+    font-weight: bold !important;
+}
+
+h1 {
+    font-size: x-large !important;
+    font-weight: bold !important;
+}
+
+h2 {
+    font-size: 30px !important;
+    font-weight: bold !important;
+    padding: 5px !important;
+    color: black !important;
+}
+
+h3 {
+    font-size: large !important;
+    font-weight: bold !important;
+}
+
+h4 {
+    font-weight: bold !important;
+}
+
+button>* {
+    pointer-events: none;
+    user-select: none;
+}
+
+.stack {
+    display: grid;
+}
+
+.stack>* {
+    grid-area: 1/1;
+}
+
+.stack-center {
+    place-items: center;
+}
+
+.stack2 {
+    position: relative;
+}
+
+.stack2>* {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.svg {
+    background: var(--bg) no-repeat;
+    background-size: 100% 100%;
+    background-color: transparent;
+    width: 1.2em;
+    height: 1.2em;
+}
+
+.svg-color {
+    mask: var(--bg) no-repeat;
+    mask-size: 100% 100%;
+    background-color: currentColor;
+    color: inherit;
+    width: 1.2em;
+    height: 1.2em;
+}
+
+.svg-bw {
+    mask: var(--bg) no-repeat;
+    mask-size: 100% 100%;
+    background-color: currentColor;
+    color: inherit;
+    width: 1.2em;
+    height: 1.2em;
+}
+
+.hidden {
+    opacity: 0;
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    height: 0;
+    width: 0;
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
+}

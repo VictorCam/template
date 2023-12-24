@@ -1,9 +1,11 @@
 import { createApp } from "vue";
-import "normalize.css";
-import "reset-css";
-import "./main.css";
 import { createPinia } from "pinia";
 import { createRouter, createWebHistory } from "vue-router";
+import "normalize.css";
+import "reset-css";
+import './css/utils.css'
+import './css/icons.css'
+import './css/animations.css'
 
 import App from "./App.vue";
 import Home from "./routes/Home.vue";
@@ -36,12 +38,12 @@ const router = createRouter({
 });
 
 // router.beforeEach((to, from, next) => {
-//   if (cookie.get("token")) next();
+//   if (cookie.get("token")) return next();
 //   if (!cookie.get("token")) {
 //     cookie.remove("token");
-//     next("/");
+//     return next("/");
 //   }
-//   next();
+//   return next();
 // });
 
 const pinia = createPinia();
