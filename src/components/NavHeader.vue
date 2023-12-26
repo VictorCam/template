@@ -1,31 +1,24 @@
 <script setup>
-function toggleButtonState(e) {
-  var button = e.target;
-  var isPressed = button.getAttribute("aria-pressed") === "true";
-  button.setAttribute("aria-pressed", !isPressed);
 
-  var hamburger = document.querySelector(".svg-hamburger");
-  var close = document.querySelector(".svg-close");
-
-  if (isPressed) {
-    hamburger.classList.add("transout");
-    hamburger.classList.remove("transin");
-    close.classList.add("transin");
-    close.classList.remove("transout");
-  } else {
-    hamburger.classList.add("transin");
-    hamburger.classList.remove("transout");
-    close.classList.add("transout");
-    close.classList.remove("transin");
-  }
-}
 </script>
 
 <template>
   <header>
-    <div class="svg-bw tmp" />
-    <button aria-pressed="false" class="svg-button" aria-label="Hamburger Menu">
-      <div class="svg-bw burger" />
+    <div class="svg-bw tmp"></div>
+    <button @click="(e) => {
+      let target = e.target
+      let buttonImage = e.target.children[0]
+      let switchTarget = !target.getAttribute('aria-pressed')
+      target.setAttribute('aria-pressed', switchTarget);
+      if (switchTarget) {
+        buttonImage.classList.toggle('close')
+        buttonImage.classList.toggle('hamburger')
+      } else {
+        buttonImage.classList.toggle('close')
+        buttonImage.classList.toggle('hamburger')
+      }
+    }" aria-pressed=" false" class="svg-button" aria-label="Hamburger Menu">
+      <div class="svg-bw burger"></div>
     </button>
     <nav>
       <ul>
