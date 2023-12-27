@@ -9,9 +9,20 @@ const switchButtonIcons = ({ buttonRef, svgRef }, { icon1, icon2 }) => {
   svgRef.classList.toggle(icon2);
 };
 
+const determineTheme = (svgRefIcon) => {
+  // get the current theme
+  const theme = localStorage.getItem('theme');
+  let currTheme = theme !== 'dark' ? 'sun' : 'moon';
+
+  // apply current icon and theme
+  svgRefIcon.value.classList.add(currTheme);
+  document.documentElement.style.setProperty("color-scheme", theme);
+}
+
 const utils = {
   toggleHidden,
   switchButtonIcons,
+  determineTheme,
 };
 
 export default utils;

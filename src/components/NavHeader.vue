@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import utils from "../utils";
+import { onMounted } from 'vue'
 const navBtnRef = ref(null);
 const navSvgRef = ref(null);
 const themeBtnRef = ref(null);
@@ -17,67 +18,46 @@ let links = [
   },
 ];
 
+onMounted(() => {
+  utils.determineTheme(themeSvgRef)
+})
+
 const toggleTheme = () => {
-  console.log(document.documentElement);
+  // get the system theme and the current theme set manually
   const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const prefersLight = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches;
-  let currTheme = window
-    .getComputedStyle(document.documentElement)
-    .getPropertyValue("prefers-color-scheme")
-    .trim();
-  console.log(currTheme);
-  // console.log(
-  // );
+  const currentTheme = document.documentElement.getAttribute('style')?.includes('color-scheme: light;') ? 'light' : 'dark';
 
-  let res = window.matchMedia("(color-scheme: light)").matches;
-  console.log(res);
-  //when starting the website check if they prefer light or dark
-  let theme = !prefersDark || prefersLight ? "dark" : "light";
+  // determine the theme to apply
+  const theme = prefersDark || currentTheme !== 'dark' ? 'dark' : 'light';
 
-  // overwrite the theme if a color-scheme is set on it
-  theme =
-    // get the users current color-scheme from the root element
-    document.documentElement.style.setProperty("color-scheme", theme);
-
-  let test = window.matchMedia("(color-scheme: light)").matches;
-
-  console.log(test);
+  // save the theme and apply it
+  localStorage.setItem('theme', theme);
+  document.documentElement.style.setProperty("color-scheme", theme);
 };
+
 </script>
 
 <template>
   <header>
     <div class="svg-bw tmp"></div>
-    <button
-      ref="navBtnRef"
-      @click="
-        utils.switchButtonIcons(
-          { buttonRef: navBtnRef, svgRef: navSvgRef },
-          { icon1: 'burger', icon2: 'close' }
-        )
-      "
-      aria-pressed="false"
-      class="svg-button margin-left-auto"
-      aria-label="Hamburger Menu"
-    >
+    <button ref="navBtnRef" @click="
+      utils.switchButtonIcons(
+        { buttonRef: navBtnRef, svgRef: navSvgRef },
+        { icon1: 'burger', icon2: 'close' }
+      )
+      " aria-pressed="false" class="svg-button margin-left-auto" aria-label="Hamburger Menu">
       <div ref="navSvgRef" class="svg-bw burger"></div>
     </button>
-    <button
-      ref="themeBtnRef"
-      @click="
-        {
-          utils.switchButtonIcons(
-            { buttonRef: themeBtnRef, svgRef: themeSvgRef },
-            { icon1: 'sun', icon2: 'moon' }
-          );
-        }
-        toggleTheme();
-      "
-      aria-pressed="false"
-      class="svg-button"
-      aria-label="Toggle Dark/Light Theme"
-    >
-      <div ref="themeSvgRef" class="svg-bw sun"></div>
+    <button ref="themeBtnRef" @click="
+                                                                                                                                                                                                                                        {
+      utils.switchButtonIcons(
+        { buttonRef: themeBtnRef, svgRef: themeSvgRef },
+        { icon1: 'sun', icon2: 'moon' }
+      );
+    }
+    toggleTheme();
+    " aria-pressed="false" class="svg-button" aria-label="Toggle Dark/Light Theme">
+      <div ref="themeSvgRef" class="svg-bw"></div>
     </button>
     <nav>
       <ul>
