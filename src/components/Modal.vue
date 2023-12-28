@@ -15,7 +15,7 @@ const modal = ref(null);
   </div>
 </template>
 
-<style>
+<style module>
 .modal {
   position: absolute;
   display: grid;

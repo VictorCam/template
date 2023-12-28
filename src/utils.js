@@ -9,10 +9,19 @@ const switchButtonIcons = ({ buttonRef, svgRef }, { icon1, icon2 }) => {
   svgRef.classList.toggle(icon2);
 };
 
-const determineTheme = (svgRefIcon) => {
+const loadSavedTheme = (svgRefIcon) => {
   // get the current theme
-  const theme = localStorage.getItem('theme');
-  let currTheme = theme !== 'dark' ? 'sun' : 'moon';
+  let theme = localStorage.getItem('theme');
+  let currTheme = null
+
+  //get the icon based on savedTheme or the system default
+  if (theme) {
+    currTheme = theme === 'dark' ? 'sun' : 'moon';
+  }
+  else {
+    const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    currTheme = prefersDark ? 'sun' : 'moon';
+  }
 
   // apply current icon and theme
   svgRefIcon.value.classList.add(currTheme);
@@ -22,7 +31,7 @@ const determineTheme = (svgRefIcon) => {
 const utils = {
   toggleHidden,
   switchButtonIcons,
-  determineTheme,
+  loadSavedTheme,
 };
 
 export default utils;

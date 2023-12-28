@@ -1,6 +1,14 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 import { createRouter, createWebHistory } from "vue-router";
+// import { registerSW } from 'virtual:pwa-register'
+
+// const updateSW = registerSW({
+//   onOfflineReady() {
+//     alert('ready to work offline')
+//   },
+// })
+
 import "normalize.css";
 import "reset-css";
 import './css/utils.css'

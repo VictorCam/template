@@ -1,7 +1,6 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import utils from "../utils";
-import { onMounted } from 'vue'
 const navBtnRef = ref(null);
 const navSvgRef = ref(null);
 const themeBtnRef = ref(null);
@@ -19,18 +18,21 @@ let links = [
 ];
 
 onMounted(() => {
-  utils.determineTheme(themeSvgRef)
+  utils.loadSavedTheme(themeSvgRef)
 })
 
 const toggleTheme = () => {
-  // get the system theme and the current theme set manually
+  // get default theme and set the theme value
   const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const currentTheme = document.documentElement.getAttribute('style')?.includes('color-scheme: light;') ? 'light' : 'dark';
+  let theme = prefersDark ? 'light' : 'dark';
 
-  // determine the theme to apply
-  const theme = prefersDark || currentTheme !== 'dark' ? 'dark' : 'light';
+  //override the theme value if theres a saved theme
+  let savedTheme = localStorage.getItem('theme')
+  if (savedTheme) {
+    theme = savedTheme === 'light' ? 'dark' : 'light';
+  }
 
-  // save the theme and apply it
+  // save the theme and override the color-scheme
   localStorage.setItem('theme', theme);
   document.documentElement.style.setProperty("color-scheme", theme);
 };
@@ -49,7 +51,7 @@ const toggleTheme = () => {
       <div ref="navSvgRef" class="svg-bw burger"></div>
     </button>
     <button ref="themeBtnRef" @click="
-                                                                                                                                                                                                                                        {
+                                                                                {
       utils.switchButtonIcons(
         { buttonRef: themeBtnRef, svgRef: themeSvgRef },
         { icon1: 'sun', icon2: 'moon' }
@@ -69,7 +71,7 @@ const toggleTheme = () => {
   </header>
 </template>
 
-<style>
+<style module>
 header {
   display: flex;
   align-items: center;
@@ -90,5 +92,11 @@ ul {
 
 nav {
   margin-right: 10px;
+}
+
+@media (max-width: 30em) {
+  ul {
+    flex-direction: column;
+  }
 }
 </style>

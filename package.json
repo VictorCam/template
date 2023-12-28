@@ -30,6 +30,8 @@
     "unplugin-vue-components": "^0.26.0",
     "vite": "^5.0.10",
     "vite-plugin-image-optimizer": "^1.1.7",
+    "vite-plugin-optimize-css-modules": "^1.0.6",
+    "vite-plugin-pwa": "^0.17.4",
     "vite-plugin-webfont-dl": "^3.9.1"
   }
 }
