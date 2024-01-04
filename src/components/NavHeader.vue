@@ -42,26 +42,24 @@ const toggleTheme = () => {
 <template>
   <header>
     <div class="svg-bw tmp"></div>
-    <button ref="navBtnRef" @click="
-      utils.switchButtonIcons(
-        { buttonRef: navBtnRef, svgRef: navSvgRef },
-        { icon1: 'burger', icon2: 'close' }
-      )
-      " aria-pressed="false" class="svg-button margin-left-auto" aria-label="Hamburger Menu">
-      <div ref="navSvgRef" class="svg-bw burger"></div>
-    </button>
     <button ref="themeBtnRef" @click="
-                                                                                {
       utils.switchButtonIcons(
         { buttonRef: themeBtnRef, svgRef: themeSvgRef },
         { icon1: 'sun', icon2: 'moon' }
       );
-    }
     toggleTheme();
-    " aria-pressed="false" class="svg-button" aria-label="Toggle Dark/Light Theme">
-      <div ref="themeSvgRef" class="svg-bw"></div>
+    " aria-pressed="false" class="svg-button margin-left-auto" aria-label="Toggle Dark/Light Theme">
+      <div ref="themeSvgRef" class="svg-bw "></div>
     </button>
-    <nav>
+    <button ref="navBtnRef" @click="
+      utils.switchButtonIcons(
+        { buttonRef: navBtnRef, svgRef: navSvgRef },
+        { icon1: 'burger', icon2: 'close' }
+      );
+    " aria-pressed="false" class="svg-button hide-on-desktop" aria-label="Hamburger Menu">
+      <div ref="navSvgRef" class="svg-bw burger"></div>
+    </button>
+    <nav class="">
       <ul>
         <li v-for="link in links">
           <a :href="link.href">{{ link.name }}</a>
