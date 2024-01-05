@@ -7,11 +7,13 @@ import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import { optimizeCssModules } from 'vite-plugin-optimize-css-modules';
 // import { VitePWA } from 'vite-plugin-pwa';
+import jspmPlugin from "vite-plugin-jspm";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
+    jspmPlugin(),
     // VitePWA({
     //   includeAssets: ['vite.svg'], manifest: {
     //     name: 'Vite PWA',
@@ -28,7 +30,7 @@ export default defineConfig({
     //   },
     //   registerType: 'autoUpdate',
     //   devOptions: { enabled: false, suppressWarnings: true, disableRuntimeConfig: true }
-    // }),
+    // })
     optimizeCssModules(),
     Components({
       resolvers: [ElementPlusResolver()],

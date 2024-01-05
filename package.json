@@ -16,6 +16,7 @@
     "pinia": "^2.1.7",
     "reset-css": "^5.0.2",
     "valibot": "^0.25.0",
+    "vite-plugin-jspm": "^0.6.0",
     "vue": "^3.4.5",
     "vue-router": "^4.2.5",
     "workerpool": "^9.0.4"
