@@ -62,14 +62,22 @@ const toggleTheme = () => {
     <nav class="">
       <ul>
         <li v-for="link in links">
-          <a :href="link.href">{{ link.name }}</a>
+          <div class="link-container">
+            <div class="group-link-icon">
+              <div class="svg-bw tmp link-icons hide-on-desktop"></div>
+              <a :href="link.href">
+                <span>{{ link.name }}</span>
+              </a>
+            </div>
+          </div>
+          <div class="line hide-on-desktop"></div>
         </li>
       </ul>
     </nav>
   </header>
 </template>
 
-<style module>
+<style>
 header {
   display: flex;
   align-items: center;
@@ -95,6 +103,30 @@ nav {
 @media (max-width: 30em) {
   ul {
     flex-direction: column;
+    margin-top: 10px;
+  }
+
+  .link-container {
+    display: grid;
+    justify-items: center;
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: black;
+    width: 150px;
+    height: 100vh;
+  }
+
+  .group-link-icon {
+    display: flex;
+    align-items: center;
+  }
+
+  .link-icons {
+    padding: 3px;
   }
 }
 </style>
