@@ -22,19 +22,43 @@ onMounted(() => {
 })
 
 const toggleTheme = () => {
-  // get default theme and set the theme value
-  const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-  let theme = prefersDark ? 'light' : 'dark';
 
-  //override the theme value if theres a saved theme
-  let savedTheme = localStorage.getItem('theme')
-  if (savedTheme) {
-    theme = savedTheme === 'light' ? 'dark' : 'light';
+  const rootElement = document.documentElement;
+  // const currentTheme = rootElement.classList.contains('light') ? 'light' : 'dark';
+
+  // rootElement.classList.toggle(currentTheme, false);
+  // rootElement.classList.toggle(currentTheme === 'light' ? 'dark' : 'light', true);
+
+
+
+  if (document.documentElement.classList.contains("light")) {
+    document.documentElement.classList.remove("light")
+    document.documentElement.classList.add("dark")
+  } else if (document.documentElement.classList.contains("dark")) {
+    document.documentElement.classList.remove("dark")
+    document.documentElement.classList.add("light")
+  } else {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.classList.add("dark")
+    } else {
+      document.documentElement.classList.add("light")
+    }
   }
 
-  // save the theme and override the color-scheme
-  localStorage.setItem('theme', theme);
-  document.documentElement.style.setProperty("color-scheme", theme);
+
+  // get default theme and set the theme value
+  // const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  // let theme = prefersDark ? 'light' : 'dark';
+
+  // //override the theme value if theres a saved theme
+  // let savedTheme = localStorage.getItem('theme')
+  // if (savedTheme) {
+  //   theme = savedTheme === 'light' ? 'dark' : 'light';
+  // }
+
+  // // save the theme and override the color-scheme
+  // localStorage.setItem('theme', theme);
+  // document.documentElement.style.setProperty("color-scheme", theme);
 };
 
 </script>
@@ -59,7 +83,8 @@ const toggleTheme = () => {
     " aria-pressed="false" class="svg-button hide-on-desktop" aria-label="Hamburger Menu">
       <div ref="navSvgRef" class="svg-bw burger"></div>
     </button>
-    <nav class="">
+    <div class="color-bw">Hello World</div>
+    <nav class="bg-bw">
       <ul>
         <li v-for="link in links">
           <div class="link-container">
@@ -115,7 +140,6 @@ nav {
     position: fixed;
     top: 0;
     left: 0;
-    background: black;
     width: 150px;
     height: 100vh;
   }

@@ -7,10 +7,11 @@ import { RouterView } from "vue-router";
 </template>
 
 <style>
-:root {
-  --white: #f5f5f5;
+:root,
+:root.light {
+  --white: white;
   --gray: #cccccc;
-  --black: #0f1115;
+  --black: black;
   --yellow: #fff208;
   --strong-blue: #0d63f8;
   --purple: #9d00ff;
@@ -23,23 +24,35 @@ import { RouterView } from "vue-router";
   --background-clr: #242424;
   font-family: Arial, Helvetica, sans-serif;
   color-scheme: light dark;
+  background: var(--white);
+  color: var(--black);
 }
 
-@media (color-scheme: light) {
+/* updated */
+@media (prefers-color-scheme: dark) {
   :root {
-    color: var(--black);
-    background: var(--white);
-  }
-
-  .svg-bw {
-    color: var(--black);
+    --white: white;
+    --black: black;
   }
 }
 
-@media (color-scheme: dark) {
+:root.dark {
+  --white: black;
+  --black: white;
+}
+
+@media (prefers-color-scheme: dark) {
   :root {
     color: var(--white);
-    background: var(--white);
+    background: var(--blue);
+  }
+
+  .bg-bw {
+    background: var(--black);
+  }
+
+  .color-bw {
+    color: var(--white);
   }
 
   .svg-bw {
@@ -49,6 +62,8 @@ import { RouterView } from "vue-router";
 
 html,
 body {
+  color: var(--white);
+  background: var(--black);
   overflow-x: hidden;
   height: 100%;
   width: 100%;
