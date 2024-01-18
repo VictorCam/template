@@ -10,22 +10,34 @@ const switchButtonIcons = ({ buttonRef, svgRef }, { icon1, icon2 }) => {
 };
 
 const loadSavedTheme = (svgRefIcon) => {
+  //root element
+  const rootElement = document.documentElement;
+
   // get the current theme
   let theme = localStorage.getItem('theme');
   let currTheme = null
 
   //get the icon based on savedTheme or the system default
   if (theme) {
-    currTheme = theme === 'dark' ? 'sun' : 'moon';
+    currTheme = theme == 'light' ? 'sun' : 'moon';
   }
   else {
     const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
     currTheme = prefersDark ? 'sun' : 'moon';
   }
 
-  // apply current icon and theme
+  //change the theme
+  if (theme === "light") {
+    rootElement.classList.remove("dark")
+    rootElement.classList.add("light")
+  }
+  else if (theme === "dark") {
+    rootElement.classList.remove("light")
+    rootElement.classList.add("dark")
+  }
+
+  //set the icon
   svgRefIcon.value.classList.add(currTheme);
-  document.documentElement.style.setProperty("color-scheme", theme);
 }
 
 const utils = {

@@ -16,7 +16,6 @@
     "pinia": "^2.1.7",
     "reset-css": "^5.0.2",
     "valibot": "^0.25.0",
-    "vite-plugin-jspm": "^0.6.0",
     "vue": "^3.4.7",
     "vue-router": "^4.2.5",
     "workerpool": "^9.0.4"
@@ -31,6 +30,7 @@
     "unplugin-vue-components": "^0.26.0",
     "vite": "^5.0.11",
     "vite-plugin-image-optimizer": "^1.1.7",
+    "vite-plugin-jspm": "^0.6.0",
     "vite-plugin-optimize-css-modules": "^1.0.6",
     "vite-plugin-pwa": "^0.17.4",
     "vite-plugin-webfont-dl": "^3.9.1"

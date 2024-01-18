@@ -22,43 +22,27 @@ onMounted(() => {
 })
 
 const toggleTheme = () => {
-
   const rootElement = document.documentElement;
-  // const currentTheme = rootElement.classList.contains('light') ? 'light' : 'dark';
 
-  // rootElement.classList.toggle(currentTheme, false);
-  // rootElement.classList.toggle(currentTheme === 'light' ? 'dark' : 'light', true);
-
-
-
-  if (document.documentElement.classList.contains("light")) {
-    document.documentElement.classList.remove("light")
-    document.documentElement.classList.add("dark")
-  } else if (document.documentElement.classList.contains("dark")) {
-    document.documentElement.classList.remove("dark")
-    document.documentElement.classList.add("light")
-  } else {
+  if (rootElement.classList.contains("light")) {
+    rootElement.classList.remove("light")
+    rootElement.classList.add("dark")
+    localStorage.setItem("theme", "dark")
+  }
+  else if (rootElement.classList.contains("dark")) {
+    rootElement.classList.remove("dark")
+    rootElement.classList.add("light")
+    localStorage.setItem("theme", "light")
+  }
+  else {
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      document.documentElement.classList.add("dark")
+      rootElement.classList.add("dark")
+      localStorage.setItem("theme", "dark");
     } else {
-      document.documentElement.classList.add("light")
+      rootElement.classList.add("light")
+      localStorage.setItem("theme", "light");
     }
   }
-
-
-  // get default theme and set the theme value
-  // const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-  // let theme = prefersDark ? 'light' : 'dark';
-
-  // //override the theme value if theres a saved theme
-  // let savedTheme = localStorage.getItem('theme')
-  // if (savedTheme) {
-  //   theme = savedTheme === 'light' ? 'dark' : 'light';
-  // }
-
-  // // save the theme and override the color-scheme
-  // localStorage.setItem('theme', theme);
-  // document.documentElement.style.setProperty("color-scheme", theme);
 };
 
 </script>
