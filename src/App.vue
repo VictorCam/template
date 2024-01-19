@@ -9,9 +9,9 @@ import { RouterView } from "vue-router";
 <style>
 :root,
 :root.light {
-  --white: white;
+  --white: rgb(255, 255, 255);
   --gray: #cccccc;
-  --black: black;
+  --black: rgb(23, 23, 23);
   --yellow: #fff208;
   --strong-blue: #0d63f8;
   --purple: #9d00ff;
@@ -28,14 +28,6 @@ import { RouterView } from "vue-router";
   color: var(--black);
 }
 
-/* updated */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --white: white;
-    --black: black;
-  }
-}
-
 :root.dark {
   --white: black;
   --black: white;
@@ -43,6 +35,8 @@ import { RouterView } from "vue-router";
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --white: white;
+    --black: black;
     color: var(--white);
     background: var(--blue);
   }

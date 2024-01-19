@@ -17,34 +17,16 @@ let links = [
   },
 ];
 
+// JavaScript
+function toggleSidebar() {
+  var sidebar = document.querySelector("nav");
+  sidebar.classList.toggle("active");
+}
+
+
 onMounted(() => {
   utils.loadSavedTheme(themeSvgRef)
 })
-
-const toggleTheme = () => {
-  const rootElement = document.documentElement;
-
-  if (rootElement.classList.contains("light")) {
-    rootElement.classList.remove("light")
-    rootElement.classList.add("dark")
-    localStorage.setItem("theme", "dark")
-  }
-  else if (rootElement.classList.contains("dark")) {
-    rootElement.classList.remove("dark")
-    rootElement.classList.add("light")
-    localStorage.setItem("theme", "light")
-  }
-  else {
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      rootElement.classList.add("dark")
-      localStorage.setItem("theme", "dark");
-    } else {
-      rootElement.classList.add("light")
-      localStorage.setItem("theme", "light");
-    }
-  }
-};
-
 </script>
 
 <template>
@@ -55,20 +37,20 @@ const toggleTheme = () => {
         { buttonRef: themeBtnRef, svgRef: themeSvgRef },
         { icon1: 'sun', icon2: 'moon' }
       );
-    toggleTheme();
+    utils.toggleTheme();
     " aria-pressed="false" class="svg-button margin-left-auto" aria-label="Toggle Dark/Light Theme">
-      <div ref="themeSvgRef" class="svg-bw "></div>
+      <div ref="themeSvgRef" class="svg-bw"></div>
     </button>
     <button ref="navBtnRef" @click="
       utils.switchButtonIcons(
         { buttonRef: navBtnRef, svgRef: navSvgRef },
         { icon1: 'burger', icon2: 'close' }
       );
+    toggleSidebar();
     " aria-pressed="false" class="svg-button hide-on-desktop" aria-label="Hamburger Menu">
       <div ref="navSvgRef" class="svg-bw burger"></div>
     </button>
-    <div class="color-bw">Hello World</div>
-    <nav class="bg-bw">
+    <nav>
       <ul>
         <li v-for="link in links">
           <div class="link-container">
@@ -79,7 +61,7 @@ const toggleTheme = () => {
               </a>
             </div>
           </div>
-          <div class="line hide-on-desktop"></div>
+          <!-- <div class="line hide-on-desktop"></div> -->
         </li>
       </ul>
     </nav>
@@ -121,11 +103,20 @@ nav {
   }
 
   nav {
+
+    background: var(--black);
+    border-right: 1px solid var(--white);
     position: fixed;
     top: 0;
-    left: 0;
+    left: -151px;
     width: 150px;
     height: 100vh;
+    transform: translateX(0);
+    transition: transform 0.3s ease-out;
+  }
+
+  nav.active {
+    transform: translateX(151px);
   }
 
   .group-link-icon {

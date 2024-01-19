@@ -40,10 +40,35 @@ const loadSavedTheme = (svgRefIcon) => {
   svgRefIcon.value.classList.add(currTheme);
 }
 
+const toggleTheme = () => {
+  const rootElement = document.documentElement;
+
+  if (rootElement.classList.contains("light")) {
+    rootElement.classList.remove("light")
+    rootElement.classList.add("dark")
+    localStorage.setItem("theme", "dark")
+  }
+  else if (rootElement.classList.contains("dark")) {
+    rootElement.classList.remove("dark")
+    rootElement.classList.add("light")
+    localStorage.setItem("theme", "light")
+  }
+  else {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      rootElement.classList.add("dark")
+      localStorage.setItem("theme", "dark");
+    } else {
+      rootElement.classList.add("light")
+      localStorage.setItem("theme", "light");
+    }
+  }
+};
+
 const utils = {
   toggleHidden,
   switchButtonIcons,
   loadSavedTheme,
+  toggleTheme
 };
 
 export default utils;
