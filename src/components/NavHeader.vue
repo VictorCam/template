@@ -103,7 +103,6 @@ nav {
   }
 
   nav {
-
     background: var(--black);
     border-right: 1px solid var(--white);
     position: fixed;
@@ -111,7 +110,6 @@ nav {
     left: -151px;
     width: 150px;
     height: 100vh;
-    transform: translateX(0);
     transition: transform 0.3s ease-out;
   }
 
