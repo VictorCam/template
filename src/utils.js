@@ -27,11 +27,11 @@ const loadSavedTheme = (svgRefIcon) => {
   }
 
   //change the theme
-  if (theme === "light") {
+  if (theme === "light" || currTheme === "sun") {
     rootElement.classList.remove("dark")
     rootElement.classList.add("light")
   }
-  else if (theme === "dark") {
+  else if (theme === "dark" || currTheme === "moon") {
     rootElement.classList.remove("light")
     rootElement.classList.add("dark")
   }

@@ -25,7 +25,7 @@ import { RouterView } from "vue-router";
   font-family: Arial, Helvetica, sans-serif;
   color-scheme: light dark;
   background: var(--white);
-  color: var(--black);
+  color: var(--white);
 }
 
 :root.dark {
