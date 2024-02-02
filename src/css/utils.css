@@ -17,6 +17,7 @@
 }
 
 button {
+  color: currentColor;
   cursor: pointer;
 }
 

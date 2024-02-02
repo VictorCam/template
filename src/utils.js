@@ -1,3 +1,7 @@
+import { gsap } from "gsap";
+import { Flip } from "gsap/Flip";
+gsap.registerPlugin(Flip);
+
 const toggleHidden = (ref) => {
   ref.classList.toggle("hidden");
 };
@@ -64,11 +68,21 @@ const toggleTheme = () => {
   }
 };
 
+const flipAnimation = (fromElement, toElement, animation) => {
+  let state = Flip.getState([fromElement, toElement]);
+  fromElement.append(toElement)
+  Flip.from(state, {
+    duration: 0.5,
+    absolute: true,
+  });
+}
+
 const utils = {
   toggleHidden,
   switchButtonIcons,
   loadSavedTheme,
-  toggleTheme
+  toggleTheme,
+  flipAnimation,
 };
 
 export default utils;

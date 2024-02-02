@@ -14,6 +14,7 @@ import "reset-css";
 import './css/utils.css'
 import './css/icons.css'
 import './css/animations.css'
+import './css/main.css'
 
 import App from "./App.vue";
 import Home from "./routes/Home.vue";
