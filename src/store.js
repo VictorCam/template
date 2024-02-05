@@ -10,3 +10,27 @@ export const useCounterStore = defineStore("counter", () => {
 
   return { count, doubleCount, increment };
 });
+
+export const authStore = defineStore("auth", () => {
+  const loggedIn = ref(false);
+  const token = ref(null);
+
+  function login() {
+    loggedIn.value = true;
+    token.value = Math.random().toString(36).slice(2);
+  }
+
+  function logout() {
+    loggedIn.value = false;
+    token.value = null;
+  }
+  return { loggedIn, token, login, logout };
+})
+
+// export const useThemeStore = defineStore("theme", () => {
+//   const theme = ref("light");
+//   const toggleTheme = () => {
+//     theme.value = theme.value === "light" ? "dark" : "light";
+//   };
+//   return { theme, toggleTheme };
+// })
