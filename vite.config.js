@@ -12,8 +12,14 @@ import jspmPlugin from "vite-plugin-jspm";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    vue(),
-    jspmPlugin(),
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => tag.startsWith("swiper-"),
+        }
+      }
+    }),
+    // jspmPlugin(),
     // VitePWA({
     //   includeAssets: ['vite.svg'], manifest: {
     //     name: 'Vite PWA',
@@ -51,7 +57,7 @@ export default defineConfig({
   css: {
     postcss: {
       plugins: [autoPrefixer()],
-    },
+    }
   },
   server: {
     port: 2020,

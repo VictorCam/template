@@ -11,6 +11,22 @@ export const useCounterStore = defineStore("counter", () => {
   return { count, doubleCount, increment };
 });
 
+export const useToastStore = defineStore("toast", () => {
+  const toasts = ref([
+    {
+      id: 1,
+      message: "test1",
+      type: "success",
+    },
+    {
+      id: 2,
+      message: "test2",
+      type: "error",
+    },
+  ]);
+  return { toasts };
+})
+
 export const authStore = defineStore("auth", () => {
   const loggedIn = ref(false);
   const token = ref(null);

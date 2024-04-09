@@ -89,6 +89,7 @@ ul {
 
 nav {
   margin-right: 10px;
+  z-index: 2;
 }
 
 @media (max-width: 30em) {

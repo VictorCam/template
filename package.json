@@ -9,31 +9,33 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "axios": "^1.6.7",
+    "axios": "^1.6.8",
     "gsap": "^3.12.5",
     "js-cookie": "^3.0.5",
     "motion": "^10.17.0",
     "normalize.css": "^8.0.1",
     "pinia": "^2.1.7",
+    "polymorph-js": "^1.0.2",
     "reset-css": "^5.0.2",
-    "valibot": "^0.27.1",
-    "vue": "^3.4.15",
-    "vue-router": "^4.2.5",
+    "swiper": "^11.1.0",
+    "valibot": "^0.30.0",
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.0",
     "workerpool": "^9.1.0"
   },
   "devDependencies": {
-    "@divriots/jampack": "^0.23.2",
-    "@vitejs/plugin-vue": "^5.0.3",
-    "autoprefixer": "^10.4.17",
-    "dotenv": "^16.4.1",
-    "sharp": "^0.33.2",
+    "@divriots/jampack": "^0.23.4",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "autoprefixer": "^10.4.19",
+    "dotenv": "^16.4.5",
+    "sharp": "^0.33.3",
     "svgo": "^3.2.0",
     "unplugin-vue-components": "^0.26.0",
-    "vite": "^5.0.12",
+    "vite": "^5.2.8",
     "vite-plugin-image-optimizer": "^1.1.7",
     "vite-plugin-jspm": "^0.6.0",
     "vite-plugin-optimize-css-modules": "^1.0.6",
-    "vite-plugin-pwa": "^0.17.5",
-    "vite-plugin-webfont-dl": "^3.9.1"
+    "vite-plugin-pwa": "^0.19.7",
+    "vite-plugin-webfont-dl": "^3.9.2"
   }
 }

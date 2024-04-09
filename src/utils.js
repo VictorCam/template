@@ -6,6 +6,10 @@ const toggleHidden = (ref) => {
   ref.classList.toggle("hidden");
 };
 
+const unToggleHidden = (ref) => {
+  ref.classList.remove("hidden");
+}
+
 const switchButtonIcons = ({ buttonRef, svgRef }, { icon1, icon2 }) => {
   let switchTarget = !buttonRef.getAttribute("aria-pressed");
   buttonRef.setAttribute("aria-pressed", switchTarget);
@@ -68,14 +72,30 @@ const toggleTheme = () => {
   }
 };
 
-const flipAnimation = (fromElement, toElement, animation) => {
-  let state = Flip.getState([fromElement, toElement]);
-  fromElement.append(toElement)
+const flipAnimation = (relocateElement, moveElementToPosition, animation) => {
+  let state = Flip.getState([moveElementToPosition, relocateElement]);
+  moveElementToPosition.append(relocateElement)
   Flip.from(state, {
     duration: 0.5,
     absolute: true,
   });
 }
+
+const getLastJsonId = (ref) => {
+  return parseInt(ref[ref.length - 1].id, 10);
+}
+
+const addItem = (ref, toast) => {
+  toast.id = getLastJsonId(ref) + 1;
+  ref.push(toast);
+};
+
+const removeItemById = (ref, id) => {
+  const index = ref.findIndex((toast) => toast.id === id);
+  if (index !== -1) {
+    ref.splice(index, 1);
+  }
+};
 
 const utils = {
   toggleHidden,
@@ -83,6 +103,8 @@ const utils = {
   loadSavedTheme,
   toggleTheme,
   flipAnimation,
+  addItem,
+  removeItemById,
 };
 
 export default utils;
