@@ -82,10 +82,11 @@ const flipAnimation = (relocateElement, moveElementToPosition, animation) => {
 }
 
 const getLastJsonId = (ref) => {
-  return parseInt(ref[ref.length - 1].id, 10);
+  return ref.length !== 0 ? parseInt(ref[ref.length - 1].id, 10) : 0;
 }
 
 const addItem = (ref, toast) => {
+  console.log(getLastJsonId(ref))
   toast.id = getLastJsonId(ref) + 1;
   ref.push(toast);
 };

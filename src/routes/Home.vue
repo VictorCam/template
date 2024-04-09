@@ -39,9 +39,9 @@ onMounted(() => {
     <button class="main-button" @click="showModal('modal2')">Show Modal</button>
   </div>
   <Slide />
-  <ToastStack>
+  <div class="toast-stack">
     <Toast v-for="toast in toasts" :key="toast.id" :id="toast.id" :message="toast.message" :type="toast.type" />
-  </ToastStack>
+  </div>
 
 
   <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
@@ -58,6 +58,15 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.toast-stack {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 10px;
+}
+
 .space {
   display: flex;
   padding: 15px;

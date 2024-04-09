@@ -33,7 +33,7 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div ref="toast" class="toast expand scale-in-center" v-if="toastVisible">
+    <div ref="toast" :class="{ type }" class="toast expand scale-in-center" v-if="toastVisible">
         <button class="svg-button" @click="hideToast(id)">
             <div class="close svg-bw"></div>
         </button>
@@ -84,6 +84,10 @@ onMounted(async () => {
 
 p {
     padding: 0 20px;
+}
+
+.error {
+    background: red;
 }
 
 .svg-button {

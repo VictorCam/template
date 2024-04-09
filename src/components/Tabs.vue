@@ -38,7 +38,6 @@ const selectTab = (selectedTab) => {
     justify-content: center;
     align-items: center;
     background: var(--black);
-
 }
 
 ul {
