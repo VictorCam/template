@@ -61,9 +61,6 @@ const showHide = (value) => {
     </div>
   </div>
 
-
-  <!-- <Tabs /> -->
-  <!-- <Nodes /> -->
 </template>
 
 <style scoped>
