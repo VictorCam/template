@@ -8,7 +8,9 @@ let toasts = toastStore.toasts;
 
 import { ref } from "vue";
 import utils from '../utils';
-import { null_ } from "valibot";
+
+import { register } from 'swiper/element/bundle';
+register();
 
 let modal = ref(null)
 
@@ -28,7 +30,13 @@ const showHide = (value) => {
     <button class="main-button" @click="showHide('modal1')">Show Modal1</button>
     <button class="main-button" @click="showHide('modal2')">Show Modal2</button>
   </div>
-  <Slide />
+
+  <div class="slides">
+    <swiper-container :centered-slides="true" :slides-per-view="3" :autoplay="{ delay: 2500 }" :loop="true">
+      <swiper-slide v-for="n in  5" :key="n">Slide {{ n }}</swiper-slide>
+    </swiper-container>
+  </div>
+
   <div class="toast-stack">
     <Toast v-for="toast in toasts" :key="toast.id" :id="toast.id" :message="toast.message" :type="toast.type" />
   </div>
@@ -71,6 +79,10 @@ const showHide = (value) => {
   bottom: 0;
   left: 0;
   margin: 10px;
+}
+
+.slides {
+  text-align: center;
 }
 
 .space {
