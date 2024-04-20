@@ -12,10 +12,6 @@ const props = defineProps({
     message: String,
 });
 
-const toast = ref();
-
-const toastVisible = ref(true);
-
 const hideToast = async (id) => {
     // replace this eventually with animationend or transitionend
     toast.value.classList.remove('scale-in-center');
@@ -26,14 +22,12 @@ const hideToast = async (id) => {
     utils.removeItemById(toasts, id)
 };
 
-onMounted(async () => {
-    // setTimeout(hideToast(id), 3000);
-})
+const toast = ref();
 
 </script>
 
 <template>
-    <div ref="toast" :class="{ type }" class="toast expand scale-in-center" v-if="toastVisible">
+    <div ref="toast" :class="{ type }" class="toast expand scale-in-center">
         <button class="svg-button" @click="hideToast(id)">
             <div class="close svg-bw"></div>
         </button>

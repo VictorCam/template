@@ -6,52 +6,61 @@ const store = useCounterStore();
 const toastStore = useToastStore();
 let toasts = toastStore.toasts;
 
-import { onMounted, ref } from "vue";
+import { ref } from "vue";
 import utils from '../utils';
+import { null_ } from "valibot";
 
-const activeModal = ref('');
+let modal = ref(null)
 
-const showModal = (modalName) => {
-  activeModal.value = modalName;
+const showHide = (value) => {
+  modal.value != value ? modal.value = value : modal.value = null;
 };
-
-const closeModal = () => {
-  activeModal.value = '';
-};
-
-onMounted(() => {
-  let modal = ref()
-})
 
 </script>
 
 <template>
   <NavHeader />
-  <Modal v-if="activeModal === 'modal1'" :message="'Hello World'" />
-  <Modal v-if="activeModal === 'modal2'" :message="'Goodbye World'" />
   <p>Count: {{ store.count }}</p>
   <p>Double Count: {{ store.doubleCount }}</p>
   <div class="space">
     <button class="main-button" @click="store.increment">Increment</button>
-    <button @click="utils.addItem(toasts, { message: 'test4', type: 'info' })" class="main-button">Create
-      Toast</button>
-    <button class="main-button" @click="showModal('modal1')">Show Modal</button>
-    <button class="main-button" @click="showModal('modal2')">Show Modal</button>
+    <button @click="utils.addItem(toasts, { message: 'test4', type: 'info' })" class="main-button">Create Toast</button>
+    <button class="main-button" @click="showHide('modal1')">Show Modal1</button>
+    <button class="main-button" @click="showHide('modal2')">Show Modal2</button>
   </div>
   <Slide />
   <div class="toast-stack">
     <Toast v-for="toast in toasts" :key="toast.id" :id="toast.id" :message="toast.message" :type="toast.type" />
   </div>
 
+  <!-- modal1 -->
+  <div v-if="modal === 'modal1'" class="modal" @click="showHide">
+    <div class=" pos-modal scale-in-center">
+      <button class="svg-button" @click="showHide">
+        <div class="close svg-bw"></div>
+      </button>
+      <div class="content">
+        <p>
+          Modal1
+        </p>
+      </div>
+    </div>
+  </div>
 
-  <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
-    <path fill="transparent" d="M0 0h1920v1080H0z"/>
-    <g><animateTransform attributeName="transform" calcMode="spline" dur="8.33333s" keySplines="0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1" keyTimes="0;0;0.05;0.075;1" repeatCount="indefinite" type="translate" values="155.812 0;155.812 0;1109.35 0;1130.89 0;1130.89 0"/>
-      <g><animateTransform attributeName="transform" calcMode="spline" dur="8.33333s" keySplines="0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1" keyTimes="0;0;0.05;0.075;1" repeatCount="indefinite" type="translate" values="0 179.551;0 179.551;0 142.214;0 811.414;0 811.414"/>
-        <ellipse fill="red" stroke="#000" rx="67.494" ry="68.93"/>
-      </g>
-    </g>
-  </svg> -->
+  <!-- modal2 -->
+  <div v-if="modal === 'modal2'" class="modal" @click="showHide">
+    <div class=" pos-modal scale-in-center">
+      <button class="svg-button" @click="showHide">
+        <div class="close svg-bw"></div>
+      </button>
+      <div class="content">
+        <p>
+          Modal2
+        </p>
+      </div>
+    </div>
+  </div>
+
 
   <!-- <Tabs /> -->
   <!-- <Nodes /> -->
@@ -71,5 +80,39 @@ onMounted(() => {
   display: flex;
   padding: 15px;
   gap: 10px;
+}
+
+/* modal stuff */
+
+.modal {
+  position: absolute;
+  display: grid;
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.8);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  transition: background-color ease-in 0.3s;
+}
+
+.svg-button {
+  justify-self: end;
+  padding: 5px;
+}
+
+.pos-modal {
+  display: grid;
+  background: var(--black);
+  border: 1px solid var(--white);
+  border-radius: 10px;
+  max-width: 80vw;
+  margin: 0 auto;
+}
+
+.content {
+  padding: 20px;
 }
 </style>
