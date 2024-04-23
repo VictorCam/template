@@ -11,10 +11,11 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import "normalize.css";
 import "reset-css";
-import './css/utils.css'
-import './css/icons.css'
-import './css/animations.css'
-import './css/main.css'
+import "./css/utils.css";
+import "./css/icons.css";
+import "./css/animations.css";
+import "./css/main.css";
+import "./css/media.css";
 
 import App from "./App.vue";
 import Home from "./routes/Home.vue";
