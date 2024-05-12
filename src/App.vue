@@ -7,6 +7,7 @@ import { RouterView } from "vue-router";
 </template>
 
 <style>
+/* dark mode */
 :root,
 :root.light {
   --white: rgb(255, 255, 255);
@@ -28,19 +29,13 @@ import { RouterView } from "vue-router";
   color: var(--white);
 }
 
+/* light mode */
 :root.dark {
   --white: black;
   --black: white;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --white: white;
-    --black: black;
-    color: var(--white);
-    background: var(--blue);
-  }
-
   .bg-bw {
     background: var(--black);
   }

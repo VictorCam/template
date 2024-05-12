@@ -25,6 +25,7 @@
     "@vitejs/plugin-vue": "^5.0.4",
     "autoprefixer": "^10.4.19",
     "dotenv": "^16.4.5",
+    "unocss": "^0.59.4",
     "unplugin-vue-components": "^0.26.0",
     "vite": "^5.2.10",
     "vite-plugin-optimize-css-modules": "^1.0.6",

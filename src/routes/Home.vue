@@ -29,6 +29,7 @@ const showHide = (value) => {
     <button @click="utils.addItem(toasts, { message: 'test4', type: 'info' })" class="main-button">Create Toast</button>
     <button class="main-button" @click="showHide('modal1')">Show Modal1</button>
     <button class="main-button" @click="showHide('modal2')">Show Modal2</button>
+    <router-link to="/Page">Page</router-link>
   </div>
 
   <div class="slides">
@@ -92,7 +93,6 @@ const showHide = (value) => {
 }
 
 /* modal stuff */
-
 .modal {
   position: absolute;
   display: grid;

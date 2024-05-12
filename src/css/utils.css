@@ -36,7 +36,7 @@ h4 {
   font-weight: bold;
 }
 
-button > * {
+button>* {
   pointer-events: none;
   user-select: none;
 }
@@ -49,7 +49,7 @@ button > * {
   margin-left: auto;
 }
 
-.stack > * {
+.stack>* {
   grid-area: 1/1;
 }
 
@@ -61,7 +61,7 @@ button > * {
   position: relative;
 }
 
-.stack2 > * {
+.stack2>* {
   position: absolute;
   top: 0;
   left: 0;

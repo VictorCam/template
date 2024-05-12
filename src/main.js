@@ -1,6 +1,7 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 import { createRouter, createWebHistory } from "vue-router";
+import 'virtual:uno.css';
 // import { registerSW } from 'virtual:pwa-register'
 
 // const updateSW = registerSW({
