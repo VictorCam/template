@@ -21,51 +21,55 @@ const showHide = (value) => {
 </script>
 
 <template>
-  <NavHeader />
-  <p>Count: {{ store.count }}</p>
-  <p>Double Count: {{ store.doubleCount }}</p>
-  <div class="space">
-    <button class="main-button" @click="store.increment">Increment</button>
-    <button @click="utils.addItem(toasts, { message: 'test4', type: 'info' })" class="main-button">Create Toast</button>
-    <button class="main-button" @click="showHide('modal1')">Show Modal1</button>
-    <button class="main-button" @click="showHide('modal2')">Show Modal2</button>
-    <router-link to="/Page">Page</router-link>
-  </div>
+  <div>
+    <NavHeader />
+    <p>Count: {{ store.count }}</p>
+    <p>Double Count: {{ store.doubleCount }}</p>
+    <div class="space">
+      <button class="main-button" @click="store.increment">Increment</button>
+      <button @click="utils.addItem(toasts, { message: 'test4', type: 'info' })" class="main-button">Create
+        Toast</button>
+      <button class="main-button" @click="showHide('modal1')">Show Modal1</button>
+      <button class="main-button" @click="showHide('modal2')">Show Modal2</button>
+      <router-link to="/Page">Page</router-link>
+      <router-link to="aewoifj">Bad link</router-link>
+    </div>
 
-  <div class="slides">
-    <swiper-container :centered-slides="true" :slides-per-view="3" :autoplay="{ delay: 2500 }" :loop="true">
-      <swiper-slide v-for="n in  5" :key="n">Slide {{ n }}</swiper-slide>
-    </swiper-container>
-  </div>
+    <div class="slides">
+      <swiper-container :centered-slides="true" :slides-per-view="3" :autoplay="{ delay: 2500 }" :loop="true">
+        <swiper-slide v-for="n in  5" :key="n">Slide {{ n }}</swiper-slide>
+      </swiper-container>
+    </div>
 
-  <div class="toast-stack">
-    <Toast v-for="toast in toasts" :key="toast.id" :id="toast.id" :message="toast.message" :type="toast.type" />
-  </div>
+    <div class="toast-stack">
+      <Toast v-for="toast in toasts" :key="toast.id" :id="toast.id" :message="toast.message" :type="toast.type" />
+    </div>
 
-  <!-- modal1 -->
-  <div v-if="modal === 'modal1'" class="modal" @click="showHide">
-    <div class=" pos-modal scale-in-center">
-      <button class="svg-button" @click="showHide">
-        <div class="close svg-bw"></div>
-      </button>
-      <div class="content">
-        <p>
-          Modal1
-        </p>
+    <!-- modal1 -->
+    <div v-if="modal === 'modal1'" class="modal" @click="showHide">
+      <div class=" pos-modal scale-in-center">
+        <button class="svg-button" @click="showHide">
+          <div class="close svg-bw"></div>
+        </button>
+        <div class="content">
+          <p>
+            Modal1
+          </p>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- modal2 -->
-  <div v-if="modal === 'modal2'" class="modal" @click="showHide">
-    <div class=" pos-modal scale-in-center">
-      <button class="svg-button" @click="showHide">
-        <div class="close svg-bw"></div>
-      </button>
-      <div class="content">
-        <p>
-          Modal2
-        </p>
+    <!-- modal2 -->
+    <div v-if="modal === 'modal2'" class="modal" @click="showHide">
+      <div class=" pos-modal scale-in-center">
+        <button class="svg-button" @click="showHide">
+          <div class="close svg-bw"></div>
+        </button>
+        <div class="content">
+          <p>
+            Modal2
+          </p>
+        </div>
       </div>
     </div>
   </div>

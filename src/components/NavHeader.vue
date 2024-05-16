@@ -105,17 +105,17 @@ nav {
 
   nav {
     background: var(--black);
-    border-right: 1px solid var(--white);
+    border-top: 1px solid var(--white);
     position: fixed;
-    top: 0;
-    left: -151px;
-    width: 150px;
+    top: 50px;
+    left: calc(-100%);
+    width: 100%;
     height: 100vh;
     transition: transform 0.3s ease-out;
   }
 
   nav.active {
-    transform: translateX(151px);
+    transform: translateX(100%);
   }
 
   .group-link-icon {

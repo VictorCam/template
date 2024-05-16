@@ -3,10 +3,54 @@ import { RouterView } from "vue-router";
 </script>
 
 <template>
-  <RouterView></RouterView>
+  <RouterView v-slot="{ Component, route }">
+    <Transition :name="route.meta.transition || 'bonuce'">
+      <component :is="Component" />
+    </Transition>
+  </RouterView>
 </template>
 
 <style>
+.bounce-enter-active {
+  animation: bounce-in 0.5s;
+}
+
+.bounce-leave-active {
+  animation: bounce-in 0.5s reverse;
+}
+
+.fade-enter-active {
+  animation: fade 0.5s;
+}
+
+.fade-leave-active {
+  animation: fade 0.5s reverse;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1.25);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
 /* dark mode */
 :root,
 :root.light {

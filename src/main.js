@@ -30,16 +30,19 @@ const routes = [
     path: "/",
     name: "home",
     component: Home,
+    meta: { transition: 'bounce' }
   },
   {
     path: "/page",
     name: "page",
     component: Page,
+    meta: { transition: 'fade' }
   },
   {
     path: "/:catchAll(.*)",
     name: "NotFound",
     component: NotFound,
+    meta: { transition: 'bounce' }
   },
 ];
 
@@ -64,3 +67,5 @@ app.use(router);
 app.use(pinia);
 
 app.mount("#app");
+
+export { routes };

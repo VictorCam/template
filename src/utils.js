@@ -86,7 +86,6 @@ const getLastJsonId = (ref) => {
 }
 
 const addItem = (ref, toast) => {
-  console.log(getLastJsonId(ref))
   toast.id = getLastJsonId(ref) + 1;
   ref.push(toast);
 };

@@ -16,10 +16,12 @@ const hideToast = async (id) => {
     // replace this eventually with animationend or transitionend
     toast.value.classList.remove('scale-in-center');
     toast.value.classList.add('scale-out-center');
-    await new Promise(resolve => setTimeout(resolve, 300))
-    toast.value.classList.add('shrink');
-    await new Promise(resolve => setTimeout(resolve, 300))
-    utils.removeItemById(toasts, id)
+    toast.value.addEventListener('animationend', async () => {
+        toast.value.classList.add('shrink');
+        toast.value.addEventListener('animationend'), async () => {
+            utils.removeItemById(toasts, id);
+        }
+    })
 };
 
 const toast = ref();
