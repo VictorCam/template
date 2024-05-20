@@ -11,20 +11,12 @@ import { RouterView } from "vue-router";
 </template>
 
 <style>
-.bounce-enter-active {
-  animation: bounce-in 0.5s;
-}
-
-.bounce-leave-active {
-  animation: bounce-in 0.5s reverse;
-}
-
 .fade-enter-active {
-  animation: fade 0.5s;
+  animation: fade 175ms;
 }
 
 .fade-leave-active {
-  animation: fade 0.5s reverse;
+  animation: fade 175ms reverse;
 }
 
 @keyframes fade {
@@ -34,20 +26,6 @@ import { RouterView } from "vue-router";
 
   100% {
     opacity: 1;
-  }
-}
-
-@keyframes bounce-in {
-  0% {
-    transform: scale(0);
-  }
-
-  50% {
-    transform: scale(1.25);
-  }
-
-  100% {
-    transform: scale(1);
   }
 }
 
@@ -100,10 +78,5 @@ body {
   overflow-x: hidden;
   height: 100%;
   width: 100%;
-}
-
-body {
-  max-width: 1800px;
-  margin: 0 auto !important;
 }
 </style>

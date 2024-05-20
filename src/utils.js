@@ -6,12 +6,23 @@ const toggleHidden = (ref) => {
   ref.classList.toggle("hidden");
 };
 
+function waitForAnimation(element) {
+  return new Promise((resolve) => {
+    if (!element) resolve(); // Resolve immediately if the element doesn't exist
+
+    // Listen for animation or transition end
+    element.addEventListener('animationend', resolve);
+    element.addEventListener('transitionend', resolve);
+  });
+}
+
 const unToggleHidden = (ref) => {
   ref.classList.remove("hidden");
 }
 
 const switchButtonIcons = ({ buttonRef, svgRef }, { icon1, icon2 }) => {
-  let switchTarget = !buttonRef.getAttribute("aria-pressed");
+  let switchTarget = !Boolean(buttonRef.getAttribute("aria-pressed")).valueOf();
+  console.log(switchTarget)
   buttonRef.setAttribute("aria-pressed", switchTarget);
   svgRef.classList.toggle(icon1);
   svgRef.classList.toggle(icon2);
@@ -105,6 +116,7 @@ const utils = {
   flipAnimation,
   addItem,
   removeItemById,
+  waitForAnimation,
 };
 
 export default utils;

@@ -1,7 +1,7 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 import { createRouter, createWebHistory } from "vue-router";
-import 'virtual:uno.css';
+// import 'virtual:uno.css';
 // import { registerSW } from 'virtual:pwa-register'
 
 // const updateSW = registerSW({
@@ -17,6 +17,7 @@ import "./css/icons.css";
 import "./css/animations.css";
 import "./css/main.css";
 import "./css/media.css";
+import './css/position.css';
 
 import App from "./App.vue";
 import Home from "./routes/Home.vue";
@@ -30,7 +31,7 @@ const routes = [
     path: "/",
     name: "home",
     component: Home,
-    meta: { transition: 'bounce' }
+    meta: { transition: 'fade' }
   },
   {
     path: "/page",
@@ -42,7 +43,7 @@ const routes = [
     path: "/:catchAll(.*)",
     name: "NotFound",
     component: NotFound,
-    meta: { transition: 'bounce' }
+    meta: { transition: 'fade' }
   },
 ];
 

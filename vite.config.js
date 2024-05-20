@@ -6,13 +6,12 @@ import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import { optimizeCssModules } from "vite-plugin-optimize-css-modules";
 // import { VitePWA } from 'vite-plugin-pwa';
-import UnoCSS from 'unocss/vite'
+// import UnoCSS from 'unocss/vite'
 
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    UnoCSS(),
     vue({
       template: {
         compilerOptions: {

@@ -41,14 +41,16 @@ const showHide = (value) => {
       </swiper-container>
     </div>
 
-    <div class="toast-stack">
-      <Toast v-for="toast in toasts" :key="toast.id" :id="toast.id" :message="toast.message" :type="toast.type" />
+    <div>
+      <div class="toast-stack">
+        <Toast v-for="toast in toasts" :key="toast.id" :id="toast.id" :message="toast.message" :type="toast.type" />
+      </div>
     </div>
 
     <!-- modal1 -->
     <div v-if="modal === 'modal1'" class="modal" @click="showHide">
-      <div class=" pos-modal scale-in-center">
-        <button class="svg-button" @click="showHide">
+      <div class=" pos-modal scale-in-center" @click="$event.stopPropagation()">
+        <button class="svg-button" @click.stop="showHide">
           <div class="close svg-bw"></div>
         </button>
         <div class="content">
@@ -61,7 +63,7 @@ const showHide = (value) => {
 
     <!-- modal2 -->
     <div v-if="modal === 'modal2'" class="modal" @click="showHide">
-      <div class=" pos-modal scale-in-center">
+      <div class=" pos-modal scale-in-center" @click="$event.stopPropagation()">
         <button class="svg-button" @click="showHide">
           <div class="close svg-bw"></div>
         </button>

@@ -17,7 +17,6 @@ let links = [
   },
 ];
 
-// JavaScript
 function toggleSidebar() {
   var sidebar = document.querySelector("nav");
   sidebar.classList.toggle("active");

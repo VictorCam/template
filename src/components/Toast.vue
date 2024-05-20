@@ -13,15 +13,12 @@ const props = defineProps({
 });
 
 const hideToast = async (id) => {
-    // replace this eventually with animationend or transitionend
     toast.value.classList.remove('scale-in-center');
     toast.value.classList.add('scale-out-center');
-    toast.value.addEventListener('animationend', async () => {
-        toast.value.classList.add('shrink');
-        toast.value.addEventListener('animationend'), async () => {
-            utils.removeItemById(toasts, id);
-        }
-    })
+    await utils.waitForAnimation(toast.value);
+    toast.value.classList.add('shrink');
+    await utils.waitForAnimation(toast.value);
+    utils.removeItemById(toasts, id)
 };
 
 const toast = ref();
