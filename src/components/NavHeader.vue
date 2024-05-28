@@ -22,23 +22,22 @@ function toggleSidebar() {
   sidebar.classList.toggle("active");
 }
 
-
 onMounted(() => {
   utils.loadSavedTheme(themeSvgRef)
 })
 </script>
 
 <template>
-  <header>
-    <div class="svg-bw tmp"></div>
+  <header class="flex items-center gap2 p2 outline-1 outline-solid outline-[var(--white)]">
+    <div class="svg-bw tmp p3.5"></div>
     <button ref="themeBtnRef" @click="
       utils.switchButtonIcons(
         { buttonRef: themeBtnRef, svgRef: themeSvgRef },
         { icon1: 'sun', icon2: 'moon' }
       );
     utils.toggleTheme();
-    " aria-pressed="false" class="svg-button margin-left-auto" aria-label="Toggle Dark/Light Theme">
-      <div ref="themeSvgRef" class="svg-bw"></div>
+    " aria-pressed="false" class="svg-button ml-auto" aria-label="Toggle Dark/Light Theme">
+      <div ref="themeSvgRef" class="svg-bw sun p3"></div>
     </button>
     <button ref="navBtnRef" @click="
       utils.switchButtonIcons(
@@ -46,21 +45,20 @@ onMounted(() => {
         { icon1: 'burger', icon2: 'close' }
       );
     toggleSidebar();
-    " aria-pressed="false" class="svg-button hide-on-desktop" aria-label="Hamburger Menu">
-      <div ref="navSvgRef" class="svg-bw burger"></div>
+    " aria-pressed="false" class="svg-button sm:hidden" aria-label="Hamburger Menu">
+      <div ref="navSvgRef" class="svg-bw burger p3"></div>
     </button>
-    <nav>
-      <ul>
+    <nav class="lt-sm:bg-[var(--black)] mr-2 z-99">
+      <ul class="flex flex-row gap3 lt-sm:flex-col lt-sm:mb2 m0">
         <li v-for="link in links">
-          <div class="link-container">
+          <div class="grid justify-items-center">
             <div class="group-link-icon">
-              <div class="svg-bw tmp link-icons hide-on-desktop"></div>
+              <div class="svg-bw tmp link-icons sm:hidden"></div>
               <a :href="link.href">
                 <span>{{ link.name }}</span>
               </a>
             </div>
           </div>
-          <!-- <div class="line hide-on-desktop"></div> -->
         </li>
       </ul>
     </nav>
@@ -68,43 +66,16 @@ onMounted(() => {
 </template>
 
 <style>
-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 5px;
-}
-
 button {
-  background: none;
-  border: none;
-}
-
-ul {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
+  --at-apply: b-none bg-transparent;
 }
 
 nav {
-  margin-right: 10px;
-  z-index: 2;
+  --at-apply: lt-sm:fixed;
 }
 
-@media (max-width: 30em) {
-  ul {
-    flex-direction: column;
-    margin-top: 10px;
-  }
-
-  .link-container {
-    display: grid;
-    justify-items: center;
-  }
-
+@media (max-width: 640px) {
   nav {
-    background: var(--black);
-    border-top: 1px solid var(--white);
     position: fixed;
     top: 50px;
     left: calc(-100%);
@@ -120,10 +91,6 @@ nav {
   .group-link-icon {
     display: flex;
     align-items: center;
-  }
-
-  .link-icons {
-    padding: 3px;
   }
 }
 </style>

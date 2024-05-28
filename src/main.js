@@ -1,7 +1,7 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 import { createRouter, createWebHistory } from "vue-router";
-// import 'virtual:uno.css';
+import 'virtual:uno.css';
 // import { registerSW } from 'virtual:pwa-register'
 
 // const updateSW = registerSW({
@@ -10,8 +10,8 @@ import { createRouter, createWebHistory } from "vue-router";
 //   },
 // })
 
-import "normalize.css";
-import "reset-css";
+import '@unocss/reset/normalize.css'
+import '@unocss/reset/sanitize/sanitize.css'
 import "./css/utils.css";
 import "./css/icons.css";
 import "./css/animations.css";
@@ -24,7 +24,7 @@ import Home from "./routes/Home.vue";
 import Page from "./routes/Page.vue";
 import NotFound from "./routes/404.vue";
 
-import cookie from "js-cookie";
+// import cookie from "js-cookie";
 
 const routes = [
   {

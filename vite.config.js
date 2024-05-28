@@ -5,8 +5,10 @@ import autoPrefixer from "autoprefixer";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import { optimizeCssModules } from "vite-plugin-optimize-css-modules";
+import transformerDirectives from '@unocss/transformer-directives'
 // import { VitePWA } from 'vite-plugin-pwa';
-// import UnoCSS from 'unocss/vite'
+import UnoCSS from 'unocss/vite';
+import { analyzer } from "vite-bundle-analyzer";
 
 
 // https://vitejs.dev/config/
@@ -18,6 +20,10 @@ export default defineConfig({
           isCustomElement: (tag) => tag.startsWith("swiper-"),
         },
       },
+    }),
+    analyzer(),
+    UnoCSS({
+      transformers: [transformerDirectives()]
     }),
     // VitePWA({
     //   includeAssets: ['vite.svg'], manifest: {

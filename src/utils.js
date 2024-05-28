@@ -1,6 +1,6 @@
-import { gsap } from "gsap";
-import { Flip } from "gsap/Flip";
-gsap.registerPlugin(Flip);
+// import { gsap } from "gsap";
+// import { Flip } from "gsap/Flip";
+// gsap.registerPlugin(Flip);
 
 const toggleHidden = (ref) => {
   ref.classList.toggle("hidden");
@@ -83,14 +83,14 @@ const toggleTheme = () => {
   }
 };
 
-const flipAnimation = (relocateElement, moveElementToPosition, animation) => {
-  let state = Flip.getState([moveElementToPosition, relocateElement]);
-  moveElementToPosition.append(relocateElement)
-  Flip.from(state, {
-    duration: 0.5,
-    absolute: true,
-  });
-}
+// const flipAnimation = (relocateElement, moveElementToPosition, animation) => {
+//   let state = Flip.getState([moveElementToPosition, relocateElement]);
+//   moveElementToPosition.append(relocateElement)
+//   Flip.from(state, {
+//     duration: 0.5,
+//     absolute: true,
+//   });
+// }
 
 const getLastJsonId = (ref) => {
   return ref.length !== 0 ? parseInt(ref[ref.length - 1].id, 10) : 0;
@@ -113,7 +113,6 @@ const utils = {
   switchButtonIcons,
   loadSavedTheme,
   toggleTheme,
-  flipAnimation,
   addItem,
   removeItemById,
   waitForAnimation,

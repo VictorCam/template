@@ -21,72 +21,29 @@ const hideToast = async (id) => {
     utils.removeItemById(toasts, id)
 };
 
+
 const toast = ref();
 
 </script>
 
 <template>
-    <div ref="toast" :class="{ type }" class="toast expand scale-in-center">
-        <button class="svg-button" @click="hideToast(id)">
+    <div ref="toast" :class="{ type }"
+        class="toast w-fit h-15 z-[99] b b-solid bc-[var(--white)] bg-[var(--black)] flex items-center mb-2 p-1 rounded-3 scale-in-center">
+        <button class="absolute m-1 right-0 top-0 p-0" @click="hideToast(id)">
             <div class="close svg-bw"></div>
         </button>
-        <p>{{ message }}</p>
+        <p class="pl-5 pr-5">Lorem</p>
     </div>
 </template>
 
 <style scoped>
 .toast {
-    position: relative;
-    width: fit-content;
-    height: 0;
-    margin-bottom: 10px;
-    z-index: 9999;
-    background: var(--black);
-    border: 1px solid var(--white);
-    border-radius: 10px;
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
+    transition: 300ms ease-in;
 }
 
-.expand {
-    transition: height 0.3s ease-out, padding 0.3s ease-out;
-    height: 35px;
-    padding: 10px;
-    font-size: medium;
-}
-
-/* transition the width to 0 */
-.toast {
-    transition: width 0.2s ease-out;
-}
-
-.shrink {
-    height: 0;
-    padding: 0;
-    font-size: 0;
-    border: none;
-    transition: height 0.3s ease-in, padding 0.3s ease-in;
-}
-
-.close,
-.svg-button {
-    padding: 0px;
-}
-
-p {
-    padding: 0 20px;
-}
-
-.error {
-    background: red;
-}
-
-.svg-button {
-    position: absolute;
-    margin: 5px;
-    right: 0;
-    top: 0;
+.no-animation * {
+    transition: none !important;
+    transform: none !important;
+    animation: none !important;
 }
 </style>

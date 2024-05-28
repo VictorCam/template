@@ -45,10 +45,6 @@ button>* {
   display: grid;
 }
 
-.margin-left-auto {
-  margin-left: auto;
-}
-
 .stack>* {
   grid-area: 1/1;
 }
@@ -91,6 +87,11 @@ button>* {
   color: inherit;
   width: 1.2em;
   height: 1.2em;
+}
+
+.shrink {
+  --at-apply: h-0 text-0 w-0 m-0 p-0 border-none;
+  transition: 300ms ease-in;
 }
 
 .hidden {

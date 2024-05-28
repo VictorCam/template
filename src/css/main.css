@@ -1,5 +1,6 @@
 .main-button {
     border: 1px solid currentColor;
+    background: var(--black);
     border-radius: 5px;
     transition: background 0.15s ease-in, color 0.15s ease-in;
 }

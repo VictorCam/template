@@ -9,13 +9,20 @@ let toasts = toastStore.toasts;
 import { ref } from "vue";
 import utils from '../utils';
 
-import { register } from 'swiper/element/bundle';
-register();
-
 let modal = ref(null)
 
 const showHide = (value) => {
   modal.value != value ? modal.value = value : modal.value = null;
+};
+
+const modalTransition = async (e) => {
+  let target = e.target;
+  console.log(target)
+  modal.value.classList.remove('scale-in-center');
+  modal.value.classList.add('scale-out-center');
+  await utils.waitForAnimation(modal.value);
+  modal.value.classList.add('shrink');
+  await utils.waitForAnimation(modal.value);
 };
 
 </script>
@@ -25,37 +32,33 @@ const showHide = (value) => {
     <NavHeader />
     <p>Count: {{ store.count }}</p>
     <p>Double Count: {{ store.doubleCount }}</p>
-    <div class="space">
+    <div class="flex gap-2.5 p-2">
       <button class="main-button" @click="store.increment">Increment</button>
       <button @click="utils.addItem(toasts, { message: 'test4', type: 'info' })" class="main-button">Create
         Toast</button>
-      <button class="main-button" @click="showHide('modal1')">Show Modal1</button>
+      <button class="main-button" @click="modalTransition(); showHide('modal1')">Show Modal1</button>
       <button class="main-button" @click="showHide('modal2')">Show Modal2</button>
       <router-link to="/Page">Page</router-link>
       <router-link to="aewoifj">Bad link</router-link>
     </div>
-
-    <div class="slides">
-      <swiper-container :centered-slides="true" :slides-per-view="3" :autoplay="{ delay: 2500 }" :loop="true">
-        <swiper-slide v-for="n in  5" :key="n">Slide {{ n }}</swiper-slide>
-      </swiper-container>
-    </div>
+    <!-- <Slides /> -->
 
     <div>
-      <div class="toast-stack">
+      <div class="flex flex-col absolute m-2.5 left-0 bottom-0">
         <Toast v-for="toast in toasts" :key="toast.id" :id="toast.id" :message="toast.message" :type="toast.type" />
       </div>
     </div>
 
     <!-- modal1 -->
     <div v-if="modal === 'modal1'" class="modal" @click="showHide">
-      <div class=" pos-modal scale-in-center" @click="$event.stopPropagation()">
-        <button class="svg-button" @click.stop="showHide">
-          <div class="close svg-bw"></div>
+      <div class="grid bg-[var(--black)] b b-solid bc-[var(--white)] max-w-[80vw] mx-auto rd-3 scale-in-center"
+        @click="$event.stopPropagation()">
+        <button class="justify-self-end p-2" @click="showHide">
+          <div class="close svg-bw p-3"></div>
         </button>
-        <div class="content">
+        <div class="p-4 text-center text-balance">
           <p>
-            Modal1
+            testt
           </p>
         </div>
       </div>
@@ -63,13 +66,16 @@ const showHide = (value) => {
 
     <!-- modal2 -->
     <div v-if="modal === 'modal2'" class="modal" @click="showHide">
-      <div class=" pos-modal scale-in-center" @click="$event.stopPropagation()">
-        <button class="svg-button" @click="showHide">
-          <div class="close svg-bw"></div>
+      <div class="grid bg-[var(--black)] b b-solid bc-[var(--white)] max-w-[80vw] mx-auto rd-3 scale-in-center"
+        @click="$event.stopPropagation()">
+        <button class="justify-self-end p-2" @click="showHide">
+          <div class="close svg-bw p-3"></div>
         </button>
-        <div class="content">
+        <div class="text-center text-balance">
           <p>
-            Modal2
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore adipisci, veniam amet eaque accusamus
+            doloremque exercitationem assumenda enim eveniet neque porro ullam molestiae nulla tempore dolorem maiores
+            aliquid aliquam atque.
           </p>
         </div>
       </div>
@@ -79,55 +85,9 @@ const showHide = (value) => {
 </template>
 
 <style scoped>
-.toast-stack {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  margin: 10px;
-}
-
-.slides {
-  text-align: center;
-}
-
-.space {
-  display: flex;
-  padding: 15px;
-  gap: 10px;
-}
-
-/* modal stuff */
+/* modal */
 .modal {
-  position: absolute;
-  display: grid;
-  z-index: 9999;
-  background-color: rgba(0, 0, 0, 0.8);
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-  transition: background-color ease-in 0.3s;
-}
-
-.svg-button {
-  justify-self: end;
-  padding: 5px;
-}
-
-.pos-modal {
-  display: grid;
-  background: var(--black);
-  border: 1px solid var(--white);
-  border-radius: 10px;
-  max-width: 80vw;
-  margin: 0 auto;
-}
-
-.content {
-  padding: 20px;
+  --at-apply: absolute bg-black/80 grid z-[9999] w-screen h-screen justify-center items-center left-0 top-0;
+  transition: background ease-in 0.3s;
 }
 </style>
