@@ -10,17 +10,10 @@ import transformerDirectives from '@unocss/transformer-directives'
 import UnoCSS from 'unocss/vite';
 import { analyzer } from "vite-bundle-analyzer";
 
-
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    vue({
-      template: {
-        compilerOptions: {
-          isCustomElement: (tag) => tag.startsWith("swiper-"),
-        },
-      },
-    }),
+    vue(),
     analyzer(),
     UnoCSS({
       transformers: [transformerDirectives()]

@@ -16,21 +16,19 @@ function waitForAnimation(element) {
   });
 }
 
-const unToggleHidden = (ref) => {
-  ref.classList.remove("hidden");
-}
-
 const switchButtonIcons = ({ buttonRef, svgRef }, { icon1, icon2 }) => {
-  let switchTarget = !Boolean(buttonRef.getAttribute("aria-pressed")).valueOf();
-  console.log(switchTarget)
+  let truthyValue = buttonRef.getAttribute("aria-pressed").valueOf();
+  let switchTarget = 'false' == truthyValue ? true : false;
   buttonRef.setAttribute("aria-pressed", switchTarget);
   svgRef.classList.toggle(icon1);
   svgRef.classList.toggle(icon2);
 };
 
-const loadSavedTheme = (svgRefIcon) => {
+const loadSavedTheme = () => {
   //root element
   const rootElement = document.documentElement;
+
+  let temp = document.querySelector('.cb-btn');
 
   // get the current theme
   let theme = localStorage.getItem('theme');
@@ -49,36 +47,43 @@ const loadSavedTheme = (svgRefIcon) => {
   if (theme === "light" || currTheme === "sun") {
     rootElement.classList.remove("dark")
     rootElement.classList.add("light")
+    temp.checked = true
+
   }
   else if (theme === "dark" || currTheme === "moon") {
     rootElement.classList.remove("light")
     rootElement.classList.add("dark")
-  }
 
-  //set the icon
-  svgRefIcon.value.classList.add(currTheme);
+    temp.checked = false
+  }
 }
 
 const toggleTheme = () => {
   const rootElement = document.documentElement;
 
+  let test = document.querySelector('.cb-btn');
+
   if (rootElement.classList.contains("light")) {
     rootElement.classList.remove("light")
     rootElement.classList.add("dark")
     localStorage.setItem("theme", "dark")
+    test.checked = true
   }
   else if (rootElement.classList.contains("dark")) {
     rootElement.classList.remove("dark")
     rootElement.classList.add("light")
     localStorage.setItem("theme", "light")
+    test.checked = false
   }
   else {
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
       rootElement.classList.add("dark")
       localStorage.setItem("theme", "dark");
+      test.checked = true
     } else {
       rootElement.classList.add("light")
       localStorage.setItem("theme", "light");
+      test.checked = false
     }
   }
 };

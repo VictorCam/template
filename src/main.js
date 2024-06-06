@@ -10,8 +10,9 @@ import 'virtual:uno.css';
 //   },
 // })
 
-import '@unocss/reset/normalize.css'
-import '@unocss/reset/sanitize/sanitize.css'
+
+import "normalize.css";
+import "reset-css";
 import "./css/utils.css";
 import "./css/icons.css";
 import "./css/animations.css";

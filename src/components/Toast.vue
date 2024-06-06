@@ -21,7 +21,6 @@ const hideToast = async (id) => {
     utils.removeItemById(toasts, id)
 };
 
-
 const toast = ref();
 
 </script>

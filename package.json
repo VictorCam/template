@@ -9,10 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@unocss/reset": "^0.60.3",
     "axios": "^1.7.2",
     "js-cookie": "^3.0.5",
+    "normalize.css": "^8.0.1",
     "pinia": "^2.1.7",
+    "reset-css": "^5.0.2",
     "valibot": "^0.30.0",
     "vue": "^3.4.27",
     "vue-router": "^4.3.2",
