@@ -1,8 +1,13 @@
 <script setup>
 import { RouterView } from "vue-router";
+import { onMounted } from 'vue';
+
+onMounted(() => {
+})
 </script>
 
 <template>
+  <!-- grab reduce motion value -->
   <RouterView v-slot="{ Component, route }">
     <Transition :name="route.meta.transition || 'bonuce'">
       <component :is="Component" />
@@ -29,12 +34,12 @@ import { RouterView } from "vue-router";
   }
 }
 
-/* dark mode */
+/* light mode */
 :root,
 :root.light {
-  --white: rgb(255, 255, 255);
+  --white: white;
   --gray: #cccccc;
-  --black: rgb(23, 23, 23);
+  --black: black;
   --yellow: #fff208;
   --strong-blue: #0d63f8;
   --purple: #9d00ff;
@@ -51,7 +56,7 @@ import { RouterView } from "vue-router";
   color: var(--white);
 }
 
-/* light mode */
+/* dark mode */
 :root.dark {
   --white: black;
   --black: white;
@@ -60,21 +65,25 @@ import { RouterView } from "vue-router";
 @media (prefers-color-scheme: dark) {
   .bg-bw {
     background: var(--black);
-  }
-
-  .color-bw {
-    color: var(--white);
-  }
-
-  .svg-bw {
     color: var(--white);
   }
 }
 
+/* disable this to remove the animations */
+@media (prefers-reduced-motion: reduce) {
+
+  /* *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  } */
+}
+
 html,
 body {
-  color: var(--white);
-  background: var(--black);
+  color: var(--black);
+  background: var(--white);
   overflow-x: hidden;
   height: 100%;
   width: 100%;

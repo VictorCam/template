@@ -40,15 +40,14 @@ const modalTransition = async (e) => {
       <router-link to="/Page">Page</router-link>
       <router-link to="aewoifj">Bad link</router-link>
     </div>
-    <!-- <Slides /> -->
-    <div>
-      <div class="flex flex-col absolute m2.5 left-0 bottom-0">
-        <Toast v-for="toast in toasts" :key="toast.id" :id="toast.id" :message="toast.message" :type="toast.type" />
-      </div>
+
+    <div class="flex flex-col absolute m2.5 left-0 bottom-0">
+      <Toast v-for="toast in toasts" :key="toast.id" :id="toast.id" :message="toast.message" :type="toast.type" />
     </div>
+
     <!-- modal2 -->
     <div v-if="modal === 'modal2'" class="modal" @click="showHide">
-      <div class="grid bg-[var(--black)] b b-solid bc-[var(--white)] max-w-[80vw] mx-auto rd-3 scale-in-center"
+      <div class="grid bg-[var(--white)] b b-solid max-w-[80vw] mx-auto rd-3 scale-in-center"
         @click="$event.stopPropagation()">
         <button class="absolute top-0 right-0" @click="showHide">
           <div class="close svg-bw pt1 pb1"></div>
