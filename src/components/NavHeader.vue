@@ -1,9 +1,6 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, computed, onMounted } from "vue";
 import utils from "../utils";
-const navBtnRef = ref(null);
-const navSvgRef = ref(null);
-const currIconTheme = ref(null);
 
 let links = [
   {
@@ -16,60 +13,78 @@ let links = [
   },
 ];
 
-async function toggleHidden(ref) {
-  ref.classList.toggle("hidden");
+let isLight = ref(false);
+let isVisible = ref(false);
+
+let currentIcon = computed(() => isVisible.value ? 'close rotate-z-0' : 'burger rotate-z-360');
+let showSidebar = computed(() => isVisible.value ? 'scale-in-center' : 'scale-out-center');
+let currIconTheme = computed(() => isLight.value ? 'sun' : 'moon');
+
+let rootElement = document.documentElement;
+
+function loadSavedTheme() {
+  // change the theme
+  if (localStorage.getItem('theme') === 'light') {
+    rootElement.classList.remove("dark")
+    rootElement.classList.add("light")
+    isLight.value = true
+    return
+  }
+  rootElement.classList.remove("light")
+  rootElement.classList.add("dark")
+  isLight.value = false
 }
 
-async function toggleSidebar() {
-  var sidebar = document.querySelector("nav");
-  sidebar.classList.toggle("scale-in-center");
-  sidebar.classList.toggle("scale-out-center");
-  await utils.waitForAnimation(sidebar);
-  // check if sidebar has scale-out-center class
+const toggleTheme = () => {
+  let theme = rootElement.classList.contains("dark") ? "dark" : "light";
+  if (theme === "light") {
+    rootElement.classList.remove("light")
+    rootElement.classList.add("dark")
+    localStorage.setItem("theme", "dark")
+    isLight.value = false
+    return
+  }
+  rootElement.classList.remove("dark")
+  rootElement.classList.add("light")
+  localStorage.setItem("theme", "light")
+  isLight.value = true
+};
+
+const toggleSidebar = () => {
+  isVisible.value = !isVisible.value
 }
 
 onMounted(() => {
-  utils.loadSavedTheme()
+  loadSavedTheme()
 })
 </script>
 
 <template>
-  <header class="flex items-center gap2 p1 outline-1 outline-solid outline-[var(--white)]">
-    <div class="svg-bw tmp p2 mr-auto"></div>
-    <input ref="currIconTheme" class="cb-btn hidden" type="checkbox" id="theme" />
-    <label for="theme" @click="utils.toggleTheme()" type="button" aria-label="navigation button"
-      class="transition duration-200 ease-in flex flex-row items-center gap2 w-fit p1 rd-2 cursor-pointer">
-      <div class="svg-color p1 sun bg-yellow"></div>
-      <div class="svg-color p1 moon bg-blue"></div>
-    </label>
-    <button ref="navBtnRef" @click="
-      utils.switchButtonIcons({ buttonRef: navBtnRef, svgRef: navSvgRef }, { icon1: 'burger', icon2: 'close' });
-    toggleSidebar();
-    " aria-pressed="false" class="svg-button sm:hidden" aria-label="Hamburger Menu">
-      <div ref="navSvgRef" class="svg-bw burger p1"></div>
-    </button>
-    <nav
-      class="<sm:bg-[var(--black)] mr-2 z-99 <sm:fixed <sm:mt-12.5 <sm:top-0 <sm:left-0 <sm:w-full <sm:h-full <sm:bg-[var(--black)]">
-      <ul class="flex flex-row gap3 lt-sm:flex-col <sm:mb2 m0">
-        <li v-for="link in links">
-          <div class="grid justify-items-center">
-            <div class="flex items-center">
-              <div class="svg-bw tmp link-icons sm:hidden"></div>
-              <a :href="link.href">
-                <span>{{ link.name }}</span>
-              </a>
+  <header class="outline-1 outline-solid relative z-[99]">
+    <div class="mx2 flex items-center gap2 p1 h-8 ">
+      <div class="svg-bw tmp p2 mr-auto"></div>
+      <button @click="toggleTheme()" class="p-1" :aria-pressed="isLight">
+        <div class="svg-color p1 transition duration-300 ease-in" :class="currIconTheme"></div>
+      </button>
+      <button @click="toggleSidebar()" class="sm:hidden p-1 transition duration-300 ease-in" :class="currentIcon"
+        :aria-pressed="isVisible">
+        <div class="svg-color p1 transition duration-300 ease-in"></div>
+      </button>
+      <nav :class="showSidebar"
+        class="<sm:fixed bottom-0 left-0 right-0 z--1 bg-[var(--white)] p1 <sm:h[calc(100vh-3rem)]">
+        <ul class="flex flex-row gap3 lt-sm:flex-col m0">
+          <li v-for="link in links">
+            <div class="grid justify-items-center">
+              <div class="flex items-center">
+                <div class="svg-bw tmp link-icons sm:hidden"></div>
+                <a :href="link.href">
+                  <span>{{ link.name }}</span>
+                </a>
+              </div>
             </div>
-          </div>
-        </li>
-      </ul>
-    </nav>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </header>
-
-
 </template>
-
-<style>
-button {
-  --at-apply: b-none bg-transparent;
-}
-</style>
