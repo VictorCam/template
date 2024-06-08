@@ -40,7 +40,7 @@ const removeItemById = (ref, id) => {
 const utils = {
   addItem,
   removeItemById,
-  waitForAnimation,
+  waitForAnimation
 };
 
 export default utils;
