@@ -68,7 +68,6 @@ const toggleSidebar = async (enterAnimation, exitAnimation) => {
 
 onMounted(() => {
   loadSavedTheme()
-  loadSavedTheme()
 })
 </script>
 

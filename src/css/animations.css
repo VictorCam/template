@@ -14,12 +14,12 @@
 }
 
 /* "scaleout" ANIMATION */
-.scale-out-center {
-  animation: scale-out-center 0.5s both;
+.scale-enter-active {
+  animation: scale-in-center 0.5s both;
 }
 
-.scale-in-center {
-  animation: scale-in-center 0.5s both;
+.scale-leave-active {
+  animation: scale-out-center 0.5s both;
 }
 
 @keyframes scale-out-center {

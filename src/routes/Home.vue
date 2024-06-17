@@ -14,16 +14,6 @@ let modal = ref(null)
 const showHide = (value) => {
   modal.value != value ? modal.value = value : modal.value = null;
 };
-
-const modalTransition = async (e) => {
-  let target = e.target;
-  console.log(target)
-  modal.value.classList.remove('scale-in-center');
-  modal.value.classList.add('scale-out-center');
-  await utils.waitForAnimation(modal.value);
-  modal.value.classList.add('shrink');
-  await utils.waitForAnimation(modal.value);
-};
 </script>
 
 <template>
@@ -33,7 +23,7 @@ const modalTransition = async (e) => {
     <p>Double Count: {{ store.doubleCount }}</p>
     <div class="flex flex-wrap gap2.5 p2">
       <button class="main-button" @click="store.increment">Increment</button>
-      <button @click="utils.addItem(toasts, { message: 'test4', type: 'info' })" class="main-button">Create
+      <button @click="utils.addItem(toasts, { message: 'test4' })" class="main-button">Create
         Toast</button>
       <!-- <button class="main-button" @click="showHide('modal1')">Show Modal1</button> -->
       <button class="main-button" @click="showHide('modal2')">Show Modal2</button>
@@ -48,21 +38,24 @@ const modalTransition = async (e) => {
     </div>
 
     <!-- modal2 -->
-    <div v-if="modal === 'modal2'" class="modal" @click="showHide">
-      <div class="grid bg-[var(--white)] b b-solid max-w-[80vw] mx-auto rd-3 scale-in-center"
-        @click="$event.stopPropagation()">
-        <button class="absolute top-0 right-0" @click="showHide">
-          <div class="close svg-bw pt1 pb1"></div>
-        </button>
-        <div class="text-center text-balance p10">
-          <p>
-            Lorem
-          </p>
+    <Transition name="scale">
+      <div v-if="modal === 'modal2'" class="absolute w-screen h-screen z-100" @click="showHide">
+        <div class="bg-[var(--white)] b b-solid max-w-[80vw] mxauto rd-3 scale-in-center"
+          @click="$event.stopPropagation()">
+          <button class="float-right" @click="showHide">
+            <div class="tmp svg-bw py1"></div>
+          </button>
+          <button class="float-right" @click="showHide">
+            <div class="close svg-bw py1"></div>
+          </button>
+          <div class="text-center text-balance p10">
+            <p>Lorem</p>
+          </div>
         </div>
       </div>
-    </div>
+    </Transition>
+    <div v-if="modal === 'modal2'" class="absolute bg-black/80 z-1 inset-0"></div>
   </div>
-
 </template>
 
 <style scoped>

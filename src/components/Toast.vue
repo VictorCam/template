@@ -31,9 +31,8 @@ const toast = ref();
 </script>
 
 <template>
-    <div ref="toast" :class="{ type }"
-        class="toast w-fit h-15 z-[99] b b-solid bg-[var(--white)] flex items-center mb-2 p-1 rounded-3 ">
-        <button class="absolute m-1 right-0 top-0 p-0" @click="hideToast(id)">
+    <div ref="toast" class="toast w-fit h-15 z-[99] b b-solid bg-[var(--white)] flex items-center mb-2 p-1 rounded-3 ">
+        <button class=" absolute m-1 right-0 top-0 p-0" @click="hideToast(id)">
             <div class="svg-bw close"></div>
         </button>
         <p class="pl-5 pr-5">Lorem</p>
