@@ -1,9 +1,5 @@
 <script setup>
 import { RouterView } from "vue-router";
-import { onMounted } from 'vue';
-
-onMounted(() => {
-})
 </script>
 
 <template>
@@ -16,24 +12,6 @@ onMounted(() => {
 </template>
 
 <style>
-.fade-enter-active {
-  animation: fade 175ms;
-}
-
-.fade-leave-active {
-  animation: fade 175ms reverse;
-}
-
-@keyframes fade {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
 /* light mode */
 :root,
 :root.light {

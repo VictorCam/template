@@ -23,10 +23,8 @@ const showHide = (value) => {
     <p>Double Count: {{ store.doubleCount }}</p>
     <div class="flex flex-wrap gap2.5 p2">
       <button class="main-button" @click="store.increment">Increment</button>
-      <button @click="utils.addItem(toasts, { message: 'test4' })" class="main-button">Create
-        Toast</button>
-      <!-- <button class="main-button" @click="showHide('modal1')">Show Modal1</button> -->
-      <button class="main-button" @click="showHide('modal2')">Show Modal2</button>
+      <button @click="utils.addItem(toasts, { message: 'test4' })" class="main-button">Create Toast</button>
+      <button class="main-button" @click="showHide('modal')">Show modal</button>
       <router-link to="/Page">Page</router-link>
       <router-link to="aewoifj">Bad link</router-link>
     </div>
@@ -37,30 +35,21 @@ const showHide = (value) => {
       </div>
     </div>
 
-    <!-- modal2 -->
+    <!-- modal -->
     <Transition name="fade">
-      <div v-if="modal === 'modal2'" class="relative wscreen hscreen z100" @click="showHide">
-        <div class="bg-[var(--white)] b b-solid max-w[80vw] mxauto rd-3" @click="$event.stopPropagation()">
-          <button class="float-right" @click="showHide">
-            <div class="tmp svg-bw py1"></div>
-          </button>
+      <div v-if="modal === 'modal'" class="center wfit z-99" @click="showHide">
+        <div class="bg-[var(--white)] b b-solid mxauto rd-3" @click="$event.stopPropagation()">
           <button class="float-right" @click="showHide">
             <div class="close svg-bw py1"></div>
           </button>
-          <div class="text-center text-balance p10">
+          <div class="text-center p5">
             <p>Lorem</p>
           </div>
         </div>
       </div>
     </Transition>
-    <div v-if="modal === 'modal2'" class="absolute bg-black/80 z-1 inset-0"></div>
+    <Transition name="fade">
+      <div v-if="modal === 'modal'" class="absolute bg-black/80 z-1 inset-0"></div>
+    </Transition>
   </div>
 </template>
-
-<style scoped>
-/* modal
-.modal {
-  --at-apply: absolute bg-black/80 grid z-[9999] w-screen h-screen justify-center items-center left-0 top-0;
-  transition: background ease-in 0.3s;
-} */
-</style>

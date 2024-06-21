@@ -13,13 +13,12 @@
   }
 }
 
-/* fade animation */
 .fade-enter-active {
-  animation: fade 200ms;
+  animation: fade 175ms;
 }
 
 .fade-leave-active {
-  animation: fade 200ms reverse;
+  animation: fade 175ms reverse;
 }
 
 @keyframes fade {
