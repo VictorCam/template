@@ -1,4 +1,4 @@
-/* "SPIN" ANIMATION */
+/* spin animation */
 .spin {
   animation: spin 10s linear infinite;
 }
@@ -13,36 +13,7 @@
   }
 }
 
-/* "scaleout" ANIMATION */
-.scale-enter-active {
-  animation: scale-in-center 0.5s both;
-}
-
-.scale-leave-active {
-  animation: scale-out-center 0.5s both;
-}
-
-@keyframes scale-out-center {
-  0% {
-    transform: scale(1);
-  }
-
-  100% {
-    transform: scale(0);
-  }
-}
-
-@keyframes scale-in-center {
-  0% {
-    transform: scale(0);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* "fade" ANIMATION */
+/* fade animation */
 .fade-enter-active {
   animation: fade 200ms;
 }

@@ -11,16 +11,6 @@
 //   });
 // }
 
-function waitForAnimation(element) {
-  return new Promise((resolve) => {
-    if (!element) resolve(); // Resolve immediately if the element doesn't exist
-
-    // Listen for animation or transition end
-    element.addEventListener('animationend', resolve);
-    element.addEventListener('transitionend', resolve);
-  });
-}
-
 const getLastJsonId = (ref) => {
   return ref.length !== 0 ? parseInt(ref[ref.length - 1].id, 10) : 0;
 }
@@ -39,8 +29,7 @@ const removeItemById = (ref, id) => {
 
 const utils = {
   addItem,
-  removeItemById,
-  waitForAnimation
+  removeItemById
 };
 
 export default utils;

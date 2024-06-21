@@ -38,10 +38,9 @@ const showHide = (value) => {
     </div>
 
     <!-- modal2 -->
-    <Transition name="scale">
-      <div v-if="modal === 'modal2'" class="absolute w-screen h-screen z-100" @click="showHide">
-        <div class="bg-[var(--white)] b b-solid max-w-[80vw] mxauto rd-3 scale-in-center"
-          @click="$event.stopPropagation()">
+    <Transition name="fade">
+      <div v-if="modal === 'modal2'" class="relative wscreen hscreen z100" @click="showHide">
+        <div class="bg-[var(--white)] b b-solid max-w[80vw] mxauto rd-3" @click="$event.stopPropagation()">
           <button class="float-right" @click="showHide">
             <div class="tmp svg-bw py1"></div>
           </button>
@@ -59,9 +58,9 @@ const showHide = (value) => {
 </template>
 
 <style scoped>
-/* modal */
+/* modal
 .modal {
   --at-apply: absolute bg-black/80 grid z-[9999] w-screen h-screen justify-center items-center left-0 top-0;
   transition: background ease-in 0.3s;
-}
+} */
 </style>
