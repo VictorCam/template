@@ -37,7 +37,7 @@ const toggleSidebar = () => {
 
 <template>
   <header class="outline-1 outline-solid relative z99">
-    <div class="mx2 flex items-center gap2 p1 h8 ">
+    <div class="mx6 flex items-center gap2 p3 h8 ">
       <div class="svg-bw tmp p2 mr-auto spin"></div>
       <button @click="toggleTheme()" class="p1" :aria-pressed="isDark">
         <div class="svg-color p1 transition duration-300 ease-in" :class="currIconTheme"></div>
@@ -57,7 +57,7 @@ const toggleSidebar = () => {
       </nav>
       <Transition name="fade">
         <nav v-if="isNavVisible" ref="navElement"
-          class="sm:hidden <sm:fixed bottom-0 left-0 right-0 z--1 bg-[var(--white)] p1 <sm:h[calc(100vh-3rem)]">
+          class="sm:hidden <sm:fixed bottom-0 left-0 right-0 z--1 bg-[var(--white)] p1 <sm:h[calc(100vh-4rem)]">
           <ul class="flex gap3 flex-col m0">
             <li v-for="  link in links">
               <div class="grid justify-items-center">

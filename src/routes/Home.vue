@@ -31,7 +31,9 @@ const showHide = (value) => {
 
     <!-- Toasts -->
     <div class="flex flex-col absolute m2.5 left-0 bottom-0">
-      <Toast v-for="toast in toasts" :key="toast.id" :id="toast.id" :message="toast.message" :type="toast.type" />
+      <TransitionGroup name="list" tag="Toast">
+        <Toast v-for="toast in toasts" :key="toast.id" :id="toast.id" :message="toast.message" :type="toast.type" />
+      </TransitionGroup>
     </div>
 
     <!-- Modal -->

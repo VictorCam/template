@@ -17,12 +17,10 @@ const hideToast = async (id) => {
 </script>
 
 <template>
-    <Transition name="fade">
-        <div class="relative wfit h15 z99 b b-solid bg-[var(--white)] flex items-center mb2 p1 rd-3 ">
-            <button class="absolute m1 right-0 top-0 p-0" @click="hideToast(id)">
-                <div class="svg-bw close"></div>
-            </button>
-            <p class="pl5 pr5">{{ message }}</p>
-        </div>
-    </Transition>
+    <div class="relative wfit h15 z99 b b-solid bg-[var(--white)] flex items-center mb2 p1 rd-3 ">
+        <button class="absolute m1 right-0 top-0 p-0" @click="hideToast(id)">
+            <div class="svg-bw close"></div>
+        </button>
+        <p class="pl5 pr5">{{ message }}</p>
+    </div>
 </template>

@@ -32,6 +32,7 @@ import { RouterView } from "vue-router";
   color-scheme: light dark;
   background: var(--white);
   color: var(--white);
+  overflow: hidden;
 }
 
 /* dark mode */
