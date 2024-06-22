@@ -1,3 +1,6 @@
+<script setup>
+</script>
+
 <template>
-  <h1 class="center">404 Not Found</h1>
+  <h1 class="center">{{ $t('404 Not Found') }}</h1>
 </template>
