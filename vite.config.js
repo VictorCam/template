@@ -8,6 +8,8 @@ import { optimizeCssModules } from "vite-plugin-optimize-css-modules";
 import transformerDirectives from '@unocss/transformer-directives'
 // import { VitePWA } from 'vite-plugin-pwa';
 import UnoCSS from 'unocss/vite';
+// import vueDevTools from 'vite-plugin-vue-devtools'
+
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -38,6 +40,12 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()],
     }),
     webfontDownload([]), //https://www.cdnfonts.com/
+    // VueI18n({
+    //   runtimeOnly: true,
+    //   compositionOnly: true,
+    //   fullInstall: true,
+    //   include: [path.resolve(__dirname, 'locales/**')],
+    // }),
   ],
   css: {
     postcss: {

@@ -1,14 +1,8 @@
 import { createApp } from "vue";
 import { createRouter, createWebHistory } from "vue-router";
+import { createI18n } from 'vue-i18n'
+import { usePreferredLanguages } from '@vueuse/core'
 import 'virtual:uno.css';
-// import { registerSW } from 'virtual:pwa-register'
-
-// const updateSW = registerSW({
-//   onOfflineReady() {
-//     alert('ready to work offline')
-//   },
-// })
-
 
 import "normalize.css";
 import "reset-css";
@@ -45,10 +39,14 @@ const routes = [
   },
 ];
 
-const router = createRouter({
-  history: createWebHistory(),
-  routes: routes,
-});
+// import { registerSW } from 'virtual:pwa-register'
+
+// const updateSW = registerSW({
+//   onOfflineReady() {
+//     alert('ready to work offline')
+//   },
+// })
+
 
 // router.beforeEach((to, from, next) => {
 //   if (cookie.get("token")) return next();
@@ -59,8 +57,25 @@ const router = createRouter({
 //   return next();
 // });
 
-const app = createApp(App);
+const router = createRouter({
+  history: createWebHistory(),
+  routes: routes,
+});
 
+import EN from '../locales/en.json'
+import ES from '../locales/es.json'
+
+const i18n = createI18n({
+  locale: usePreferredLanguages().value[0],
+  fallbackLocale: 'en',
+  messages: {
+    en: EN,
+    es: ES,
+  },
+})
+
+const app = createApp(App);
+app.use(i18n);
 app.use(router);
 app.mount("#app");
 
