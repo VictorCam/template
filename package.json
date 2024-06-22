@@ -6,19 +6,22 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "up": "taze major -I",
+    "size": "npx vite-bundle-visualizer"
   },
   "dependencies": {
     "@vueuse/core": "^10.11.0",
-    "axios": "^1.7.2",
     "js-cookie": "^3.0.5",
     "normalize.css": "^8.0.1",
     "reset-css": "^5.0.2",
     "valibot": "^0.33.3",
     "vue": "^3.4.29",
+    "vue-i18n": "^9.13.1",
     "vue-router": "^4.4.0"
   },
   "devDependencies": {
+    "@intlify/unplugin-vue-i18n": "^4.0.0",
     "@unocss/transformer-directives": "^0.61.0",
     "@vitejs/plugin-vue": "^5.0.5",
     "autoprefixer": "^10.4.19",
@@ -26,6 +29,7 @@
     "unocss": "^0.61.0",
     "unplugin-vue-components": "^0.27.0",
     "vite": "^5.3.1",
+    "vite-bundle-visualizer": "^1.2.1",
     "vite-plugin-optimize-css-modules": "^1.0.6",
     "vite-plugin-pwa": "^0.20.0",
     "vite-plugin-webfont-dl": "^3.9.4"
