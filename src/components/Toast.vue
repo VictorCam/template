@@ -1,5 +1,4 @@
 <script setup>
-import { ref, onMounted } from 'vue';
 import utils from '../utils';
 import { useToastStore } from '../store'
 let ToastStore = useToastStore();
@@ -13,24 +12,17 @@ const props = defineProps({
 });
 
 const hideToast = async (id) => {
-    utils.removeItemById(toasts, id)
+    utils.removeItemById(toasts.value, id)
 };
-
-const toast = ref();
-
 </script>
 
 <template>
-    <div ref="toast" class="toast wfit h15 z99 b b-solid bg-[var(--white)] flex items-center mb2 p1 rd-3 ">
-        <button class="absolute m1 right-0 top-0 p-0" @click="hideToast(id)">
-            <div class="svg-bw close"></div>
-        </button>
-        <p class="pl5 pr5">Lorem</p>
-    </div>
+    <Transition name="fade">
+        <div class="relative wfit h15 z99 b b-solid bg-[var(--white)] flex items-center mb2 p1 rd-3 ">
+            <button class="absolute m1 right-0 top-0 p-0" @click="hideToast(id)">
+                <div class="svg-bw close"></div>
+            </button>
+            <p class="pl5 pr5">{{ message }}</p>
+        </div>
+    </Transition>
 </template>
-
-<style scoped>
-.toast {
-    transition: 300ms ease-in;
-}
-</style>

@@ -1,17 +1,16 @@
-import { defineStore } from "pinia";
 import { computed, ref } from "vue";
+import { createGlobalState } from '@vueuse/core'
 
-export const useCounterStore = defineStore("counter", () => {
+export const useCounterStore = createGlobalState(() => {
   const count = ref(0);
   const doubleCount = computed(() => count.value * 2);
   function increment() {
     count.value++;
   }
-
   return { count, doubleCount, increment };
 });
 
-export const useToastStore = defineStore("toast", () => {
+export const useToastStore = createGlobalState(() => {
   const toasts = ref([
     {
       id: 1,
@@ -27,7 +26,7 @@ export const useToastStore = defineStore("toast", () => {
   return { toasts };
 })
 
-export const authStore = defineStore("auth", () => {
+export const authStore = createGlobalState(() => {
   const loggedIn = ref(false);
   const token = ref(null);
 

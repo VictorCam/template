@@ -1,5 +1,4 @@
 import { createApp } from "vue";
-import { createPinia } from "pinia";
 import { createRouter, createWebHistory } from "vue-router";
 import 'virtual:uno.css';
 // import { registerSW } from 'virtual:pwa-register'
@@ -60,12 +59,9 @@ const router = createRouter({
 //   return next();
 // });
 
-const pinia = createPinia();
 const app = createApp(App);
 
 app.use(router);
-app.use(pinia);
-
 app.mount("#app");
 
 export { routes };

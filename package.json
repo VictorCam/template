@@ -13,21 +13,20 @@
     "axios": "^1.7.2",
     "js-cookie": "^3.0.5",
     "normalize.css": "^8.0.1",
-    "pinia": "^2.1.7",
     "reset-css": "^5.0.2",
-    "valibot": "^0.30.0",
-    "vue": "^3.4.27",
-    "vue-router": "^4.3.2"
+    "valibot": "^0.33.3",
+    "vue": "^3.4.29",
+    "vue-router": "^4.4.0"
   },
   "devDependencies": {
-    "@unocss/transformer-directives": "^0.60.4",
+    "@unocss/transformer-directives": "^0.61.0",
     "@vitejs/plugin-vue": "^5.0.5",
     "autoprefixer": "^10.4.19",
     "dotenv": "^16.4.5",
-    "unocss": "^0.60.4",
+    "unocss": "^0.61.0",
     "unplugin-vue-components": "^0.27.0",
-    "vite": "^5.2.13",
-    "vite-bundle-analyzer": "^0.9.4",
+    "vite": "^5.3.1",
+    "vite-bundle-analyzer": "^0.10.3",
     "vite-plugin-optimize-css-modules": "^1.0.6",
     "vite-plugin-pwa": "^0.20.0",
     "vite-plugin-webfont-dl": "^3.9.4"

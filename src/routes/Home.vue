@@ -2,7 +2,6 @@
 import { useCounterStore, useToastStore } from "../store";
 
 const store = useCounterStore();
-
 const toastStore = useToastStore();
 let toasts = toastStore.toasts;
 
@@ -23,19 +22,19 @@ const showHide = (value) => {
     <p>Double Count: {{ store.doubleCount }}</p>
     <div class="flex flex-wrap gap2.5 p2">
       <button class="main-button" @click="store.increment">Increment</button>
-      <button @click="utils.addItem(toasts, { message: 'test4' })" class="main-button">Create Toast</button>
+      <button @click="utils.addItem(toasts, { message: 'test4', type: 'success' })" class="main-button">Create
+        Toast</button>
       <button class="main-button" @click="showHide('modal')">Show modal</button>
       <router-link to="/Page">Page</router-link>
       <router-link to="aewoifj">Bad link</router-link>
     </div>
 
-    <div>
-      <div class="flex flex-col absolute m2.5 left-0 bottom-0">
-        <Toast v-for="toast in toasts" :key="toast.id" :id="toast.id" :message="toast.message" :type="toast.type" />
-      </div>
+    <!-- Toasts -->
+    <div class="flex flex-col absolute m2.5 left-0 bottom-0">
+      <Toast v-for="toast in toasts" :key="toast.id" :id="toast.id" :message="toast.message" :type="toast.type" />
     </div>
 
-    <!-- modal -->
+    <!-- Modal -->
     <Transition name="fade">
       <div v-if="modal === 'modal'" class="center wfit z-99" @click="showHide">
         <div class="bg-[var(--white)] b b-solid mxauto rd-3" @click="$event.stopPropagation()">
