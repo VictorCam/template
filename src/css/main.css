@@ -1,3 +1,10 @@
+html,
+body {
+    color: var(--black);
+    background: var(--white);
+    overflow: hidden;
+}
+
 /* light mode */
 :root,
 :root.light {
@@ -42,15 +49,6 @@
     transition: none !important;
     animation: none !important;
   } */
-}
-
-html,
-body {
-    color: var(--black);
-    background: var(--white);
-    overflow-x: hidden;
-    height: 100%;
-    width: 100%;
 }
 
 .main-button {

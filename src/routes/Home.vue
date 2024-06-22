@@ -1,12 +1,11 @@
 <script setup>
 import { useCounterStore, useToastStore } from "../store";
+import { ref } from "vue";
+import utils from '../utils';
 
 const store = useCounterStore();
 const toastStore = useToastStore();
 let toasts = toastStore.toasts;
-
-import { ref } from "vue";
-import utils from '../utils';
 
 let modal = ref(null)
 
