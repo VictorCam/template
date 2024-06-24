@@ -2,7 +2,7 @@ html,
 body {
     color: var(--black);
     background: var(--white);
-    overflow: hidden;
+    touch-action: pan-x pan-y;
 }
 
 /* light mode */

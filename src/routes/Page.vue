@@ -2,5 +2,5 @@
 </script>
 
 <template>
-  <h1 class="center text-balance">{{ $t('Page') }}</h1>
+  <h1 class="center text-nowrap">{{ $t('Page') }}</h1>
 </template>

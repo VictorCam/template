@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from "vue";
-import { useDark, useToggle, useIntersectionObserver } from '@vueuse/core'
+import { useDark, useToggle, useIntersectionObserver, useScrollLock } from '@vueuse/core'
 
 let links = [
   {
@@ -17,6 +17,7 @@ let isDark = ref(useDark())
 let isNavVisible = ref(false);
 let navElement = ref(null);
 let hamburgerElement = ref(null);
+let isLocked = useScrollLock(document.body)
 
 let currentIcon = computed(() => isNavVisible.value ? 'close rotate-z-0' : 'burger rotate-z-360');
 let currIconTheme = computed(() => isDark.value ? 'moon' : 'sun');
@@ -27,17 +28,20 @@ const toggleTheme = async () => {
 }
 
 useIntersectionObserver(hamburgerElement, ([{ isIntersecting }]) => {
-  if (!isIntersecting) isNavVisible.value = false
+  if (isIntersecting) return
+  isNavVisible.value = false
+  isLocked.value = false
 })
 
 const toggleSidebar = () => {
   isNavVisible.value = !isNavVisible.value
+  isLocked.value = !isLocked.value
 }
 </script>
 
 <template>
   <header class="outline-1 outline-solid relative z99">
-    <div class="mx6 flex items-center gap2 p3 h8 ">
+    <div class="sm:mx3 flex items-center gap2 p3 h8 ">
       <div class="svg-bw tmp p2 mr-auto spin"></div>
       <button @click="toggleTheme()" class="p1" :aria-pressed="isDark">
         <div class="svg-color p1 transition duration-300 ease-in" :class="currIconTheme"></div>
@@ -56,10 +60,9 @@ const toggleSidebar = () => {
         </ul>
       </nav>
       <Transition name="fade">
-        <nav v-if="isNavVisible" ref="navElement"
-          class="sm:hidden <sm:fixed bottom-0 left-0 right-0 z--1 bg-[var(--white)] p1 <sm:h[calc(100vh-4rem)]">
+        <nav v-if="isNavVisible" ref="navElement" class="sm:hidden fixed bottom-0 top-13% left-0 right-0 z--1 p1]">
           <ul class="flex gap3 flex-col m0">
-            <li v-for="  link in links">
+            <li v-for="link in links">
               <div class="grid justify-items-center">
                 <div class="flex gap2">
                   <div class="svg-bw tmp link-icons sm:hidden"></div>
@@ -74,4 +77,7 @@ const toggleSidebar = () => {
       </Transition>
     </div>
   </header>
+  <Transition name="fade">
+    <div v-if="isNavVisible" class="fixed bg-[var(--white)] inset-0 z-1 h100vh w100vw"></div>
+  </Transition>
 </template>

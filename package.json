@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
-    "preview": "vite preview",
+    "preview": "vite preview --host",
     "up": "taze major -I",
     "size": "npx vite-bundle-visualizer"
   },
@@ -15,7 +15,7 @@
     "js-cookie": "^3.0.5",
     "normalize.css": "^8.0.1",
     "reset-css": "^5.0.2",
-    "valibot": "^0.33.3",
+    "valibot": "^0.34.0",
     "vue": "^3.4.30",
     "vue-i18n": "^9.13.1",
     "vue-router": "^4.4.0"
