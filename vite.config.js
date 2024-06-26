@@ -4,9 +4,8 @@ import webfontDownload from "vite-plugin-webfont-dl";
 import autoPrefixer from "autoprefixer";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
-import { optimizeCssModules } from "vite-plugin-optimize-css-modules";
 import transformerDirectives from '@unocss/transformer-directives'
-// import { VitePWA } from 'vite-plugin-pwa';
+import { VitePWA } from 'vite-plugin-pwa';
 import UnoCSS from 'unocss/vite';
 // import vueDevTools from 'vite-plugin-vue-devtools'
 
@@ -18,24 +17,23 @@ export default defineConfig({
     UnoCSS({
       transformers: [transformerDirectives()]
     }),
-    // VitePWA({
-    //   includeAssets: ['vite.svg'], manifest: {
-    //     name: 'Vite PWA',
-    //     short_name: 'VitePWA',
-    //     description: 'Vite PWA App',
-    //     theme_color: '#000000',
-    //     icons: [
-    //       {
-    //         src: 'vite.svg',
-    //         sizes: '192x192',
-    //         type: 'image/svg+xml',
-    //       }
-    //     ]
-    //   },
-    //   registerType: 'autoUpdate',
-    //   devOptions: { enabled: false, suppressWarnings: true, disableRuntimeConfig: true }
-    // })
-    optimizeCssModules(),
+    VitePWA({
+      includeAssets: ['vite.svg'], manifest: {
+        name: 'Vite PWA',
+        short_name: 'VitePWA',
+        description: 'Vite PWA App',
+        theme_color: '#000000',
+        icons: [
+          {
+            src: 'vite.svg',
+            sizes: '192x192',
+            type: 'image/svg+xml',
+          }
+        ]
+      },
+      registerType: 'autoUpdate',
+      devOptions: { enabled: false, suppressWarnings: true, disableRuntimeConfig: true }
+    }),
     Components({
       resolvers: [ElementPlusResolver()],
     }),

@@ -16,8 +16,6 @@ import Home from "./routes/Home.vue";
 import Page from "./routes/Page.vue";
 import NotFound from "./routes/404.vue";
 
-// import cookie from "js-cookie";
-
 const routes = [
   {
     path: "/",
@@ -39,15 +37,7 @@ const routes = [
   },
 ];
 
-// import { registerSW } from 'virtual:pwa-register'
-
-// const updateSW = registerSW({
-//   onOfflineReady() {
-//     alert('ready to work offline')
-//   },
-// })
-
-
+// import cookie from "js-cookie";
 // router.beforeEach((to, from, next) => {
 //   if (cookie.get("token")) return next();
 //   if (!cookie.get("token")) {
@@ -72,6 +62,13 @@ const i18n = createI18n({
     en: EN,
     es: ES,
   },
+})
+
+import { registerSW } from 'virtual:pwa-register'
+
+const updateSW = registerSW({
+  onNeedRefresh() { },
+  onOfflineReady() { }
 })
 
 const app = createApp(App);
