@@ -50,6 +50,7 @@ export default defineConfig({
       plugins: [autoPrefixer()],
     },
   },
+  assetsInclude: ['**/*.{jpg,jpeg,png,gif,svg}'],
   server: {
     port: 2020,
   },

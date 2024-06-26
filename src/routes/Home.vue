@@ -1,8 +1,8 @@
 <script setup>
 import { useCounterStore, useToastStore } from "../store";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import utils from '../utils';
-import { useScrollLock } from '@vueuse/core'
+import { useScrollLock, useImage } from '@vueuse/core'
 const store = useCounterStore();
 const toastStore = useToastStore();
 let toasts = toastStore.toasts;
@@ -15,6 +15,10 @@ const showHide = (value) => {
   modal.value != value ? modal.value = value : modal.value = null;
   isLocked.value = !isLocked.value
 };
+
+import image from '../assets/IMG_0005.jpg';
+const { isLoading, error } = useImage({ src: image })
+
 </script>
 
 <template>
@@ -30,6 +34,12 @@ const showHide = (value) => {
       <router-link to="/Page">{{ $t('Page') }}</router-link>
       <router-link to="aewoifj">{{ $t('BadLink') }}</router-link>
     </div>
+
+    <div v-if="isLoading" class="placeholder w60 h40"></div>
+    <div v-else-if="error" class="bg-gray w60 h40 flex items-center">
+      <p class="mx-auto">Failed to load image</p>
+    </div>
+    <img class="w60 h40" v-else :src=image />
 
     <!-- Toasts -->
     <div class="flex flex-col fixed m2.5 left-0 bottom-0">
@@ -55,3 +65,25 @@ const showHide = (value) => {
     </Transition>
   </div>
 </template>
+
+<style>
+.placeholder {
+  background: linear-gradient(270deg, #454343, #8a8686);
+  background-size: 400% 400%;
+  animation: backgroundAnimation 1.5s ease infinite;
+}
+
+@keyframes backgroundAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+</style>
