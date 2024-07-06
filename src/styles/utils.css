@@ -8,6 +8,10 @@
   --at-apply: fixed -translate-x-2/4 -translate-y-2/4 left-2/4 top-2/4;
 }
 
+input {
+  --at-apply: gray-200 dark:gray-700;
+}
+
 button {
   --at-apply: b-none bg-transparent color-current cursor-pointer;
 }
@@ -81,9 +85,4 @@ button>* {
   color: inherit;
   width: 1.2em;
   height: 1.2em;
-}
-
-.shrink {
-  --at-apply: h-0 text-0 w-0 m-0 p-0 border-none;
-  transition: 300ms ease-in;
 }

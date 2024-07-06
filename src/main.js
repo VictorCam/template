@@ -6,10 +6,10 @@ import 'virtual:uno.css';
 
 import "normalize.css";
 import "reset-css";
-import "./css/utils.css";
-import "./css/icons.css";
-import "./css/animations.css";
-import "./css/main.css";
+import "./styles/utils.css";
+import "./styles/icons.css";
+import "./styles/animations.css";
+import "./styles/main.css";
 
 import App from "./App.vue";
 import Home from "./routes/Home.vue";

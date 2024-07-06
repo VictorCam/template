@@ -24,7 +24,7 @@ const { isLoading, error } = useImage({ src: image })
 <template>
   <div>
     <NavHeader />
-    <p>count: {{ store.count }}</p>
+    <p><b>count</b>: {{ store.count }}</p>
     <p>Double Count: {{ store.doubleCount }}</p>
     <div class="flex flex-wrap gap2.5 p2">
       <button @click="store.increment">{{ $t('Increment') }}</button>
@@ -50,7 +50,7 @@ const { isLoading, error } = useImage({ src: image })
     <!-- Modal -->
     <Transition name="fade">
       <div v-if="modal === 'modal'" class="center fixed overflow-hidden wfit z-99" @click="showHide">
-        <div class="bg-dark b b-solid mxauto rd-3" @click="$event.stopPropagation()">
+        <div class=".dark:bg-dark bg-white b b-solid mxauto rd-3" @click="$event.stopPropagation()">
           <button class="absolute right-0 top-0 pr2" @click="showHide()">
             <div class="close svg-c py1"></div>
           </button>
