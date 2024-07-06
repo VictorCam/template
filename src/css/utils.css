@@ -74,16 +74,7 @@ button>* {
   height: 1.2em;
 }
 
-.svg-color {
-  mask: var(--bg) no-repeat;
-  mask-size: 100% 100%;
-  background-color: currentColor;
-  color: inherit;
-  width: 1.2em;
-  height: 1.2em;
-}
-
-.svg-bw {
+.svg-c {
   mask: var(--bg) no-repeat;
   mask-size: 100% 100%;
   background-color: currentColor;

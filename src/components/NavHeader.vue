@@ -42,13 +42,13 @@ const toggleSidebar = () => {
 <template>
   <header class="outline-1 outline-solid relative z99">
     <div class="sm:mx3 flex items-center gap2 p3 h8 ">
-      <div class="svg-bw tmp p2 mr-auto spin"></div>
+      <div class="svg-c tmp p2 mr-auto spin"></div>
       <button @click="toggleTheme()" class="p1" :aria-pressed="isDark">
-        <div class="svg-color p1 transition duration-300 ease-in" :class="currIconTheme"></div>
+        <div class="svg-c p1 transition duration-300 ease-in" :class="currIconTheme"></div>
       </button>
       <button ref="hamburgerElement" @click="toggleSidebar()" class="sm:hidden p1 transition duration-300 ease-in"
         :class="currentIcon" :aria-pressed="isNavVisible">
-        <div class="svg-color p1 transition duration-300 ease-in"></div>
+        <div class="svg-c p1 transition duration-300 ease-in"></div>
       </button>
       <nav class="<sm:hidden p1">
         <ul class="flex flex-row gap3 m0">
@@ -65,7 +65,7 @@ const toggleSidebar = () => {
             <li v-for="link in links">
               <div class="grid justify-items-center">
                 <div class="flex gap2">
-                  <div class="svg-bw tmp link-icons sm:hidden"></div>
+                  <div class="svg-c tmp link-icons sm:hidden"></div>
                   <a :href="link.href">
                     <span>{{ link.name }}</span>
                   </a>

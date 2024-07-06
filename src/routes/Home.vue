@@ -27,10 +27,10 @@ const { isLoading, error } = useImage({ src: image })
     <p>count: {{ store.count }}</p>
     <p>Double Count: {{ store.doubleCount }}</p>
     <div class="flex flex-wrap gap2.5 p2">
-      <button class="main-button" @click="store.increment">{{ $t('Increment') }}</button>
-      <button @click="utils.addItem(toasts, { message: 'test4', type: 'success' })" class="main-button">{{
+      <button @click="store.increment">{{ $t('Increment') }}</button>
+      <button @click="utils.addItem(toasts, { message: 'test4', type: 'success' })">{{
       $t('CreateToast') }}</button>
-      <button class="main-button" @click="showHide('modal')">Show modal</button>
+      <button @click="showHide('modal')">Show modal</button>
       <router-link to="/Page">{{ $t('Page') }}</router-link>
       <router-link to="aewoifj">{{ $t('BadLink') }}</router-link>
     </div>
@@ -50,9 +50,9 @@ const { isLoading, error } = useImage({ src: image })
     <!-- Modal -->
     <Transition name="fade">
       <div v-if="modal === 'modal'" class="center fixed overflow-hidden wfit z-99" @click="showHide">
-        <div class="bg-[var(--white)] b b-solid mxauto rd-3" @click="$event.stopPropagation()">
+        <div class="bg-dark b b-solid mxauto rd-3" @click="$event.stopPropagation()">
           <button class="absolute right-0 top-0 pr2" @click="showHide()">
-            <div class="close svg-bw py1"></div>
+            <div class="close svg-c py1"></div>
           </button>
           <div class="text-center p7">
             <p>Lorem</p>
