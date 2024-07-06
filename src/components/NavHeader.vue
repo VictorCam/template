@@ -40,11 +40,11 @@ const toggleSidebar = () => {
 </script>
 
 <template>
-  <header class="outline-1 outline-solid relative z99">
+  <header class="bg-white .dark:bg-black shadow shadow-md relative z9">
     <div class="sm:mx3 flex items-center gap2 p3 h8 ">
       <div class="svg-c tmp p2 mr-auto spin"></div>
-      <button @click="toggleTheme()" class="p1" :aria-pressed="isDark">
-        <div class="svg-c p1 transition duration-300 ease-in" :class="currIconTheme"></div>
+      <button @click="toggleTheme()" class="p1 i-btn" :aria-pressed="isDark">
+        <div class="svg-c p1" :class="currIconTheme"></div>
       </button>
       <button ref="hamburgerElement" @click="toggleSidebar()" class="sm:hidden p1 transition duration-300 ease-in"
         :class="currentIcon" :aria-pressed="isNavVisible">
@@ -60,10 +60,11 @@ const toggleSidebar = () => {
         </ul>
       </nav>
       <Transition name="fade">
-        <nav v-if="isNavVisible" ref="navElement" class="sm:hidden fixed bottom-0 top-13% left-0 right-0 z--1 p1]">
-          <ul class="flex gap3 flex-col m0">
+        <nav v-if="isNavVisible" ref="navElement"
+          class="sm:hidden bg-dark-800 fixed bottom-0 top-14 left-0 right-0 pt5">
+          <ul class="flex gap3 flex-col">
             <li v-for="link in links">
-              <div class="grid justify-items-center">
+              <div class="grid justify-items-center m1">
                 <div class="flex gap2">
                   <div class="svg-c tmp link-icons sm:hidden"></div>
                   <a :href="link.href">
@@ -77,7 +78,4 @@ const toggleSidebar = () => {
       </Transition>
     </div>
   </header>
-  <Transition name="fade">
-    <div v-if="isNavVisible" class="fixed bg-[var(--white)] inset-0 z-1 h100vh w100vw"></div>
-  </Transition>
 </template>

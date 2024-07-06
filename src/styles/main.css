@@ -13,6 +13,31 @@ html.dark {
   color-scheme: dark;
 }
 
+input {
+  --at-apply: gray-200 dark:gray-700;
+}
+
+button {
+  --at-apply: b-none bg-transparent color-current cursor-pointer;
+}
+
+.svg {
+  background: var(--bg) no-repeat;
+  background-size: 100% 100%;
+  background-color: transparent;
+  width: 1.2em;
+  height: 1.2em;
+}
+
+.svg-c {
+  mask: var(--bg) no-repeat;
+  mask-size: 100% 100%;
+  background-color: currentColor;
+  color: inherit;
+  width: 1.2em;
+  height: 1.2em;
+}
+
 /* disable this to remove the animations */
 @media (prefers-reduced-motion: reduce) {
 

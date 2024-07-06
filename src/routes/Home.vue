@@ -26,11 +26,11 @@ const { isLoading, error } = useImage({ src: image })
     <NavHeader />
     <p><b>count</b>: {{ store.count }}</p>
     <p>Double Count: {{ store.doubleCount }}</p>
-    <div class="flex flex-wrap gap2.5 p2">
-      <button @click="store.increment">{{ $t('Increment') }}</button>
-      <button @click="utils.addItem(toasts, { message: 'test4', type: 'success' })">{{
+    <div class="flex flex-wrap items-center gap2.5 p2">
+      <button class="btn" @click="store.increment">{{ $t('Increment') }}</button>
+      <button class="btn" @click="utils.addItem(toasts, { message: 'test4', type: 'success' })">{{
       $t('CreateToast') }}</button>
-      <button @click="showHide('modal')">Show modal</button>
+      <button class=btn @click="showHide('modal')">Show modal</button>
       <router-link to="/Page">{{ $t('Page') }}</router-link>
       <router-link to="aewoifj">{{ $t('BadLink') }}</router-link>
     </div>

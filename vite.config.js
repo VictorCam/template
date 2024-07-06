@@ -16,27 +16,35 @@ export default defineConfig({
     vue(),
     UnoCSS({
       shortcuts: [
-        ['btn', 'px-4 py-1 rounded inline-block bg-teal-700 text-white cursor-pointer !outline-none hover:bg-teal-800 disabled:cursor-default disabled:bg-gray-600 disabled:opacity-50'],
-        ['i-btn', 'inline-block cursor-pointer select-none opacity-75 transition duration-200 ease-in-out hover:opacity-100 hover:text-teal-600']
-      ],
+        ['btn', 'py-1 b b-solid b-2px rd-1']],
       transformers: [transformerDirectives()]
     }),
     VitePWA({
-      includeAssets: ['vite.svg'], manifest: {
-        name: 'Vite PWA',
-        short_name: 'VitePWA',
-        description: 'Vite PWA App',
-        theme_color: '#000000',
+      registerType: 'autoUpdate',
+      includeAssets: ['favicon.svg', 'safari-pinned-tab.svg'],
+      manifest: {
+        name: 'Vitesse',
+        short_name: 'Vitesse',
+        theme_color: '#ffffff',
         icons: [
           {
-            src: 'vite.svg',
+            src: '/pwa-192x192.png',
             sizes: '192x192',
-            type: 'image/svg+xml',
-          }
-        ]
+            type: 'image/png',
+          },
+          {
+            src: '/pwa-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+          },
+          {
+            src: '/pwa-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'any maskable',
+          },
+        ],
       },
-      registerType: 'autoUpdate',
-      devOptions: { enabled: false, suppressWarnings: true, disableRuntimeConfig: true }
     }),
     Components({
       resolvers: [ElementPlusResolver()],
