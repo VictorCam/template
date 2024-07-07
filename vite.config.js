@@ -17,6 +17,11 @@ export default defineConfig({
     UnoCSS({
       shortcuts: [
         ['btn', 'py-1 b b-solid b-2px rd-1']],
+      theme: {
+        colors: {
+          'dark': '#121212',
+        }
+      },
       transformers: [transformerDirectives()]
     }),
     VitePWA({
