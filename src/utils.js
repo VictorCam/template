@@ -1,16 +1,3 @@
-// import { gsap } from "gsap";
-// import { Flip } from "gsap/Flip";
-// gsap.registerPlugin(Flip);
-
-// const flipAnimation = (relocateElement, moveElementToPosition, animation) => {
-//   let state = Flip.getState([moveElementToPosition, relocateElement]);
-//   moveElementToPosition.append(relocateElement)
-//   Flip.from(state, {
-//     duration: 0.5,
-//     absolute: true,
-//   });
-// }
-
 const getLastJsonId = (ref) => {
   return ref.length !== 0 ? parseInt(ref[ref.length - 1].id, 10) : 0;
 }

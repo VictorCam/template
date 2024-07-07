@@ -13,19 +13,15 @@ let links = [
   },
 ];
 
-let isDark = ref(useDark())
 let isNavVisible = ref(false);
 let navElement = ref(null);
 let hamburgerElement = ref(null);
 let isLocked = useScrollLock(document.body)
+let isDark = useDark();
+let toggleDark = useToggle(isDark)
 
-let currentIcon = computed(() => isNavVisible.value ? 'close rotate-z-0' : 'burger rotate-z-360');
 let currIconTheme = computed(() => isDark.value ? 'moon' : 'sun');
-
-const toggleTheme = async () => {
-  const toggleDark = useToggle(useDark())
-  toggleDark()
-}
+let currentIcon = computed(() => isNavVisible.value ? 'close rotate-z-0' : 'burger rotate-z-360');
 
 useIntersectionObserver(hamburgerElement, ([{ isIntersecting }]) => {
   if (isIntersecting) return
@@ -43,7 +39,7 @@ const toggleSidebar = () => {
   <header class="shadow shadow-md .dark:shadow-black/50 relative z9">
     <div class="sm:mx3 flex items-center gap2 p3 h8 ">
       <div class="svg-c tmp p2 mr-auto spin"></div>
-      <button @click="toggleTheme()" class="p1 i-btn" :aria-pressed="isDark">
+      <button @click="toggleDark()" class="p1 i-btn" :aria-pressed="isDark">
         <div class="svg-c p1" :class="currIconTheme"></div>
       </button>
       <button ref="hamburgerElement" @click="toggleSidebar()" class="sm:hidden p1 transition duration-300 ease-in"
