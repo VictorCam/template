@@ -1,5 +1,5 @@
 <template>
-    <footer class="p3 bg-def">
+    <footer class="p3 mb5 bg-def">
         <div class="flex flex-wrap items-center justify-center">
             <div class="flex items-center gap2 mr2">
                 <p>© 2024 - Name</p>
