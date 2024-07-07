@@ -16,10 +16,6 @@ const showHide = (value) => {
   modal.value != value ? modal.value = value : modal.value = null;
   toggleLock()
 };
-
-import image from '../assets/IMG_0005.jpg';
-const { isLoading, error } = useImage({ src: image })
-
 </script>
 
 <template>
@@ -35,12 +31,6 @@ const { isLoading, error } = useImage({ src: image })
       <router-link to="/Page">{{ $t('Page') }}</router-link>
       <router-link to="aewoifj">{{ $t('BadLink') }}</router-link>
     </div>
-
-    <div v-if="isLoading" class="placeholder w60 h40"></div>
-    <div v-else-if="error" class="bg-gray w60 h40 flex items-center">
-      <p class="mx-auto">Failed to load image</p>
-    </div>
-    <img class="w60 h40" v-else :src=image />
 
     <!-- Toasts -->
     <div class="flex flex-col fixed m2.5 left-0 bottom-0">
