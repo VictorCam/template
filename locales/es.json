@@ -1,11 +1,3 @@
 {
-  "greet": "hola",
-  "Create Toast": "Crear Toast",
-  "Show Modal": "Mostrar modal",
-  "Increment": "Incrementar",
-  "Page": "Página",
-  "Bad Link": "Mal enlace",
-  "404 Not Found": "404 No encontrado",
-  "CreateToast": "Crear Toast",
-  "BadLink": "Mal enlace"
+  "temp": "Plantilla"
 }

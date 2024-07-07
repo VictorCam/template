@@ -4,12 +4,12 @@ import { useDark, useToggle, useIntersectionObserver, useScrollLock } from '@vue
 
 let links = [
   {
-    name: "Link1",
-    href: "#Link1",
+    name: "Page",
+    href: "/page",
   },
   {
-    name: "Link2",
-    href: "#Link2",
+    name: "404",
+    href: "/unknown",
   },
 ];
 
@@ -38,9 +38,10 @@ const toggleSidebar = () => {
 </script>
 
 <template>
-  <header class="shadow shadow-md .dark:shadow-black/50 relative z9">
+  <header class="shadow shadow-md .dark:shadow-black/50 relative z1">
     <div class="sm:mx3 flex items-center gap2 p3 h8 ">
-      <div class="svg-c tmp p2 mr-auto spin"></div>
+      <div class="svg-c tmp p2 spin"></div>
+      <h1 class="mr-auto text-6">{{ $t("temp") }}</h1>
       <button @click="toggleDark()" class="p1 i-btn" :aria-pressed="isDark">
         <div class="svg-c p1" :class="currIconTheme"></div>
       </button>
@@ -51,23 +52,23 @@ const toggleSidebar = () => {
       <nav class="<sm:hidden p1">
         <ul class="flex flex-row gap3 m0">
           <li v-for=" link in links">
-            <a :href="link.href">
+            <router-link :to="link.href">
               <span>{{ link.name }}</span>
-            </a>
+            </router-link>
           </li>
         </ul>
       </nav>
       <Transition name="fade">
         <nav v-if="isNavVisible" ref="navElement"
-          class="sm:hidden bg-light .dark:bg-dark fixed bottom-0 top-14 left-0 right-0 pt5">
+          class="sm:hidden bg-light .dark:bg-dark fixed z99 bottom-0 top-14 left-0 right-0 pt5">
           <ul class="flex gap3 flex-col">
             <li v-for="link in links">
               <div class="grid justify-items-center m1">
                 <div class="flex gap2">
                   <div class="svg-c tmp link-icons sm:hidden"></div>
-                  <a :href="link.href">
+                  <router-link :to="link.href">
                     <span>{{ link.name }}</span>
-                  </a>
+                  </router-link>
                 </div>
               </div>
             </li>

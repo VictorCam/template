@@ -17,8 +17,7 @@ const hideToast = async (id) => {
 </script>
 
 <template>
-    <div
-        class="relative bg-light .dark:bg-dark wfit h15 z99 b b-solid bg-[var(--white)] flex items-center mb2 p1 rd-3 ">
+    <div class="relative bg-light .dark:bg-dark wfit h15 b b-solid bg-[var(--white)] flex items-center mb2 p1 rd-3 ">
         <button class="absolute m1 right-0 top-0 p0" @click="hideToast(id)">
             <div class="svg-c close"></div>
         </button>
