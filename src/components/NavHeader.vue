@@ -40,7 +40,7 @@ const toggleSidebar = () => {
 </script>
 
 <template>
-  <header class="shadow shadow-md relative z9">
+  <header class="shadow shadow-md .dark:shadow-black/50 relative z9">
     <div class="sm:mx3 flex items-center gap2 p3 h8 ">
       <div class="svg-c tmp p2 mr-auto spin"></div>
       <button @click="toggleTheme()" class="p1 i-btn" :aria-pressed="isDark">
