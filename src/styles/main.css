@@ -1,4 +1,3 @@
-/* light mode */
 html,
 body,
 #app {
@@ -11,7 +10,7 @@ html.dark {
 }
 
 input {
-  --at-apply: gray-200 dark:gray-700;
+  --at-apply: gray-200 .dark:gray-700;
 }
 
 button {
