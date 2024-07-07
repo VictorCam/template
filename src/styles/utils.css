@@ -6,6 +6,10 @@
   display: grid;
 }
 
+.btn {
+  --at-apply: py-1 b b-solid b-2px rd-1 b-dark .dark:b-light;
+}
+
 .stack>* {
   grid-area: 1/1;
 }

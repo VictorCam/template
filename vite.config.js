@@ -15,8 +15,6 @@ export default defineConfig({
   plugins: [
     vue(),
     UnoCSS({
-      shortcuts: [
-        ['btn', 'py-1 b b-solid b-2px rd-1']],
       theme: {
         colors: {
           'dark': '#121212',
@@ -28,8 +26,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'safari-pinned-tab.svg'],
       manifest: {
-        name: 'Vitesse',
-        short_name: 'Vitesse',
+        name: 'VictorCam Template',
+        short_name: 'VC Template',
         theme_color: '#ffffff',
         icons: [
           {
