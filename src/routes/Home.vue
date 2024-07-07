@@ -2,18 +2,19 @@
 import { useCounterStore, useToastStore } from "../store";
 import { ref, onMounted } from "vue";
 import utils from '../utils';
-import { useScrollLock, useImage } from '@vueuse/core'
+import { useScrollLock, useImage, useToggle } from '@vueuse/core'
 const store = useCounterStore();
 const toastStore = useToastStore();
 let toasts = toastStore.toasts;
 
-let isLocked = useScrollLock(document.body)
+let isLocked = useScrollLock(document.body);
+let toggleLock = useToggle(isLocked)
 
 let modal = ref(null)
 
 const showHide = (value) => {
   modal.value != value ? modal.value = value : modal.value = null;
-  isLocked.value = !isLocked.value
+  toggleLock()
 };
 
 import image from '../assets/IMG_0005.jpg';

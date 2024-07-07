@@ -13,12 +13,14 @@ let links = [
   },
 ];
 
+let hamburgerElement = ref(null);
 let isNavVisible = ref(false);
 let navElement = ref(null);
-let hamburgerElement = ref(null);
 let isLocked = useScrollLock(document.body)
 let isDark = useDark();
 let toggleDark = useToggle(isDark)
+let toggleLock = useToggle(isLocked)
+let toggleNavVisible = useToggle(isNavVisible)
 
 let currIconTheme = computed(() => isDark.value ? 'moon' : 'sun');
 let currentIcon = computed(() => isNavVisible.value ? 'close rotate-z-0' : 'burger rotate-z-360');
@@ -30,8 +32,8 @@ useIntersectionObserver(hamburgerElement, ([{ isIntersecting }]) => {
 })
 
 const toggleSidebar = () => {
-  isNavVisible.value = !isNavVisible.value
-  isLocked.value = !isLocked.value
+  toggleNavVisible()
+  toggleLock()
 }
 </script>
 
