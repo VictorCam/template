@@ -53,12 +53,6 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()],
     }),
     webfontDownload([]), //https://www.cdnfonts.com/
-    // VueI18n({
-    //   runtimeOnly: true,
-    //   compositionOnly: true,
-    //   fullInstall: true,
-    //   include: [path.resolve(__dirname, 'locales/**')],
-    // }),
   ],
   css: {
     postcss: {
