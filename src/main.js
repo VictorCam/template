@@ -58,6 +58,7 @@ import ES from '../locales/es.json'
 const i18n = createI18n({
   locale: usePreferredLanguages().value[0],
   fallbackLocale: 'en',
+  legacy: false,
   messages: {
     en: EN,
     es: ES,

@@ -18,8 +18,7 @@ const showHide = (value) => {
 </script>
 
 <template>
-  <div class="flex flex-col min-h-screen bg-light .dark:bg-dark">
-    <TopBar />
+  <div>
     <div class="flex flex-wrap items-center gap2.5 p2">
       <button class="btn" @click="store.increment">Increment</button>
       <button class="btn" @click="utils.addItem(toasts, { message: 'test4', type: 'success' })">Make Toast</button>
@@ -53,7 +52,5 @@ const showHide = (value) => {
     <Transition name="fade">
       <div v-if="modal === 'modal'" class="fixed bg-black/80 z-10 inset-0 w100vw h100vh"></div>
     </Transition>
-    <div class="grow"></div>
-    <BottomBar />
   </div>
 </template>
