@@ -74,8 +74,8 @@ const toggleSidebar = () => {
             class="b b-solid <sm:hidden absolute top-10 rd-3 flex gap2 p4 bg-light .dark:bg-dark">
             <ul class="flex gap2 flex-col">
               <li v-for="lang in availableLocales" role="button" @click="setLocale(lang)"
-                class="flex cursor-pointer gap1">{{ languageCode[lang] }} <span class="italic"
-                  aria-hidden="true">▶</span></li>
+                class="flex items-center cursor-pointer gap1">{{ languageCode[lang] }} <span
+                  class="svg-c scale-80 right-triangle" aria-hidden="true"></span></li>
             </ul>
           </div>
         </Transition>
@@ -96,32 +96,33 @@ const toggleSidebar = () => {
           </li>
         </ul>
       </nav>
-      <Transition name="fade">
-        <nav v-if="isNavVisible" ref="navElement"
-          class="sm:hidden bg-light .dark:bg-dark fixed z99 bottom-0 top-14 left-0 right-0 pt5">
-          <ul class="flex gap3 flex-col">
-            <li v-for="link in links">
-              <div class="grid justify-items-center m1">
-                <div class="flex gap2">
-                  <div class="svg-c tmp link-icons sm:hidden"></div>
-                  <router-link @click="toggleSidebar()" :to="link.href">
-                    <span>{{ link.name }}</span>
-                  </router-link>
-                </div>
+      <nav v-if="isNavVisible" ref="navElement"
+        class="sm:hidden bg-light .dark:bg-dark fixed z99 bottom-0 top-14 left-0 right-0 pt5">
+        <ul class="flex gap3 flex-col">
+          <li v-for="link in links">
+            <div class="grid justify-items-center m1">
+              <div class="flex gap2">
+                <div class="svg-c tmp link-icons sm:hidden"></div>
+                <router-link @click="toggleSidebar()" :to="link.href">
+                  <span>{{ link.name }}</span>
+                </router-link>
               </div>
-            </li>
-          </ul>
-          <div class=".dark:bg-gray-800 bg-gray-300 mx-auto w-fit flex flex-col gap5 mt-5 p5 rd-3">
-            <p class="flex gap2 c-gray-700 .dark:c-gray-500">Translations
-            <div class="svg-c translate"></div>
-            </p>
-            <div class="cursor-pointer" v-for="lang in availableLocales" role="button"
-              @click="setLocale(lang); toggleSidebar()">
-              <span>{{ languageCode[lang] }} <span class="italic" aria-hidden="true">▶</span></span>
             </div>
+          </li>
+        </ul>
+        <div class=".dark:bg-gray-800 bg-gray-300 mx-auto w-fit flex flex-col gap5 mt-5 p5 rd-3">
+          <p class="flex gap2 c-gray-700 .dark:c-gray-500">Translations
+          <div class="svg-c translate"></div>
+          </p>
+          <div class="cursor-pointer" v-for="lang in availableLocales" role="button"
+            @click="setLocale(lang); toggleSidebar()">
+            <span class="flex items-center gap2">
+              {{ languageCode[lang] }} <div class="svg-c scale-80 right-triangle" aria-hidden="true">
+              </div>
+            </span>
           </div>
-        </nav>
-      </Transition>
+        </div>
+      </nav>
     </div>
   </header>
 </template>
