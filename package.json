@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview --host",
-    "up": "taze major -I",
+    "up": "npx taze major -I",
     "size": "npx vite-bundle-visualizer"
   },
   "dependencies": {
@@ -24,12 +24,9 @@
     "@unocss/transformer-directives": "^0.61.3",
     "@vitejs/plugin-vue": "^5.0.5",
     "autoprefixer": "^10.4.19",
-    "cypress": "^13.13.0",
-    "cypress-vite": "^1.5.0",
     "unocss": "^0.61.3",
     "unplugin-vue-components": "^0.27.2",
     "vite": "^5.3.3",
-    "vite-bundle-visualizer": "^1.2.1",
     "vite-plugin-pwa": "^0.20.0",
     "vite-plugin-webfont-dl": "^3.9.4"
   }

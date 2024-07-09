@@ -1,11 +1,11 @@
 <script setup>
-import { ref, computed, onMounted } from "vue";
+import { ref, computed } from "vue";
 import { useDark, useToggle, useIntersectionObserver, useScrollLock, useElementHover, usePreferredLanguages } from '@vueuse/core'
 import { useI18n } from 'vue-i18n';
 
 const { locale, availableLocales } = useI18n({ useScope: "global" });
 
-const languageCode = {
+let languageCode = {
   'en': 'English',
   'es': 'Español',
 }
@@ -41,7 +41,7 @@ let toggleLock = useToggle(isLocked)
 let toggleNavVisible = useToggle(isNavVisible)
 
 let currIconTheme = computed(() => isDark.value ? 'moon' : 'sun');
-let currentIcon = computed(() => isNavVisible.value ? 'close rotate-z-0' : 'burger rotate-z-360');
+let currentIcon = computed(() => isNavVisible.value ? 'close' : 'burger');
 
 useIntersectionObserver(hamburgerElement, ([{ isIntersecting }]) => {
   if (isIntersecting) return
@@ -63,15 +63,15 @@ const toggleSidebar = () => {
 </script>
 
 <template>
-  <header class="shadow shadow-md .dark:shadow-black/50 relative z1">
-    <div class="sm:mx3 flex items-center gap2 p3 h8 ">
+  <header class="shadow shadow-md dark:shadow-black/50 relative z1">
+    <div class="sm:mx3 flex items-center gap2 p3 h6">
       <div class="svg-c tmp p2 spin"></div>
-      <h1 class="mr-auto text-6">{{ $t("temp") }}</h1>
+      <h1 class="mr-auto text-5">{{ $t("temp") }}</h1>
       <div class="relative">
-        <button ref="LangElement" :aria-expanded="isLangHovered" class="svg-c <sm:hidden translate p3"></button>
+        <button ref="LangElement" :aria-expanded="isLangHovered" class="svg-c i-btn <sm:hidden translate p3"></button>
         <Transition name="fade">
           <div v-if="isLangHovered || isDropdownHovered" ref="DropdownElement"
-            class="b b-solid <sm:hidden absolute top-10 rd-3 flex gap2 p4 bg-light .dark:bg-dark">
+            class="<sm:hidden absolute top-10 rd-3 flex gap2 p4 bg-light-900 dark:bg-dark-300">
             <ul class="flex gap2 flex-col">
               <li v-for="lang in availableLocales" role="button" @click="setLocale(lang)"
                 class="flex items-center cursor-pointer gap1">{{ languageCode[lang] }} <span
@@ -80,12 +80,10 @@ const toggleSidebar = () => {
           </div>
         </Transition>
       </div>
-      <button @click="toggleDark()" class="p1" :aria-pressed="isDark">
-        <div class="svg-c p1" :class="currIconTheme"></div>
-      </button>
-      <button ref="hamburgerElement" @click="toggleSidebar()" class="sm:hidden p1 transition duration-300 ease-in"
+      <button @click="toggleDark()" class="svg-c i-btn p3" :class="currIconTheme" :aria-pressed="isDark"></button>
+      <button ref="hamburgerElement" @click="toggleSidebar()" class="sm:hidden svg-c i-btn p3"
         :class="currentIcon" :aria-pressed="isNavVisible">
-        <div class="svg-c p1 transition duration-300 ease-in"></div>
+        <div class="svg-c p1"></div>
       </button>
       <nav class="<sm:hidden p1">
         <ul class="flex flex-row gap3 m0">
@@ -97,7 +95,7 @@ const toggleSidebar = () => {
         </ul>
       </nav>
       <nav v-if="isNavVisible" ref="navElement"
-        class="sm:hidden bg-light .dark:bg-dark fixed z99 bottom-0 top-14 left-0 right-0 pt5">
+        class="sm:hidden bg-light dark:bg-dark fixed z99 bottom-0 top-12 left-0 right-0 pt5">
         <ul class="flex gap3 flex-col">
           <li v-for="link in links">
             <div class="grid justify-items-center m1">
@@ -110,8 +108,8 @@ const toggleSidebar = () => {
             </div>
           </li>
         </ul>
-        <div class=".dark:bg-gray-800 bg-gray-300 mx-auto w-fit flex flex-col gap5 mt-5 p5 rd-3">
-          <p class="flex gap2 c-gray-700 .dark:c-gray-500">Translations
+        <div class="dark:bg-dark-300 bg-light-900 mx-auto w-fit flex flex-col gap5 mt-5 p5 rd-3">
+          <p class="flex gap2 c-dark-500 dark:c-dark-900">Translations
           <div class="svg-c translate"></div>
           </p>
           <div class="cursor-pointer" v-for="lang in availableLocales" role="button"

@@ -1,5 +1,5 @@
 .center {
-  --at-apply: fixed -translate-x-50% -translate-y-50% left-50% top-50%;
+  --uno: fixed -translate-x-50% -translate-y-50% left-50% top-50%;
 }
 
 .stack {
@@ -7,7 +7,7 @@
 }
 
 .btn {
-  --at-apply: py-1 b b-solid b-2px rd-1 b-dark .dark:b-light;
+  --uno: py-1 rd-1 dark:bg-dark-400 bg-light-900 hover:bg-light-700 dark:hover:bg-dark-500 transition ease-in-out duration-200;
 }
 
 .stack>* {

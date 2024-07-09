@@ -4,7 +4,7 @@ import webfontDownload from "vite-plugin-webfont-dl";
 import autoPrefixer from "autoprefixer";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
-import transformerDirectives from '@unocss/transformer-directives'
+import transformerDirectives from '@unocss/transformer-directives';
 import { VitePWA } from 'vite-plugin-pwa';
 import UnoCSS from 'unocss/vite';
 // import vueDevTools from 'vite-plugin-vue-devtools'
@@ -15,9 +15,27 @@ export default defineConfig({
   plugins: [
     vue(),
     UnoCSS({
+      shortcuts: {
+        'b-base': 'border-gray-200 dark:border-dark-100',
+        'b-dark-only': 'border-transparent dark:border-dark-100',
+        'bg-base': 'bg-white dark:bg-[#181818]',
+        'c-base': 'text-gray-900 dark:text-gray-300',
+        'c-fade': 'text-gray-900:50 dark:text-gray-300:50',
+        'i-btn': 'op60 hover:op100',
+      },
       theme: {
         colors: {
-          'dark': '#121212',
+          dark: {
+            100: '#222',
+            200: '#333',
+            300: '#444',
+            400: '#555',
+            500: '#666',
+            600: '#777',
+            700: '#888',
+            800: '#999',
+            900: '#aaa',
+          }
         }
       },
       transformers: [transformerDirectives()]

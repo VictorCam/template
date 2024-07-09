@@ -23,7 +23,10 @@ const showHide = (value) => {
       <button class="btn" @click="store.increment">Increment</button>
       <button class="btn" @click="utils.addItem(toasts, { message: 'test4', type: 'success' })">Make Toast</button>
       <button class=btn @click="showHide('modal')">Show modal</button>
+      <input type="text" placeholder="test" />
     </div>
+    
+    <div class="i-logos-vue text-3xl"></div>
 
     <div class="p2">
       <p>count: {{ store.count }}</p>
@@ -39,10 +42,8 @@ const showHide = (value) => {
     <!-- Modal -->
     <Transition name="fade">
       <div v-if="modal === 'modal'" class="center fixed overflow-hidden wfit z-9999" @click="showHide">
-        <div class=".dark:bg-dark bg-white b b-solid mxauto rd-3" @click="$event.stopPropagation()">
-          <button class="absolute right-0 top-0 pr2" @click="showHide()">
-            <div class="close svg-c py1"></div>
-          </button>
+        <div class="dark:bg-dark-300 bg-white mxauto rd-3" @click="$event.stopPropagation()">
+          <button class="absolute right-0 top-0 pr2 close svg-c m1 i-btn" @click="showHide()"></button>
           <div class="text-center p7">
             <p>Lorem</p>
           </div>
