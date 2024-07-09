@@ -1,13 +1,14 @@
 html,
 body,
 #app {
-  --uno: bg-light .dark:bg-dark h100% m0 p0;
+  --uno: h100% m0 p0;
   font-family: Arial, Helvetica, sans-serif;
   touch-action: pan-x pan-y;
   -webkit-font-smoothing: antialiased;
 }
 
 html.dark {
+  background: #181818;
   color-scheme: dark;
 }
 
