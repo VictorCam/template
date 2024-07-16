@@ -4,7 +4,7 @@
   "version": "0.2.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview --host",
     "up": "npx taze major -I",
@@ -21,7 +21,6 @@
     "vue-router": "^4.4.0"
   },
   "devDependencies": {
-    "@unocss/transformer-directives": "^0.61.3",
     "@vitejs/plugin-vue": "^5.0.5",
     "autoprefixer": "^10.4.19",
     "unocss": "^0.61.3",

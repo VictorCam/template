@@ -3,18 +3,18 @@ import { useCounterStore, useToastStore } from "../store";
 import { ref, onMounted } from "vue";
 import utils from '../utils';
 import { useScrollLock, useToggle } from '@vueuse/core'
-const store = useCounterStore();
-const toastStore = useToastStore();
+const store = useCounterStore()
+const toastStore = useToastStore()
 let toasts = toastStore.toasts;
 
-let isLocked = useScrollLock(document.body);
+let isLocked = useScrollLock(document.body)
 let toggleLock = useToggle(isLocked)
 let modal = ref(null)
 
 const showHide = (value) => {
   modal.value != value ? modal.value = value : modal.value = null;
   toggleLock()
-};
+}
 </script>
 
 <template>

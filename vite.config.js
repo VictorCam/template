@@ -4,9 +4,9 @@ import webfontDownload from "vite-plugin-webfont-dl";
 import autoPrefixer from "autoprefixer";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
-import transformerDirectives from '@unocss/transformer-directives';
 import { VitePWA } from 'vite-plugin-pwa';
 import UnoCSS from 'unocss/vite';
+import { transformerDirectives } from 'unocss'
 // import vueDevTools from 'vite-plugin-vue-devtools'
 
 
@@ -46,7 +46,7 @@ export default defineConfig({
       manifest: {
         name: 'VictorCam Template',
         short_name: 'VC Template',
-        theme_color: '#ffffff',
+        theme_color: '#000',
         icons: [
           {
             src: '/pwa-192x192.png',
