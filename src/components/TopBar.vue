@@ -74,15 +74,15 @@ const toggleSidebar = () => {
             class="<sm:hidden absolute top-10 rd-3 flex gap2 p4 bg-light-900 dark:bg-dark-300">
             <ul class="flex gap2 flex-col">
               <li v-for="lang in availableLocales" role="button" @click="setLocale(lang)"
-                class="flex items-center cursor-pointer">{{ languageCode[lang] }} <span
-                  class="svg-c right-arrow" aria-hidden="true"></span></li>
+                class="flex items-center cursor-pointer">{{ languageCode[lang] }} <span class="svg-c right-arrow"
+                  aria-hidden="true"></span></li>
             </ul>
           </div>
         </Transition>
       </div>
       <button @click="toggleDark()" class="svg-c i-btn p3" :class="currIconTheme" :aria-pressed="isDark"></button>
-      <button ref="hamburgerElement" @click="toggleSidebar()" class="sm:hidden svg-c i-btn p3"
-        :class="currentIcon" :aria-pressed="isNavVisible">
+      <button ref="hamburgerElement" @click="toggleSidebar()" class="sm:hidden svg-c i-btn p3" :class="currentIcon"
+        :aria-pressed="isNavVisible">
       </button>
       <nav class="<sm:hidden p1">
         <ul class="flex flex-row gap3 m0">
@@ -93,8 +93,7 @@ const toggleSidebar = () => {
           </li>
         </ul>
       </nav>
-      <nav v-if="isNavVisible" ref="navElement"
-        class="sm:hidden bg-base fixed z99 bottom-0 top-12 left-0 right-0 pt5">
+      <nav v-if="isNavVisible" ref="navElement" class="sm:hidden bg-base fixed z99 bottom-0 top-12 left-0 right-0 pt5">
         <ul class="flex gap3 flex-col">
           <li v-for="link in links">
             <div class="grid justify-items-center m1">

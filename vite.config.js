@@ -46,7 +46,6 @@ export default defineConfig({
       manifest: {
         name: 'VictorCam Template',
         short_name: 'VC Template',
-        theme_color: '#000',
         icons: [
           {
             src: '/pwa-192x192.png',
