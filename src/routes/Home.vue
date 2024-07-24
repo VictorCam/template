@@ -1,6 +1,6 @@
 <script setup>
 import { useCounterStore, useToastStore } from "../store";
-import { ref, onMounted } from "vue";
+import { ref, onMounted, reactive } from "vue";
 import utils from '../utils';
 import { useScrollLock, useToggle } from '@vueuse/core'
 const store = useCounterStore()
@@ -18,16 +18,12 @@ const showHide = (value) => {
 </script>
 
 <template>
-  <div>
+  <div class="absolute">
     <div class="flex flex-wrap items-center gap2.5 p2">
       <button class="btn" @click="store.increment">Increment</button>
       <button class="btn" @click="utils.addItem(toasts, { message: 'test4', type: 'success' })">Make Toast</button>
       <button class=btn @click="showHide('modal')">Show modal</button>
-      <input type="text" placeholder="test" />
     </div>
-    
-    <div class="i-logos-vue text-3xl"></div>
-
     <div class="p2">
       <p>count: {{ store.count }}</p>
       <p>Double Count: {{ store.doubleCount }}</p>

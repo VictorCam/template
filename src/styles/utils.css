@@ -7,7 +7,11 @@
 }
 
 .btn {
-  --uno: py-1 rd-1 dark:bg-dark-400 bg-light-900 hover:bg-light-700 dark:hover:bg-dark-500 transition ease-in-out duration-200;
+  --uno: bg-transparent b-1px b-solid b-black dark:b-light hover:bg-dark-500/20% c-black dark:c-light rd-1 py-1 transition ease-in;
+}
+
+.input {
+  --uno: rd-2 decoration-none b-none shadow-md shadow;
 }
 
 .stack>* {

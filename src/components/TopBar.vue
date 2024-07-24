@@ -14,14 +14,17 @@ let links = [
   {
     name: "Home",
     href: "/",
+    class: 'svg-c i-btn home p0.5'
   },
   {
     name: "Page",
     href: "/page",
+    class: 'svg-c i-btn page p0.5'
   },
   {
     name: "404",
     href: "/404",
+    class: 'svg-c i-btn fourofour p1.5'
   }
 ];
 
@@ -63,12 +66,11 @@ const toggleSidebar = () => {
 </script>
 
 <template>
-  <header class="shadow shadow-md dark:shadow-black/50 relative z1">
-    <div class="sm:mx3 flex items-center gap2 p3 h6">
+  <header class="shadow shadow-md dark:shadow-black/50 z1">
+    <div class="sm:mx3 flex items-center gap3 p3 h6">
       <div class="svg-c tmp p2 spin"></div>
       <h1 class="mr-auto text-5">{{ $t("temp") }}</h1>
       <div class="relative">
-        <button ref="LangElement" :aria-expanded="isLangHovered" class="svg-c i-btn <sm:hidden translate p3"></button>
         <Transition name="fade">
           <div v-if="isLangHovered || isDropdownHovered" ref="DropdownElement"
             class="<sm:hidden absolute top-10 rd-3 flex gap2 p4 bg-light-900 dark:bg-dark-300">
@@ -80,18 +82,10 @@ const toggleSidebar = () => {
           </div>
         </Transition>
       </div>
-      <button @click="toggleDark()" class="svg-c i-btn p3" :class="currIconTheme" :aria-pressed="isDark"></button>
-      <button ref="hamburgerElement" @click="toggleSidebar()" class="sm:hidden svg-c i-btn p3" :class="currentIcon"
-        :aria-pressed="isNavVisible">
-      </button>
-      <nav class="<sm:hidden p1">
-        <ul class="flex flex-row gap3 m0">
-          <li v-for=" link in links">
-            <router-link @click="toggleSidebar()" :to="link.href">
-              <span>{{ link.name }}</span>
-            </router-link>
-          </li>
-        </ul>
+      <nav class="flex gap2 items-center">
+        <button @click="toggleDark()" class="svg-c i-btn p3.5" :class="currIconTheme" :aria-pressed="isDark"></button>
+        <button ref="LangElement" :aria-expanded="isLangHovered" class="svg-c i-btn translate p3"></button>
+        <router-link :to="link.href" :class="link.class" v-for="link in links"></router-link>
       </nav>
       <nav v-if="isNavVisible" ref="navElement" class="sm:hidden bg-base fixed z99 bottom-0 top-12 left-0 right-0 pt5">
         <ul class="flex gap3 flex-col">

@@ -7,6 +7,7 @@ import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import { VitePWA } from 'vite-plugin-pwa';
 import UnoCSS from 'unocss/vite';
 import { transformerDirectives } from 'unocss'
+// import { presetIcons } from 'unocss'
 // import vueDevTools from 'vite-plugin-vue-devtools'
 
 
@@ -16,12 +17,8 @@ export default defineConfig({
     vue(),
     UnoCSS({
       shortcuts: {
-        'b-base': 'border-gray-200 dark:border-dark-100',
-        'b-dark-only': 'border-transparent dark:border-dark-100',
         'bg-base': 'bg-white dark:bg-[#181818]',
-        'c-base': 'text-gray-900 dark:text-gray-300',
-        'c-fade': 'text-gray-900:50 dark:text-gray-300:50',
-        'i-btn': 'op60 hover:op100',
+        'i-btn': 'op60 hover:op100 transition ease-out',
       },
       theme: {
         colors: {
@@ -38,7 +35,7 @@ export default defineConfig({
           }
         }
       },
-      transformers: [transformerDirectives()]
+      transformers: [transformerDirectives()],
     }),
     VitePWA({
       registerType: 'autoUpdate',
@@ -46,6 +43,7 @@ export default defineConfig({
       manifest: {
         name: 'VictorCam Template',
         short_name: 'VC Template',
+        theme_color: '#000',
         icons: [
           {
             src: '/pwa-192x192.png',

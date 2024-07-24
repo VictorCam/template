@@ -2,5 +2,7 @@
 </script>
 
 <template>
-  <h1 class="center text-nowrap">Page</h1>
+  <div class="absolute">
+    <Inputs />
+  </div>
 </template>
