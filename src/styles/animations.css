@@ -1,34 +1,8 @@
-/* spin animation */
-.spin {
-  animation: spin 10s linear infinite;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .fade-enter-active {
-  animation: fade 175ms;
+  --uno: animate-fade-in animate-duration-175ms;
 }
-
 .fade-leave-active {
-  animation: fade 175ms reverse;
-}
-
-@keyframes fade {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
+  --uno: animate-fade-in animate-duration-175ms animate-reverse;
 }
 
 .list-move,

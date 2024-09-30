@@ -14,17 +14,17 @@ let links = [
   {
     name: "Home",
     href: "/",
-    class: 'svg-c i-btn home p0.5'
+    class: 'i-ic-outline-home i-btn p2.5'
   },
   {
     name: "Page",
     href: "/page",
-    class: 'svg-c i-btn page p0.5'
+    class: 'i-btn i-ic-outline-newspaper p2'
   },
   {
     name: "404",
     href: "/404",
-    class: 'svg-c i-btn fourofour p1.5'
+    class: 'i-btn i-ic-outline-rounded-corner p2'
   }
 ];
 
@@ -43,8 +43,8 @@ let toggleDark = useToggle(isDark)
 let toggleLock = useToggle(isLocked)
 let toggleNavVisible = useToggle(isNavVisible)
 
-let currIconTheme = computed(() => isDark.value ? 'moon' : 'sun');
-let currentIcon = computed(() => isNavVisible.value ? 'close' : 'burger');
+let currIconTheme = computed(() => isDark.value ? 'i-ic-outline-dark-mode bg-white' : 'i-ic-outline-wb-sunny bg-dark');
+let currentIcon = computed(() => isNavVisible.value ? 'i-material-symbols-close' : 'i-ci-hamburger');
 
 useIntersectionObserver(hamburgerElement, ([{ isIntersecting }]) => {
   if (isIntersecting) return
@@ -68,7 +68,7 @@ const toggleSidebar = () => {
 <template>
   <header class="shadow shadow-md dark:shadow-black/50 z1">
     <div class="sm:mx3 flex items-center gap3 p3 h6">
-      <div class="svg-c tmp p2 spin"></div>
+      <div class="i-logos-vue p2 animate-spin animate-duration-5s"></div>
       <h1 class="mr-auto text-5">{{ $t("temp") }}</h1>
       <div class="relative">
         <Transition name="fade">
@@ -76,15 +76,15 @@ const toggleSidebar = () => {
             class="<sm:hidden absolute top-10 rd-3 flex gap2 p4 bg-light-900 dark:bg-dark-300">
             <ul class="flex gap2 flex-col">
               <li v-for="lang in availableLocales" role="button" @click="setLocale(lang)"
-                class="flex items-center cursor-pointer">{{ languageCode[lang] }} <span class="svg-c right-arrow"
+                class="flex items-center cursor-pointer">{{ languageCode[lang] }} <span class="i-ic-baseline-keyboard-arrow-right"
                   aria-hidden="true"></span></li>
             </ul>
           </div>
         </Transition>
       </div>
       <nav class="flex gap2 items-center">
-        <button @click="toggleDark()" class="svg-c i-btn p3.5" :class="currIconTheme" :aria-pressed="isDark"></button>
-        <button ref="LangElement" :aria-expanded="isLangHovered" class="svg-c i-btn translate p3"></button>
+        <button @click="toggleDark()" class="i-btn p4" :class="currIconTheme" :aria-pressed="isDark"></button>
+        <button ref="LangElement" :aria-expanded="isLangHovered" class="i-btn i-ic-outline-translate p3.5"></button>
         <router-link :to="link.href" :class="link.class" v-for="link in links"></router-link>
       </nav>
       <nav v-if="isNavVisible" ref="navElement" class="sm:hidden bg-base fixed z99 bottom-0 top-12 left-0 right-0 pt5">
@@ -102,12 +102,12 @@ const toggleSidebar = () => {
         </ul>
         <div class="dark:bg-dark-300 bg-light-900 mx-auto w-fit flex flex-col gap5 mt-5 p5 rd-3">
           <p class="flex gap2 c-dark-500 dark:c-dark-900">Translations
-          <div class="svg-c translate"></div>
+          <div class="i-ic-outline-translate"></div>
           </p>
           <div class="cursor-pointer" v-for="lang in availableLocales" role="button"
             @click="setLocale(lang); toggleSidebar()">
             <span class="flex items-center">
-              {{ languageCode[lang] }} <div class="svg-c right-arrow" aria-hidden="true">
+              {{ languageCode[lang] }} <div class="i-ic-baseline-keyboard-arrow-right" aria-hidden="true">
               </div>
             </span>
           </div>

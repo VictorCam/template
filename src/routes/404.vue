@@ -2,5 +2,5 @@
 </script>
 
 <template>
-  <div class="center svg-c fourofour p20"></div>
+  <div class="center i-ic-outline-rounded-corner p20"></div>
 </template>

@@ -6,10 +6,8 @@ import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import { VitePWA } from 'vite-plugin-pwa';
 import UnoCSS from 'unocss/vite';
-import { transformerDirectives } from 'unocss'
-// import { presetIcons } from 'unocss'
+import { presetIcons, presetUno, transformerDirectives } from 'unocss'
 // import vueDevTools from 'vite-plugin-vue-devtools'
-
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -20,6 +18,10 @@ export default defineConfig({
         'bg-base': 'bg-white dark:bg-[#181818]',
         'i-btn': 'op60 hover:op100 transition ease-out',
       },
+      presets: [
+        presetIcons(),
+        presetUno()
+      ],
       theme: {
         colors: {
           dark: {

@@ -11,22 +11,23 @@
     "size": "npx vite-bundle-visualizer"
   },
   "dependencies": {
-    "@vueuse/core": "^10.11.0",
+    "@vueuse/core": "^11.1.0",
     "js-cookie": "^3.0.5",
     "normalize.css": "^8.0.1",
     "reset-css": "^5.0.2",
-    "valibot": "^0.36.0",
-    "vue": "^3.4.31",
-    "vue-i18n": "^9.13.1",
-    "vue-router": "^4.4.0"
+    "valibot": "^0.42.1",
+    "vue": "^3.5.10",
+    "vue-i18n": "^9.14.1",
+    "vue-router": "^4.4.5"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.0.5",
-    "autoprefixer": "^10.4.19",
-    "unocss": "^0.61.3",
-    "unplugin-vue-components": "^0.27.2",
-    "vite": "^5.3.3",
-    "vite-plugin-pwa": "^0.20.0",
-    "vite-plugin-webfont-dl": "^3.9.4"
+    "@iconify/json": "^2.2.254",
+    "@vitejs/plugin-vue": "^5.1.4",
+    "autoprefixer": "^10.4.20",
+    "unocss": "^0.63.1",
+    "unplugin-vue-components": "^0.27.4",
+    "vite": "^5.4.8",
+    "vite-plugin-pwa": "^0.20.5",
+    "vite-plugin-webfont-dl": "^3.9.5"
   }
 }
