@@ -7,7 +7,6 @@ import 'virtual:uno.css';
 import "normalize.css";
 import "reset-css";
 import "./styles/utils.css";
-import "./styles/icons.css";
 import "./styles/animations.css";
 import "./styles/main.css";
 
