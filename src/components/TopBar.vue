@@ -14,17 +14,17 @@ let links = [
   {
     name: "Home",
     href: "/",
-    class: 'i-ic-outline-home i-btn p2.5'
+    class: 'i-ic-outline-home'
   },
   {
     name: "Page",
     href: "/page",
-    class: 'i-btn i-ic-outline-newspaper p2'
+    class: 'i-ic-outline-newspaper'
   },
   {
     name: "404",
     href: "/404",
-    class: 'i-btn i-ic-outline-rounded-corner p2'
+    class: 'i-ic-outline-rounded-corner'
   }
 ];
 
@@ -66,52 +66,35 @@ const toggleSidebar = () => {
 </script>
 
 <template>
-  <header class="shadow shadow-md dark:shadow-black/50 z1">
+  <header class="b-b b-solid b-gray/80% z1">
     <div class="sm:mx3 flex items-center gap3 p3 h6">
-      <div class="i-logos-vue p2 animate-spin animate-duration-5s"></div>
-      <h1 class="mr-auto text-5">{{ $t("temp") }}</h1>
+      <div class="i-logos-vue p1 animate-rubber-band animate-iteration-infinite animate-duration-1s"></div>
+      <h1 class="mr-auto text-5 font-bold">{{ $t("temp") }}</h1>
       <div class="relative">
         <Transition name="fade">
           <div v-if="isLangHovered || isDropdownHovered" ref="DropdownElement"
             class="<sm:hidden absolute top-10 rd-3 flex gap2 p4 bg-light-900 dark:bg-dark-300">
             <ul class="flex gap2 flex-col">
               <li v-for="lang in availableLocales" role="button" @click="setLocale(lang)"
-                class="flex items-center cursor-pointer">{{ languageCode[lang] }} <span class="i-ic-baseline-keyboard-arrow-right"
-                  aria-hidden="true"></span></li>
+                class="flex items-center cursor-pointer">{{ languageCode[lang] }} <span
+                  class="i-ic-baseline-keyboard-arrow-right" aria-hidden="true"></span></li>
             </ul>
           </div>
         </Transition>
       </div>
-      <nav class="flex gap2 items-center">
-        <button @click="toggleDark()" class="i-btn p4" :class="currIconTheme" :aria-pressed="isDark"></button>
-        <button ref="LangElement" :aria-expanded="isLangHovered" class="i-btn i-ic-outline-translate p3.5"></button>
-        <router-link :to="link.href" :class="link.class" v-for="link in links"></router-link>
-      </nav>
-      <nav v-if="isNavVisible" ref="navElement" class="sm:hidden bg-base fixed z99 bottom-0 top-12 left-0 right-0 pt5">
-        <ul class="flex gap3 flex-col">
-          <li v-for="link in links">
-            <div class="grid justify-items-center m1">
-              <div class="flex gap2">
-                <div class="svg-c tmp link-icons sm:hidden"></div>
-                <router-link @click="toggleSidebar()" :to="link.href">
-                  <span>{{ link.name }}</span>
-                </router-link>
-              </div>
-            </div>
-          </li>
-        </ul>
-        <div class="dark:bg-dark-300 bg-light-900 mx-auto w-fit flex flex-col gap5 mt-5 p5 rd-3">
-          <p class="flex gap2 c-dark-500 dark:c-dark-900">Translations
-          <div class="i-ic-outline-translate"></div>
-          </p>
-          <div class="cursor-pointer" v-for="lang in availableLocales" role="button"
-            @click="setLocale(lang); toggleSidebar()">
-            <span class="flex items-center">
-              {{ languageCode[lang] }} <div class="i-ic-baseline-keyboard-arrow-right" aria-hidden="true">
-              </div>
-            </span>
-          </div>
-        </div>
+      <nav
+        class="<sm:(bg-none mb-8 bg-base-100 mx-auto fixed gap5) w-fit p2 rd-3 bottom-0 left-0 right-0 flex gap2 items-center justify-center z-50">
+        <button @click="toggleDark()" class="btn" :aria-pressed="isDark">
+          <div class="p1" :class="currIconTheme"></div>
+        </button>
+        <button ref="LangElement" class="btn" :aria-expanded="isLangHovered">
+          <div class="i-ic-outline-translate p1"></div>
+        </button>
+        <router-link :to="link.href" v-for="link in links">
+          <button class="btn">
+            <div :class="link.class" class="p1"></div>
+          </button>
+        </router-link>
       </nav>
     </div>
   </header>

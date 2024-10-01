@@ -8,12 +8,8 @@ body,
 }
 
 html.dark {
-  background: #181818;
+  background: #080808;
   color-scheme: dark;
-}
-
-button {
-  --uno: b-none cursor-pointer;
 }
 
 /* disable this to remove the animations */
@@ -25,4 +21,11 @@ button {
     transition: none !important;
     animation: none !important;
   } */
+}
+
+.stack {
+  display: grid;
+}
+.stack>* {
+  grid-area: 1/1;
 }
