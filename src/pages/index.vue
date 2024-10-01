@@ -22,7 +22,7 @@ const showHide = (value) => {
   <div class="absolute">
     <div class="flex flex-wrap items-center gap2.5 p2">
       <button class="btn" @click="store.increment">Increment</button>
-      <button class="btn" @click="utils.addItem(toasts, { message: 'test4', type: 'success' })">Make Toast</button>
+      <button class="btn" @click="utils.addItem(toasts, { id: toasts.length+1, message:'new toast', type: 'success' })">Make Toast</button>
       <button class=btn @click="showHide('modal')">Show modal</button>
     </div>
     <div class="p2">
@@ -42,11 +42,17 @@ const showHide = (value) => {
     <div  v-if="modal === 'modal'" class="center fixed overflow-hidden w-fit z-9999" @click="showHide">
       <div class="bg-base-100 mx-auto rd-3" @click.stop>
         <button class="absolute right-0 top-0 pr-2 i-material-symbols-close m-1 i-btn" @click="showHide"></button>
-        <div class="text-center p-7">
+        <div class="text-center p7">
           <p>Lorem</p>
         </div>
       </div>
     </div>
   </Transition>
+  <Transition name="fade">
+    <div v-if="modal === 'modal'">
+      <div class="fixed bg-dark/50 inset-0 w-full h-full"></div>
+    </div>
+  </Transition>
+
   </div>
 </template>

@@ -29,7 +29,6 @@ let links = [
 ];
 
 let hamburgerElement = ref(null);
-let navElement = ref(null);
 let LangElement = ref(false);
 let DropdownElement = ref(false);
 
@@ -40,11 +39,8 @@ let isLangHovered = useElementHover(LangElement, { delayLeave: 500 })
 let isDropdownHovered = useElementHover(DropdownElement)
 
 let toggleDark = useToggle(isDark)
-let toggleLock = useToggle(isLocked)
-let toggleNavVisible = useToggle(isNavVisible)
 
 let currIconTheme = computed(() => isDark.value ? 'i-ic-outline-dark-mode bg-white' : 'i-ic-outline-wb-sunny bg-dark');
-let currentIcon = computed(() => isNavVisible.value ? 'i-material-symbols-close' : 'i-ci-hamburger');
 
 useIntersectionObserver(hamburgerElement, ([{ isIntersecting }]) => {
   if (isIntersecting) return
@@ -57,11 +53,6 @@ locale.value = localStorage.getItem('locale') || 'en'
 const setLocale = (lang) => {
   locale.value = lang
   localStorage.setItem('locale', lang)
-}
-
-const toggleSidebar = () => {
-  toggleNavVisible()
-  toggleLock()
 }
 </script>
 

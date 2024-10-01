@@ -6,6 +6,7 @@ import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import { VitePWA } from 'vite-plugin-pwa';
 import UnoCSS from 'unocss/vite';
+import VueRouter from 'unplugin-vue-router/vite';
 import { presetIcons, presetUno, transformerDirectives, transformerVariantGroup } from 'unocss'
 // import vueDevTools from 'vite-plugin-vue-devtools'
 
@@ -13,13 +14,14 @@ import { presetIcons, presetUno, transformerDirectives, transformerVariantGroup 
 export default defineConfig({
   plugins: [
     vue(),
+    VueRouter(),
     UnoCSS({
       shortcuts: {
         'bg-base': 'bg-white dark:bg-[#080808]',
         'bg-base-100': 'dark:bg-dark:100 bg-light-900',
         'i-btn': 'op60 hover:op100 transition ease-out cursor-pointer',
         'center': 'fixed -translate-x-50% -translate-y-50% left-50% top-50%',
-        'btn': 'cursor-pointer dark:bg-dark-100 b-1px b-solid b-black dark:b-light hover:bg-dark-500/20% c-black dark:c-light rd-1 py-1 transition ease-in',
+        'btn': 'cursor-pointer dark:bg-dark-100 b-1px b-solid dark:b-light/10% dark:b-light hover:bg-dark-500/20% c-black dark:c-light rd-1 py-1 transition ease-in',
         'input': 'rd-2 decoration-none b-none shadow-md shadow'
       },
       presets: [

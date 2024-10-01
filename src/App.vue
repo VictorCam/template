@@ -5,7 +5,7 @@ import { RouterView } from "vue-router";
 <template>
   <TopBar />
   <RouterView v-slot="{ Component, route }">
-    <Transition :name="route.meta.transition || 'bonuce'">
+    <Transition :name="route.meta.transition || 'fade'">
       <component :is="Component" />
     </Transition>
   </RouterView>

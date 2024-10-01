@@ -15,13 +15,13 @@ export const useToastStore = createGlobalState(() => {
     {
       id: 1,
       message: "test1",
-      type: "success",
+      color: "success",
     },
     {
       id: 2,
       message: "test2",
-      type: "error",
-    },
+      color: "danger",
+    }
   ]);
   return { toasts };
 })
