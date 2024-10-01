@@ -1,11 +1,12 @@
 <script setup>
 import { useCounterStore, useToastStore } from "../store";
-import { ref, onMounted, reactive } from "vue";
+import { ref } from "vue";
 import utils from '../utils';
 import { useScrollLock, useToggle } from '@vueuse/core'
+
 const store = useCounterStore()
 const toastStore = useToastStore()
-let toasts = toastStore.toasts;
+let toasts = toastStore.toasts
 
 let isLocked = useScrollLock(document.body)
 let toggleLock = useToggle(isLocked)
@@ -32,22 +33,20 @@ const showHide = (value) => {
     <!-- Toasts -->
     <div class="flex z3 flex-col fixed m2.5 left-0 bottom-0 flex-grow-1">
       <TransitionGroup name="list" tag="Toast">
-        <Toast v-for="toast in toasts" :key="toast.id" :id="toast.id" :message="toast.message" :type="toast.type" />
+        <Toast v-for="toast in toasts" :key="toast.id" v-bind="toast" />
       </TransitionGroup>
     </div>
+
     <!-- Modal -->
     <Transition name="fade">
-      <div v-if="modal === 'modal'" class="center fixed overflow-hidden wfit z-9999" @click="showHide">
-        <div class="dark:bg-dark-300 bg-white mxauto rd-3" @click="$event.stopPropagation()">
-          <button class="absolute right-0 top-0 pr2 i-material-symbols-close m1 i-btn" @click="showHide()"></button>
-          <div class="text-center p7">
-            <p>Lorem</p>
-          </div>
+    <div  v-if="modal === 'modal'" class="center fixed overflow-hidden w-fit z-9999" @click="showHide">
+      <div class="bg-base-100 mx-auto rd-3" @click.stop>
+        <button class="absolute right-0 top-0 pr-2 i-material-symbols-close m-1 i-btn" @click="showHide"></button>
+        <div class="text-center p-7">
+          <p>Lorem</p>
         </div>
       </div>
-    </Transition>
-    <Transition name="fade">
-      <div v-if="modal === 'modal'" class="fixed bg-black/80 z-10 inset-0 w100vw h100vh"></div>
-    </Transition>
+    </div>
+  </Transition>
   </div>
 </template>

@@ -1,6 +1,7 @@
 .fade-enter-active {
   --uno: animate-fade-in animate-duration-175ms;
 }
+
 .fade-leave-active {
   --uno: animate-fade-in animate-duration-175ms animate-reverse;
 }

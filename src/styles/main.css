@@ -26,6 +26,7 @@ html.dark {
 .stack {
   display: grid;
 }
+
 .stack>* {
   grid-area: 1/1;
 }

@@ -17,7 +17,7 @@ const hideToast = async (id) => {
 </script>
 
 <template>
-    <div class="relative bg-light-900 dark:bg-dark-300 wfit h15 flex items-center mb2 p1 rd-3 ">
+    <div class="relative bg-base-100 wfit h15 flex items-center mb2 p1 rd-3 ">
         <button class="absolute m1 right-0 top-0 i-material-symbols-close i-btn" @click="hideToast(id)"></button>
         <p class="pl5 pr5">{{ message }}</p>
     </div>
