@@ -1,58 +1,36 @@
 <script setup>
-import { useCounterStore, useToastStore } from "../store";
-import { ref } from "vue";
+import { useCounterStore, useUserStore } from "../store";
 import utils from '../utils';
-import { useScrollLock, useToggle } from '@vueuse/core'
+import placeHolder from '../assets/placeholder.svg'
 
-const store = useCounterStore()
-const toastStore = useToastStore()
-let toasts = toastStore.toasts
+import {useDateFormat} from '@vueuse/core'
 
-let isLocked = useScrollLock(document.body)
-let toggleLock = useToggle(isLocked)
-let modal = ref(null)
-
-const showHide = (value) => {
-  modal.value != value ? modal.value = value : modal.value = null;
-  toggleLock()
-}
+const { increment, doubleCount, count } = useCounterStore()
+let { users, isLoadingUsers, errorUsers } = useUserStore()
 </script>
 
 <template>
   <div class="absolute">
     <div class="flex flex-wrap items-center gap2.5 p2">
-      <button class="btn" @click="store.increment">Increment</button>
-      <button class="btn" @click="utils.addItem(toasts, { id: toasts.length+1, message:'new toast', type: 'success' })">Make Toast</button>
-      <button class=btn @click="showHide('modal')">Show modal</button>
+      <button class="btn" @click="increment">Increment</button>
     </div>
     <div class="p2">
-      <p>count: {{ store.count }}</p>
-      <p>Double Count: {{ store.doubleCount }}</p>
+      <p>count: {{ count }}</p>
+      <p>Double Count: {{ doubleCount }}</p>
     </div>
 
-    <!-- Toasts -->
-    <div class="flex z3 flex-col fixed m2.5 left-0 bottom-0 flex-grow-1">
-      <TransitionGroup name="list" tag="Toast">
-        <Toast v-for="toast in toasts" :key="toast.id" v-bind="toast" />
-      </TransitionGroup>
+    <!-- User Template -->
+    <div v-if="isLoadingUsers" class="p3 flex flex-wrap gap3 mt3">
+      <div v-for="i in 10" class="animate-pulse bg-base-100 aspect-square w30 p2 rd-3"></div>
     </div>
-
-    <!-- Modal -->
-    <Transition name="fade">
-    <div  v-if="modal === 'modal'" class="center fixed overflow-hidden w-fit z-9999" @click="showHide">
-      <div class="bg-base-100 mx-auto rd-3" @click.stop>
-        <button class="absolute right-0 top-0 pr-2 i-material-symbols-close m-1 i-btn" @click="showHide"></button>
-        <div class="text-center p7">
-          <p>Lorem</p>
-        </div>
+    <!-- User Profiles -->
+    <div class="p2 flex flex-wrap gap3 justify-start mt3" >
+      <div class="rd-2 p2 flex flex-col justify-center bg-base-100" v-for="users in users.items" :id="users.id">
+          <img @error="utils.handleImgError($event, placeHolder)" class="rd-2 aspect-square w30 rd-2" :src="utils.getImg(users.collectionId, users.id, users.avatar)" alt="test" />
+          <p class="font-bold pb2">{{ users.username }}</p>
+          <p>Joined: {{ useDateFormat(users.createdAt, 'MMM DD YYYY') }}</p>
       </div>
     </div>
-  </Transition>
-  <Transition name="fade">
-    <div v-if="modal === 'modal'">
-      <div class="fixed bg-dark/50 inset-0 w-full h-full"></div>
-    </div>
-  </Transition>
-
+    
   </div>
 </template>

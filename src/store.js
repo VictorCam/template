@@ -1,5 +1,7 @@
 import { computed, ref } from "vue";
-import { createGlobalState } from '@vueuse/core'
+import { createGlobalState, useAsyncState } from '@vueuse/core'
+import pocketBase from 'pocketbase';
+const pb = new pocketBase(import.meta.env.VITE_API_URL);
 
 export const useCounterStore = createGlobalState(() => {
   const count = ref(0);
@@ -10,42 +12,9 @@ export const useCounterStore = createGlobalState(() => {
   return { count, doubleCount, increment };
 });
 
-export const useToastStore = createGlobalState(() => {
-  const toasts = ref([
-    {
-      id: 1,
-      message: "test1",
-      color: "success",
-    },
-    {
-      id: 2,
-      message: "test2",
-      color: "danger",
-    }
-  ]);
-  return { toasts };
-})
+export const useUserStore = createGlobalState(() => {
+  const fetchUsers = async () => await pb.collection('users').getList(1, 50);
+  const { state: users, isLoading: isLoadingUsers, error: errorUsers } = useAsyncState(fetchUsers, []);
 
-export const authStore = createGlobalState(() => {
-  const loggedIn = ref(false);
-  const token = ref(null);
-
-  function login() {
-    loggedIn.value = true;
-    token.value = Math.random().toString(36).slice(2);
-  }
-
-  function logout() {
-    loggedIn.value = false;
-    token.value = null;
-  }
-  return { loggedIn, token, login, logout };
-})
-
-// export const useThemeStore = defineStore("theme", () => {
-//   const theme = ref("light");
-//   const toggleTheme = () => {
-//     theme.value = theme.value === "light" ? "dark" : "light";
-//   };
-//   return { theme, toggleTheme };
-// })
+  return { users, isLoadingUsers, errorUsers, fetchUsers };
+});

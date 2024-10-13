@@ -5,3 +5,17 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 ## Recommended IDE Setup
 
 - [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+
+## Setup
+
+In the root directory make sure the setup the files and variables.
+
+### .env.development.local
+```
+VITE_API_URL=https://ferret.pockethost.io
+```
+
+### .env.production.local
+```
+VITE_API_URL=https://ferret.pockethost.io
+```

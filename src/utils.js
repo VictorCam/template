@@ -1,3 +1,4 @@
+
 const getLastJsonId = (ref) => {
   return ref.length !== 0 ? parseInt(ref[ref.length - 1].id, 10) : 0;
 }
@@ -14,9 +15,20 @@ const removeItemById = (ref, id) => {
   }
 };
 
+const getImg = (collectionName, id, imgName) => {
+  let baseURL = 'https://ferret.pockethost.io/api/files/';
+  return baseURL + collectionName + '/' + id + '/' + imgName
+}
+
+function handleImgError(event, placeHolder) {
+  event.target.src = placeHolder;
+}
+
 const utils = {
   addItem,
-  removeItemById
+  removeItemById,
+  getImg,
+  handleImgError
 };
 
 export default utils;

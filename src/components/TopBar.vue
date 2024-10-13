@@ -22,9 +22,14 @@ let links = [
     class: 'i-ic-outline-newspaper'
   },
   {
-    name: "404",
-    href: "/404",
-    class: 'i-ic-outline-rounded-corner'
+    name: "Signup",
+    href: "/signup",
+    class: 'i-ic-outline-person-add'
+  },
+  {
+    name: "Login",
+    href: "/login",
+    class: 'i-ic-outline-person'
   }
 ];
 
@@ -57,7 +62,7 @@ const setLocale = (lang) => {
 </script>
 
 <template>
-  <header class="b-b b-solid b-gray/80% z1">
+  <header class="z1 b-b b-solid dark:b-dark-200 b-light-900">
     <div class="sm:mx3 flex items-center gap3 p3 h6">
       <div class="i-logos-vue p1 animate-rubber-band animate-iteration-infinite animate-duration-1s"></div>
       <h1 class="mr-auto text-5 font-bold">{{ $t("temp") }}</h1>

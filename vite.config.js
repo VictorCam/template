@@ -86,4 +86,7 @@ export default defineConfig({
   server: {
     port: 2020,
   },
+  define: {
+    __APP_ENV__: JSON.stringify(process.env.VITE_KEY)
+  }
 });
