@@ -5,7 +5,7 @@ import placeHolder from '../assets/placeholder.svg'
 
 import {useDateFormat} from '@vueuse/core'
 
-const { increment, doubleCount, count } = useCounterStore()
+let { increment, doubleCount, count } = useCounterStore()
 let { users, isLoadingUsers, errorUsers } = useUserStore()
 </script>
 

@@ -16,7 +16,7 @@ const removeItemById = (ref, id) => {
 };
 
 const getImg = (collectionName, id, imgName) => {
-  let baseURL = 'https://ferret.pockethost.io/api/files/';
+  let baseURL = import.meta.env.VITE_API_URL + '/api/files/';
   return baseURL + collectionName + '/' + id + '/' + imgName
 }
 
