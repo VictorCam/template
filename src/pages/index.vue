@@ -30,7 +30,6 @@ let { users, isLoadingUsers, errorUsers } = useUserStore()
           <p class="font-bold pb2">{{ users.username }}</p>
           <!-- {{ users }} -->
           <p>Joined: {{ useDateFormat(users.created, 'MMM DD YYYY') }}</p>
-          <!-- remove 5 characters at the end of string -->
       </div>
     </div>
     
