@@ -28,7 +28,6 @@ let { users, isLoadingUsers, errorUsers } = useUserStore()
       <div class="rd-2 p2 flex flex-col justify-center bg-base-100" v-for="users in users.items" :id="users.id">
           <img @error="utils.handleImgError($event, placeHolder)" class="rd-2 aspect-square w30 rd-2" :src="utils.getImg(users.collectionId, users.id, users.avatar)" alt="test" />
           <p class="font-bold pb2">{{ users.username }}</p>
-          <!-- {{ users }} -->
           <p>Joined: {{ useDateFormat(users.created, 'MMM DD YYYY') }}</p>
       </div>
     </div>
