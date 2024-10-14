@@ -19,3 +19,10 @@ VITE_API_URL=https://ferret.pockethost.io
 ```
 VITE_API_URL=https://ferret.pockethost.io
 ```
+
+TODO
+organize code on form pages
+add google recommendations for the forms
+add the vueUse piece onto login form
+trigger exec once the user has made their account and dir to /
+

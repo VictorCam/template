@@ -77,7 +77,7 @@ const handleSubmit = () => {
                 <input v-model="formData.phoneNumber" class="mb2" type="tel" id="phoneNumber" name="phoneNumber"
                     pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890">
             </div>
-            <button class="btn" type="submit">Submit</button>
+            <button class="btn flex gap2 items-center wfull justify-center" type="submit"><span>Submit</span></button>
         </form>
     </div>
 </template>
