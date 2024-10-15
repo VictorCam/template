@@ -2,14 +2,19 @@
 import { useCounterStore, useUserStore } from "../store";
 import utils from '../utils';
 import placeHolder from '../assets/placeholder.svg'
-
 import {useDateFormat} from '@vueuse/core'
+import { onMounted } from "vue";
 
 let { increment, doubleCount, count } = useCounterStore()
-let { users, isLoadingUsers, errorUsers } = useUserStore()
+let { users, isLoadingUsers, errorUsers, execFetchUsers } = useUserStore()
+
+// onMounted(() => {
+//   if(users = []) execFetchUsers()
+// })
 </script>
 
 <template>
+  {{ users }}
   <div class="absolute">
     <div class="flex flex-wrap items-center gap2.5 p2">
       <button class="btn" @click="increment">Increment</button>

@@ -1,20 +1,16 @@
 <script setup>
-import PocketBase from 'pocketbase';
 import { reactive } from 'vue'
-import { useAsyncState } from '@vueuse/core'
 import { useAsyncValidator } from '@vueuse/integrations/useAsyncValidator'
 import { useRouter } from 'vue-router';
-
 const router = useRouter();
-const pb = new PocketBase(import.meta.env.VITE_API_URL);
+import { useAuthStore } from "../store";
 
 let formData = reactive({
     username: '',
     password: ''
 })
 
-const fetchSignUp = async () => await pb.collection('users').authWithPassword(formData.username, formData.password)
-const { error, execute, isLoading, state ,isReady } = useAsyncState(fetchSignUp, [], { immediate: false });
+let {users, isLoadingUsers, errorUsers, execFetchUsers } = useAuthStore(formData)
 
 const rules = {
     username: { type: 'string', min: 2, max: 50, required: true },
@@ -24,12 +20,15 @@ const rules = {
 const { pass, errorFields } = useAsyncValidator(formData, rules)
 
 const handleSubmit = async () => {
-    await execute()
-    router.push('/')
+    await execFetchUsers(formData)
+    if(!errorUsers.value) router.push('/')
 }
 </script>
 
 <template>
+    {{ formData }} <br>
+    {{ users }} <br>
+    {{ errorUsers }}
     <div class="center">
         <h2 class="mb3 font-bold text-5 w70vw">Login</h2>
         <div class="p5 bg-base-100 rd-2">
@@ -44,7 +43,7 @@ const handleSubmit = async () => {
                 <p class="text-red animate-head-shake mb5" v-if="errorFields?.password">{{ errorFields.password[0].message }}</p>
 
                 <button :disabled="!pass" class="btn flex gap2 items-center wfull justify-center" type="submit">Submit
-                    <div v-if="isLoading" class="i-svg-spinners-bars-rotate-fade"></div>
+                    <div v-if="isLoadingUsers" class="i-svg-spinners-bars-rotate-fade"></div>
                 </button>
             </form>
         </div>
