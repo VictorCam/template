@@ -4,6 +4,7 @@ import { useAsyncValidator } from '@vueuse/integrations/useAsyncValidator'
 import { useRouter } from 'vue-router';
 const router = useRouter();
 import { useAuthStore } from "../store";
+let data = import.meta.env.VITE_API_URL
 
 let formData = reactive({
     username: '',
@@ -20,7 +21,7 @@ const rules = {
 const { pass, errorFields } = useAsyncValidator(formData, rules)
 
 const handleSubmit = async () => {
-    await execFetchUsers(formData)
+    await execFetchUsers()
     if(!errorUsers.value) router.push('/')
 }
 </script>
@@ -28,25 +29,30 @@ const handleSubmit = async () => {
 <template>
     {{ formData }} <br>
     {{ users }} <br>
-    {{ errorUsers }}
-    <div class="center">
-        <h2 class="mb3 font-bold text-5 w70vw">Login</h2>
-        <div class="p5 bg-base-100 rd-2">
-            <form class="flex flex-col" @submit.prevent="handleSubmit">
+    {{ errorUsers }} <br>
+    data "{{ data }}" <br>
+    <div center>
+        <h2 mb3 font-bold text-5>Login</h2>
+        <div p5 bg-base-100 rd-2>
+            <form flex flex-col @submit.prevent="handleSubmit">
                 
-                <label class="mb0.5" for="username">Username:</label>
-                <input v-model="formData.username" type="text" id="username" name="username">
-                <p class="text-red animate-head-shake mb2" v-if="errorFields?.username">{{ errorFields.username[0].message }}</p>
+                <div flex flex-col mb2>
+                    <label mb0.5 for="username">Username:</label>
+                    <input v-model="formData.username" type="text" id="username" name="username">
+                    <p text-red v-if="errorFields?.username">{{ errorFields.username[0].message }}</p>
+                </div>
 
-                <label class="mb0.5" for="password">Password:</label>
-                <input v-model="formData.password" type="password" id="password" name="password">
-                <p class="text-red animate-head-shake mb5" v-if="errorFields?.password">{{ errorFields.password[0].message }}</p>
+                <div flex flex-col mb5>
+                    <label mb0.5 for="password">Password:</label>
+                    <input v-model="formData.password" type="password" id="password" name="password">
+                    <p text-red v-if="errorFields?.password">{{ errorFields.password[0].message }}</p>
+                </div>
 
-                <button :disabled="!pass" class="btn flex gap2 items-center wfull justify-center" type="submit">Submit
-                    <div v-if="isLoadingUsers" class="i-svg-spinners-bars-rotate-fade"></div>
+                <button :disabled="!pass" btn flex gap2 items-center wfull justify-center type="submit">Submit
+                    <div v-if="isLoadingUsers" i-svg-spinners-bars-rotate-fade></div>
                 </button>
             </form>
         </div>
-        <div v-if="error?.message" class="text-red text-center mt3">{{error.message}}</div>
+        <div v-if="errorUsers?.message" text-red text-center mt3>{{errorUsers.message}}</div>
     </div>
 </template>

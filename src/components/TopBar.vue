@@ -62,33 +62,32 @@ const setLocale = (lang) => {
 </script>
 
 <template>
-  <header class="z1 b-b b-solid dark:b-dark-200 b-light-900">
-    <div class="sm:mx3 flex items-center gap3 p3 h6">
-      <div class="i-logos-vue p1 animate-rubber-band animate-iteration-infinite animate-duration-1s"></div>
-      <h1 class="mr-auto text-5 font-bold">{{ $t("temp") }}</h1>
-      <div class="relative">
+  <header z1 b-b b-solid dark:b-dark-200 b-light-900>
+    <div sm:mx3 flex items-center gap3 p3 h6>
+      <div i-logos-vue p1 animate-rubber-band animate-iteration-infinite animate-duration-1s></div>
+      <h1 mr-auto text-5 font-bold>{{ $t("temp") }}</h1>
+      <div relative>
         <Transition name="fade">
-          <div v-if="isLangHovered || isDropdownHovered" ref="DropdownElement"
-            class="<sm:hidden absolute top-10 rd-3 flex gap2 p4 bg-light-900 dark:bg-dark-300">
-            <ul class="flex gap2 flex-col">
+          <div v-if="isLangHovered || isDropdownHovered" ref="DropdownElement" class="<sm:hidden" absolute top-10 rd-3 flex gap2 p4 bg-light-900 dark:bg-dark-300>
+            <ul flex gap2 flex-col>
               <li v-for="lang in availableLocales" role="button" @click="setLocale(lang)"
-                class="flex items-center cursor-pointer">{{ languageCode[lang] }} <span
-                  class="i-ic-baseline-keyboard-arrow-right" aria-hidden="true"></span></li>
+                flex items-center cursor-pointer>{{ languageCode[lang] }} <span
+                  i-ic-baseline-keyboard-arrow-right aria-hidden="true"></span></li>
             </ul>
           </div>
         </Transition>
       </div>
       <nav
-        class="<sm:(bg-none mb-8 bg-base-100 mx-auto fixed gap5) w-fit p2 rd-3 bottom-0 left-0 right-0 flex gap2 items-center justify-center z-50">
-        <button @click="toggleDark()" class="btn" :aria-pressed="isDark">
-          <div class="p1" :class="currIconTheme"></div>
+        class="<sm:(bg-none mb-8 bg-base-100 mx-auto fixed gap5)" w-fit p2 rd-3 bottom-0 left-0 right-0 flex gap2 items-center justify-center z-50>
+        <button @click="toggleDark()" btn :aria-pressed="isDark">
+          <div p1 :class="currIconTheme"></div>
         </button>
-        <button ref="LangElement" class="btn" :aria-expanded="isLangHovered">
-          <div class="i-ic-outline-translate p1"></div>
+        <button ref="LangElement" btn :aria-expanded="isLangHovered">
+          <div i-ic-outline-translate p1></div>
         </button>
         <router-link :to="link.href" v-for="link in links">
-          <button class="btn">
-            <div :class="link.class" class="p1"></div>
+          <button btn>
+            <div :class="link.class" p1></div>
           </button>
         </router-link>
       </nav>

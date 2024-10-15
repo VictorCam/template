@@ -22,62 +22,62 @@ const handleSubmit = () => {
 
 <template>
     <!-- accessible form -->
-    <div class="absolute">
-        <form @submit.prevent="handleSubmit" class="flex flex-col p2 w-fit" id="comprehensiveForm">
+    <div absolute>
+        <form @submit.prevent="handleSubmit" flex flex-col p2 w-fit id="comprehensiveForm">
             <h2>Comprehensive Accessible Form</h2>
-            <p class="mb2">Please fill out this form to submit your information.</p>
+            <p mb2>Please fill out this form to submit your information.</p>
             <!-- Text Input -->
             <label for="username">Username:</label>
-            <input autocomplete="username" v-model="formData.username" class="mb2" type="text" id="username" name="username"
+            <input autocomplete="username" v-model="formData.username" mb2 type="text" id="username" name="username"
                 required placeholder="Your Username">
             <!-- Email Input -->
             <label for="emailAddress">Email Address:</label>
-            <input autocomplete="email" v-model="formData.emailAddress" class="mb2" type="email" id="emailAddress"
+            <input autocomplete="email" v-model="formData.emailAddress" mb2 type="email" id="emailAddress"
                 name="emailAddress" required placeholder="you@example.com">
             <!-- Password Input -->
             <label for="password">Password:</label>
-            <input v-model="formData.password" class="mb2" autocomplete="current-password" type="password" id="password"
+            <input v-model="formData.password" mb2 autocomplete="current-password" type="password" id="password"
                 name="password" required placeholder="Enter your password">
             <!-- Multi-Line Textarea -->
             <label for="comments">Comments:</label>
-            <textarea v-model="formData.comments" class="mb2" id="comments" name="comments" rows="5" cols="30" required
+            <textarea v-model="formData.comments" mb2 id="comments" name="comments" rows="5" cols="30" required
                 placeholder="Any comments?"></textarea>
             <!-- Radio Buttons -->
-            <fieldset class="mb2 flex gap3">
+            <fieldset mb2 flex gap3>
                 <legend>Choose Your Preference:</legend>
-                <div class="flex gap3">
+                <div flex gap3>
                     <label><input type="radio" v-model="formData.preference" value="option1"> Option 1</label>
                     <label><input type="radio" v-model="formData.preference" value="option2"> Option 2</label>
                     <label><input type="radio" v-model="formData.preference" value="option3"> Option 3</label>
                 </div>
             </fieldset>
             <!-- Checkboxes -->
-            <fieldset class="mb2 flex gap-3">
+            <fieldset mb2 flex gap-3>
                 <legend>Select Options:</legend>
-                <div class="flex gap3">
+                <div flex gap3>
                     <label><input type="checkbox" v-model="formData.optionA"> Option A</label>
                     <label><input type="checkbox" v-model="formData.optionB"> Option B</label>
                     <label><input type="checkbox" v-model="formData.optionC"> Option C</label>
                 </div>
             </fieldset>
             <!-- Range Slider -->
-            <div class="mb2">
+            <div mb2>
                 <label for="rangeSlider">Select a number between 1 and 100:</label>
-                <input v-model.number="formData.rangeSlider" class="mb2" type="range" id="rangeSlider" name="rangeSlider"
+                <input v-model.number="formData.rangeSlider" mb2 type="range" id="rangeSlider" name="rangeSlider"
                     min="1" max="100" step="1" value="50">
             </div>
             <!-- Date Input -->
-            <div class="mb2">
+            <div mb2>
                 <label for="dateOfBirth">Date of Birth:</label>
-                <input v-model="formData.dateOfBirth" class="mb2" type="date" id="dateOfBirth" name="dateOfBirth">
+                <input v-model="formData.dateOfBirth" mb2 type="date" id="dateOfBirth" name="dateOfBirth">
             </div>
             <!-- Telephone Input -->
-            <div class="mb2">
+            <div mb2>
                 <label for="phoneNumber">Phone Number:</label>
-                <input v-model="formData.phoneNumber" class="mb2" type="tel" id="phoneNumber" name="phoneNumber"
+                <input v-model="formData.phoneNumber" mb2 type="tel" id="phoneNumber" name="phoneNumber"
                     pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890">
             </div>
-            <button class="btn flex gap2 items-center wfull justify-center" type="submit"><span>Submit</span></button>
+            <button btn flex gap2 items-center wfull justify-center type="submit"><span>Submit</span></button>
         </form>
     </div>
 </template>

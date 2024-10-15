@@ -7,8 +7,14 @@ import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import { VitePWA } from 'vite-plugin-pwa';
 import UnoCSS from 'unocss/vite';
 import VueRouter from 'unplugin-vue-router/vite';
-import { presetIcons, presetUno, transformerDirectives, transformerVariantGroup } from 'unocss'
+import { presetIcons, presetUno, transformerDirectives, transformerVariantGroup, presetAttributify } from 'unocss'
 // import vueDevTools from 'vite-plugin-vue-devtools'
+
+// check if env loads correctly
+// import { loadEnv } from 'vite';
+// (async () => {
+//   console.log(loadEnv('development', process.cwd(), ['VITE_']));
+// })()
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -26,7 +32,8 @@ export default defineConfig({
       },
       presets: [
         presetIcons(),
-        presetUno()
+        presetUno(),
+        presetAttributify()
       ],
       theme: {
         colors: {
@@ -85,8 +92,5 @@ export default defineConfig({
   assetsInclude: ['**/*.{jpg,jpeg,png,gif,svg}'],
   server: {
     port: 2020,
-  },
-  define: {
-    __APP_ENV__: JSON.stringify(process.env.VITE_KEY)
   }
 });
