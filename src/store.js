@@ -12,12 +12,12 @@ export const useCounterStore = createGlobalState(() => {
 
 export const useUserStore = createGlobalState(() => {
   const fetchUsers = async () => await pb.collection('users').getList(1, 50);
-  const { state: users, isLoading: isLoadingUsers, error: errorUsers, execute: execFetchUsers } = useAsyncState(fetchUsers, [], {immediate: false});
+  const { state: users, isLoading: isLoadingUsers, error: errorUsers, execute: execFetchUsers } = useAsyncState(fetchUsers, [], { immediate: false });
   return { users, isLoadingUsers, errorUsers, execFetchUsers };
 });
 
 export const useAuthStore = createGlobalState((jsonForm) => {
   const fetchSignUp = async () => await pb.collection('users').authWithPassword(jsonForm.username, jsonForm.password);
-  const { state: users, isLoading: isLoadingUsers, error: errorUsers, execute: execFetchUsers } = useAsyncState(fetchSignUp, [], {immediate: false});
+  const { state: users, isLoading: isLoadingUsers, error: errorUsers, execute: execFetchUsers } = useAsyncState(fetchSignUp, [], { immediate: false });
   return { users, isLoadingUsers, errorUsers, execFetchUsers };
 })

@@ -27,32 +27,29 @@ const handleSubmit = async () => {
 </script>
 
 <template>
-    {{ formData }} <br>
-    {{ users }} <br>
-    {{ errorUsers }} <br>
-    data "{{ data }}" <br>
-    <div center>
-        <h2 mb3 font-bold text-5>Login</h2>
-        <div p5 bg-base-100 rd-2>
-            <form flex flex-col @submit.prevent="handleSubmit">
-                
-                <div flex flex-col mb2>
-                    <label mb0.5 for="username">Username:</label>
+    <div class="center">
+        <h2 class="mb-3 font-bold text-5">Login</h2>
+        <div class="p-5 bg-base-100 rd-2">
+            <form class="flex flex-col" @submit.prevent="handleSubmit">
+                <!-- username -->
+                <div class="flex flex-col mb-2">
+                    <label class="mb-0.5" for="username">Username:</label>
                     <input v-model="formData.username" type="text" id="username" name="username">
-                    <p text-red v-if="errorFields?.username">{{ errorFields.username[0].message }}</p>
+                    <p class="text-red" v-if="errorFields?.username">{{ errorFields.username[0].message }}</p>
                 </div>
-
-                <div flex flex-col mb5>
-                    <label mb0.5 for="password">Password:</label>
+                <!-- password -->
+                <div class="flex flex-col mb-5">
+                    <label class="mb-0.5" for="password">Password:</label>
                     <input v-model="formData.password" type="password" id="password" name="password">
-                    <p text-red v-if="errorFields?.password">{{ errorFields.password[0].message }}</p>
+                    <p class="text-red" v-if="errorFields?.password">{{ errorFields.password[0].message }}</p>
                 </div>
-
-                <button :disabled="!pass" btn flex gap2 items-center wfull justify-center type="submit">Submit
-                    <div v-if="isLoadingUsers" i-svg-spinners-bars-rotate-fade></div>
+                <!--  -->
+                <button :disabled="!pass" class="btn flex gap-2 items-center w-full justify-center" type="submit">
+                    Submit
+                    <div v-if="isLoadingUsers" class="i-svg-spinners-bars-rotate-fade"></div>
                 </button>
             </form>
         </div>
-        <div v-if="errorUsers?.message" text-red text-center mt3>{{errorUsers.message}}</div>
+        <div v-if="errorUsers?.message" class="text-red text-center mt-3">{{errorUsers.message}}</div>
     </div>
 </template>

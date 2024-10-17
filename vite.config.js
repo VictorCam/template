@@ -25,6 +25,7 @@ export default defineConfig({
       shortcuts: {
         'bg-base': 'bg-white dark:bg-[#080808]',
         'bg-base-100': 'dark:bg-dark:100 bg-light-900',
+        'c-base-100': 'c-black dark:c-light',
         'i-btn': 'op60 hover:op100 transition ease-out cursor-pointer',
         'center': 'fixed -translate-x-50% -translate-y-50% left-50% top-50%',
         'btn': 'cursor-pointer dark:bg-dark-100 b-1px b-solid dark:b-light/10% dark:b-light hover:bg-dark-500/20% c-black dark:c-light rd-1 py-1 transition ease-in',
@@ -33,7 +34,6 @@ export default defineConfig({
       presets: [
         presetIcons(),
         presetUno(),
-        presetAttributify()
       ],
       theme: {
         colors: {

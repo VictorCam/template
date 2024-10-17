@@ -33,25 +33,9 @@ let links = [
   }
 ];
 
-let hamburgerElement = ref(null);
-let LangElement = ref(false);
-let DropdownElement = ref(false);
-
-let isNavVisible = ref(false);
-let isLocked = useScrollLock(document.body)
 let isDark = useDark();
-let isLangHovered = useElementHover(LangElement, { delayLeave: 500 })
-let isDropdownHovered = useElementHover(DropdownElement)
-
 let toggleDark = useToggle(isDark)
-
 let currIconTheme = computed(() => isDark.value ? 'i-ic-outline-dark-mode bg-white' : 'i-ic-outline-wb-sunny bg-dark');
-
-useIntersectionObserver(hamburgerElement, ([{ isIntersecting }]) => {
-  if (isIntersecting) return
-  isNavVisible.value = false
-  isLocked.value = false
-})
 
 // set and get locale
 locale.value = localStorage.getItem('locale') || 'en'
@@ -62,32 +46,38 @@ const setLocale = (lang) => {
 </script>
 
 <template>
-  <header z1 b-b b-solid dark:b-dark-200 b-light-900>
-    <div sm:mx3 flex items-center gap3 p3 h6>
-      <div i-logos-vue p1 animate-rubber-band animate-iteration-infinite animate-duration-1s></div>
-      <h1 mr-auto text-5 font-bold>{{ $t("temp") }}</h1>
-      <div relative>
+  <header class="z1 b-b b-solid dark:b-dark-200 b-light-900">
+    <div class="sm:mx3 flex items-center gap3 p3 h6">
+      <div class="i-logos-vue p1 animate-rubber-band animate-iteration-infinite animate-duration-1s"></div>
+      <h1 class="mr-auto text-5 font-bold">{{ $t("temp") }}</h1>
+      <div class="relative">
         <Transition name="fade">
-          <div v-if="isLangHovered || isDropdownHovered" ref="DropdownElement" class="<sm:hidden" absolute top-10 rd-3 flex gap2 p4 bg-light-900 dark:bg-dark-300>
-            <ul flex gap2 flex-col>
-              <li v-for="lang in availableLocales" role="button" @click="setLocale(lang)"
-                flex items-center cursor-pointer>{{ languageCode[lang] }} <span
-                  i-ic-baseline-keyboard-arrow-right aria-hidden="true"></span></li>
+          <div v-if="isLangHovered || isDropdownHovered" ref="DropdownElement" class="sm:hidden absolute top-10 rd-3 flex gap2 p4 bg-light-900 dark:bg-dark-300">
+            <ul class="flex gap2 flex-col">
+              <li v-for="lang in availableLocales" role="button" @click="setLocale(lang)" class="flex items-center cursor-pointer">
+                {{ languageCode[lang] }} 
+                <span class="i-ic-baseline-keyboard-arrow-right" aria-hidden="true"></span>
+              </li>
             </ul>
           </div>
         </Transition>
       </div>
-      <nav
-        class="<sm:(bg-none mb-8 bg-base-100 mx-auto fixed gap5)" w-fit p2 rd-3 bottom-0 left-0 right-0 flex gap2 items-center justify-center z-50>
-        <button @click="toggleDark()" btn :aria-pressed="isDark">
-          <div p1 :class="currIconTheme"></div>
+      <nav class="<sm:(bg-none mb-8 bg-base-100 mx-auto fixed gap5) w-fit p2 rd-3 bottom-0 left-0 right-0 flex gap2 items-center justify-center z-50">
+        <button @click="toggleDark()" class="btn" :aria-pressed="isDark">
+          <div class="p1" :class="currIconTheme"></div>
         </button>
-        <button ref="LangElement" btn :aria-expanded="isLangHovered">
-          <div i-ic-outline-translate p1></div>
-        </button>
+        <div class="relative inline-block group">
+          <button class="btn">
+            <div class="i-ic-outline-translate p1"></div>
+          </button>
+          <div class="absolute left-0 <sm:bottom-full w-48 border rounded shadow-md opacity-0 group-hover:opacity-100 transform scale-95 group-hover:scale-100 transition-all duration-200 ease-out">
+            <a href="#" class="wfull no-underline cursor-pointer block px-4 py-2 bg-base-100 b-none flex gap2">English <div class="i-ic-baseline-keyboard-arrow-right"></div></a>
+            <a href="#" class="wfull no-underline cursor-pointer block px-4 py-2 bg-base-100 b-none flex gap2">Spanish <div class="i-ic-baseline-keyboard-arrow-right"></div></a>
+          </div>
+        </div>
         <router-link :to="link.href" v-for="link in links">
-          <button btn>
-            <div :class="link.class" p1></div>
+          <button class="btn">
+            <div class="p1" :class="link.class"></div>
           </button>
         </router-link>
       </nav>
