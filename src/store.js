@@ -17,13 +17,12 @@ export let useUserStore = createGlobalState(() => {
 });
 
 export let useAuthStore = createGlobalState((jsonForm) => {
-  let fetchSignUp = async () => await pb.collection('users').authWithPassword(jsonForm.username, jsonForm.password);
-  let checkLoggedIn = async () => await pb.authStore.isValid();
-  let logout = async () => pb.authStore.clear();
+  let execIsLoggedIn = () => pb.authStore.isValid();
+  let execLogout = () => pb.authStore.clear();
 
-  let { state: userLogin, isLoading: isLoadingLogin, error: errorLogin, execute: execLogin } = useAsyncState(fetchSignUp, [], { immediate: false });
-  let { state: isLoggedIn, execute: execCheckLoggedIn } = useAsyncState(checkLoggedIn, []);
-  let { execute: execLogout } = useAsyncState(logout, [], { immediate: false });
+  let { state: stateLogin, isLoading: isLoadingLogin, error: errorLogin, execute: execLogin } = useAsyncState(async () => {
+    await pb.collection('users').authWithPassword(jsonForm.username, jsonForm.password)
+  }, [], { immediate: false });
 
-  return { userLogin, isLoadingLogin, errorLogin, execLogin, isLoggedIn, execCheckLoggedIn, execLogout };
+  return { stateLogin, isLoadingLogin, errorLogin, execLogin, isLoggedIn, execIsLoggedIn, execLogout };
 })
