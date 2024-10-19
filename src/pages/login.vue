@@ -34,14 +34,14 @@ const handleSubmit = async () => {
                 <!-- username -->
                 <div class="flex flex-col mb-2">
                     <label class="mb-0.5" for="username">Username:</label>
-                    <input v-model="formData.username" type="text" id="username" name="username">
-                    <p class="c-red" v-if="errorFields?.username">{{ errorFields.username[0].message }}</p>
+                    <input id="username" v-model="formData.username" type="text" name="username">
+                    <p v-if="errorFields?.username" class="c-red">{{ errorFields.username[0].message }}</p>
                 </div>
                 <!-- password -->
                 <div class="flex flex-col mb-5">
                     <label class="mb-0.5" for="password">Password:</label>
-                    <input v-model="formData.password" type="password" id="password" name="password">
-                    <p class="c-red" v-if="errorFields?.password">{{ errorFields.password[0].message }}</p>
+                    <input id="password" v-model="formData.password" type="password" name="password">
+                    <p v-if="errorFields?.password" class="c-red">{{ errorFields.password[0].message }}</p>
                 </div>
                 <!-- submit -->
                 <button :disabled="!pass" class="btn flex gap-2 items-center w-full justify-center" type="submit">

@@ -51,7 +51,7 @@ const setLocale = (lang) => {
       <div class="i-logos-vue p1 animate-rubber-band animate-iteration-infinite animate-duration-1s"></div>
       <h1 class="mr-auto text-5 font-bold">{{ $t("temp") }}</h1>
       <nav class="<sm:(bg-none mb-8 bg-base-100 mx-auto fixed gap5) w-fit p2 rd-3 bottom-0 left-0 right-0 flex gap2 items-center justify-center z-50">
-        <button @click="toggleDark()" class="btn" :aria-pressed="isDark">
+        <button class="btn" :aria-pressed="isDark" @click="toggleDark()">
           <div class="p1" :class="currIconTheme"></div>
         </button>
         <div class="relative inline-block group">
@@ -63,7 +63,7 @@ const setLocale = (lang) => {
             <a href="#" class="wfull no-underline cursor-pointer block px-4 py-2 bg-base-100 b-none flex gap2">Spanish <div class="i-ic-baseline-keyboard-arrow-right"></div></a>
           </div>
         </div>
-        <router-link :to="link.href" v-for="link in links">
+        <router-link v-for="link in links" :key="link.name" :to="link.href">
           <button class="btn">
             <div class="p1" :class="link.class"></div>
           </button>

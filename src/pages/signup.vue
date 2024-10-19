@@ -44,19 +44,19 @@ const handleSubmit = async () => {
 
                 <div class="flex flex-col mb2">
                     <label class="mb0.5" for="username">Username:</label>
-                    <input v-model="formData.username" type="text" id="username" name="username">
+                    <input id="username" v-model="formData.username" type="text" name="username">
                     <p v-if="errorFields?.username" class="text-red">{{ errorFields.username[0].message }}</p>
                 </div>
 
                 <div class="flex flex-col mb2">
                     <label class="mb0.5" for="name">Name:</label>
-                    <input v-model="formData.name" type="text" id="name" name="name">
+                    <input id="name" v-model="formData.name" type="text" name="name">
                     <p v-if="errorFields?.name" class="text-red">{{ errorFields.name[0].message }}</p>
                 </div>
 
                 <div class="flex flex-col mb2">
                     <label class="mb0.5" for="password">Password:</label>
-                    <input v-model="formData.password" type="password" id="password" name="password">
+                    <input id="password" v-model="formData.password" type="password" name="password">
                     <p v-if="errorFields?.password" class="text-red">{{ errorFields.password[0].message }}</p>
                 </div>
 
