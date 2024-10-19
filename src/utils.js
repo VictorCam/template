@@ -1,3 +1,4 @@
+let pocketbase_url = "https://ferret.pockethost.io";
 
 const getLastJsonId = (ref) => {
   return ref.length !== 0 ? parseInt(ref[ref.length - 1].id, 10) : 0;
@@ -10,13 +11,11 @@ const addItem = (ref, toast) => {
 
 const removeItemById = (ref, id) => {
   const index = ref.findIndex((toast) => toast.id === id);
-  if (index !== -1) {
-    ref.splice(index, 1);
-  }
+  if (index !== -1) ref.splice(index, 1);
 };
 
 const getImg = (collectionName, id, imgName) => {
-  let baseURL = import.meta.env.VITE_API_URL + '/api/files/';
+  let baseURL = pocketbase_url + '/api/files/';
   return baseURL + collectionName + '/' + id + '/' + imgName
 }
 

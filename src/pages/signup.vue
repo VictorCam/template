@@ -32,8 +32,8 @@ const { pass, errorFields } = useAsyncValidator(formData, rules)
 
 const handleSubmit = async () => {
     await execute()
-    if(!error.value) router.push('/login')
-    alert(error.value)
+    // if(!error.value) router.push('/login')
+    // alert(error.value)
 }
 </script>
 <template>

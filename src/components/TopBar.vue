@@ -7,7 +7,7 @@ const { locale, availableLocales } = useI18n({ useScope: "global" });
 
 let languageCode = {
   'en': 'English',
-  'es': 'Español',
+  'es': 'Espanol',
 }
 
 let links = [
@@ -50,18 +50,6 @@ const setLocale = (lang) => {
     <div class="sm:mx3 flex items-center gap3 p3 h6">
       <div class="i-logos-vue p1 animate-rubber-band animate-iteration-infinite animate-duration-1s"></div>
       <h1 class="mr-auto text-5 font-bold">{{ $t("temp") }}</h1>
-      <div class="relative">
-        <Transition name="fade">
-          <div v-if="isLangHovered || isDropdownHovered" ref="DropdownElement" class="sm:hidden absolute top-10 rd-3 flex gap2 p4 bg-light-900 dark:bg-dark-300">
-            <ul class="flex gap2 flex-col">
-              <li v-for="lang in availableLocales" role="button" @click="setLocale(lang)" class="flex items-center cursor-pointer">
-                {{ languageCode[lang] }} 
-                <span class="i-ic-baseline-keyboard-arrow-right" aria-hidden="true"></span>
-              </li>
-            </ul>
-          </div>
-        </Transition>
-      </div>
       <nav class="<sm:(bg-none mb-8 bg-base-100 mx-auto fixed gap5) w-fit p2 rd-3 bottom-0 left-0 right-0 flex gap2 items-center justify-center z-50">
         <button @click="toggleDark()" class="btn" :aria-pressed="isDark">
           <div class="p1" :class="currIconTheme"></div>
