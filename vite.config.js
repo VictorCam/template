@@ -7,7 +7,7 @@ import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import { VitePWA } from 'vite-plugin-pwa';
 import UnoCSS from 'unocss/vite';
 import VueRouter from 'unplugin-vue-router/vite';
-import { presetIcons, presetUno, transformerDirectives, transformerVariantGroup, presetAttributify } from 'unocss'
+import { presetIcons, presetUno, transformerDirectives, transformerVariantGroup } from 'unocss'
 // import vueDevTools from 'vite-plugin-vue-devtools'
 
 // check if env loads correctly

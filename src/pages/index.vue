@@ -5,13 +5,13 @@ import placeHolder from '../assets/placeholder.svg'
 import {useDateFormat} from '@vueuse/core'
 import { onMounted } from "vue";
 
-let { increment, doubleCount, count } = useCounterStore()
-let { users, isLoadingUsers, errorUsers, execFetchUsers } = useUserStore()
-let { isValid, execIsValid } = useAuthStore()
+// let { increment, doubleCount, count } = useCounterStore()
+// let { users, isLoadingUsers, errorUsers, execFetchUsers } = useUserStore()
+// let { isValid, execIsValid } = useAuthStore()
 
 // Get Users if they haven't been loaded in
 onMounted(() => {
-if(users.value.length == 0) execFetchUsers()
+if(users.value.length === 0) execFetchUsers()
 })
 </script>
 
