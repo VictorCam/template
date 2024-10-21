@@ -10,7 +10,12 @@ let formData = reactive({
     password: ''
 })
 
-let { stateLogin,errorLogin,isLoadingLogin,execLogin,execIsLoggedIn,execLogout } = useAuthStore(formData)
+const handleSubmit = async () => {
+    await execLogin(0, formData)
+    if(!errorLogin.value) router.push('/')
+}
+
+let { errorLogin,isLoadingLogin,execLogin } = useAuthStore()
 
 const rules = {
     username: { type: 'string', min: 2, max: 50, required: true },
@@ -19,29 +24,24 @@ const rules = {
 
 const { pass, errorFields } = useAsyncValidator(formData, rules)
 
-const handleSubmit = async () => {
-    await execLogin()
-    // if(!errorLogin.value) router.push('/')
-}
 </script>
 
 <template>
-    <!-- <button class="btn" @click="execLogout()">Logout</button> -->
     <div class="center">
-        <h2 class="mb-3 font-bold text-5">Login</h2>
-        <div class="p-5 bg-base-100 rd-2">
+        <h2 class="mb3 font-bold text-5">Login</h2>
+        <div class="p5 bg-base-100 rd-2 w90 <sm:wfit">
             <form class="flex flex-col" @submit.prevent="handleSubmit">
                 <!-- username -->
-                <div class="flex flex-col mb-2">
-                    <label class="mb-0.5" for="username">Username:</label>
-                    <input id="username" v-model="formData.username" type="text" name="username">
-                    <p v-if="errorFields?.username" class="c-red">{{ errorFields.username[0].message }}</p>
+                <div class="flex flex-col mb4">
+                    <label class="mb1" for="username">Username:</label>
+                    <input id="username" v-model="formData.username" type="text" name="username" autocomplete="username">
+                    <p v-if="errorFields?.username" class="c-red mt1 h3ch">{{ errorFields.username[0].message }}</p>
                 </div>
                 <!-- password -->
-                <div class="flex flex-col mb-5">
-                    <label class="mb-0.5" for="password">Password:</label>
-                    <input id="password" v-model="formData.password" type="password" name="password">
-                    <p v-if="errorFields?.password" class="c-red">{{ errorFields.password[0].message }}</p>
+                <div class="flex flex-col mb7">
+                    <label class="mb1" for="password">Password:</label>
+                    <input id="password" v-model="formData.password" type="password" name="password" autocomplete="current-password">
+                    <p v-if="errorFields?.password" class="c-red mt1 h3ch">{{ errorFields.password[0].message }}</p>
                 </div>
                 <!-- submit -->
                 <button :disabled="!pass" class="btn flex gap-2 items-center w-full justify-center" type="submit">

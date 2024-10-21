@@ -11,18 +11,17 @@ export let useCounterStore = createGlobalState(() => {
 });
 
 export let useUserStore = createGlobalState(() => {
-  let fetchUsers = async () => await pb.collection('users').getList(1, 50);
+  let fetchUsers = () => pb.collection('users').getList(1, 50);
   let { state: users, isLoading: isLoadingUsers, error: errorUsers, execute: execFetchUsers } = useAsyncState(fetchUsers, [], { immediate: false });
   return { users, isLoadingUsers, errorUsers, execFetchUsers };
 });
 
-export let useAuthStore = createGlobalState((jsonForm) => {
-  let execIsLoggedIn = () => pb.authStore.isValid();
-  let execLogout = () => pb.authStore.clear();
+export let useAuthStore = createGlobalState(() => {
+  let login = ({ username, password }) => pb.collection('users').authWithPassword(username, password);
+  let execVerifyToken = () => pb.authStore.isValid;
+  let execLogout = () => pb.authStore.clear()
 
-  let { state: stateLogin, isLoading: isLoadingLogin, error: errorLogin, execute: execLogin } = useAsyncState(async () => {
-    await pb.collection('users').authWithPassword(jsonForm.username, jsonForm.password)
-  }, [], { immediate: false });
+  let { isLoading: isLoadingLogin, error: errorLogin, execute: execLogin } = useAsyncState(login, [], { immediate: false })
 
-  return { stateLogin, isLoadingLogin, errorLogin, execLogin, isLoggedIn, execIsLoggedIn, execLogout };
+  return { isLoadingLogin, errorLogin, execVerifyToken, execLogin, execLogout };
 })

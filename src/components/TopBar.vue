@@ -1,7 +1,13 @@
 <script setup>
 import { ref, computed } from "vue";
-import { useDark, useToggle, useIntersectionObserver, useScrollLock, useElementHover, usePreferredLanguages } from '@vueuse/core'
+import { useDark, useToggle, useTimeoutFn } from '@vueuse/core'
 import { useI18n } from 'vue-i18n';
+import { useRouter } from 'vue-router';
+import {useAuthStore} from '../store';
+
+let {execLogout} = useAuthStore();
+
+const router = useRouter();
 
 const { locale, availableLocales } = useI18n({ useScope: "global" });
 
@@ -37,16 +43,29 @@ let isDark = useDark();
 let toggleDark = useToggle(isDark)
 let currIconTheme = computed(() => isDark.value ? 'i-ic-outline-dark-mode bg-white' : 'i-ic-outline-wb-sunny bg-dark');
 
+let [isLoggingOut, toggleLogout] = useToggle(false);
+
 // set and get locale
 locale.value = localStorage.getItem('locale') || 'en'
 const setLocale = (lang) => {
   locale.value = lang
   localStorage.setItem('locale', lang)
 }
+
+// logout 
+const logout = async () => {
+  toggleLogout();
+  useTimeoutFn(() => {
+    execLogout();
+    toggleLogout();
+    router.push('/login')
+  }, 750)
+}
 </script>
 
 <template>
   <header class="z1 b-b b-solid dark:b-dark-200 b-light-900">
+    <div v-if="isLoggingOut" class="bg-base-100 op50 fixed z-1 inset-0"><div class="i-svg-spinners-bars-rotate-fade p3 center"></div></div>
     <div class="sm:mx3 flex items-center gap3 p3 h6">
       <div class="i-logos-vue p1 animate-rubber-band animate-iteration-infinite animate-duration-1s"></div>
       <h1 class="mr-auto text-5 font-bold">{{ $t("temp") }}</h1>
@@ -68,6 +87,7 @@ const setLocale = (lang) => {
             <div class="p1" :class="link.class"></div>
           </button>
         </router-link>
+        <button class="btn" @click="logout"><div class="p1 bg-red i-clarity-sign-out-line"></div></button>
       </nav>
     </div>
   </header>
