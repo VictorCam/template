@@ -20,8 +20,7 @@ const handleSubmit = () => {
 }
 </script>
 <template>
-    <!-- accessible form -->
-    <div class="absolute">
+    <div class="">
         <form id="comprehensiveForm" class="flex flex-col p-2 w-fit" @submit.prevent="handleSubmit">
             <h2>Comprehensive Accessible Form</h2>
             <p class="mb-2">Please fill out this form to submit your information.</p>

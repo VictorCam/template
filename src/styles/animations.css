@@ -6,6 +6,34 @@
   --uno: animate-fade-in animate-duration-175ms animate-reverse;
 }
 
+.appear-enter-active,
+.appear-leave-active {
+  transition: height 0.5s ease, opacity 0.5s ease;
+}
+
+.appear-enter-from,
+.appear-leave-to {
+  height: 0;
+  opacity: 0;
+}
+
+/* Entering and leaving active state (applies to both) */
+.slide-enter-active,
+.slide-leave-active {
+  transition: transform 0.4s ease-in-out;
+}
+
+/* Starting state for enter */
+.slide-enter-from {
+  transform: translateX(100%);
+}
+
+/* Ending state for leave */
+.slide-leave-to {
+  transform: translateX(-100%);
+}
+
+
 .list-move,
 .list-enter-active,
 .list-leave-active {

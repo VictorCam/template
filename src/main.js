@@ -4,7 +4,61 @@ import { createI18n } from 'vue-i18n'
 import { usePreferredLanguages } from '@vueuse/core'
 import { routes, handleHotUpdate } from 'vue-router/auto-routes'; // Generated routes
 import { registerSW } from 'virtual:pwa-register'
-// import cookie from "js-cookie";
+import { useAuthStore } from "./store";
+let { execVerifyToken } = useAuthStore();
+
+// shortcut dev tool for vConsole
+if (import.meta.env.MODE === 'development') {
+  import('vconsole').then((VConsole) => {
+    const vConsole = new VConsole.default();
+    const vConsoleVisible = localStorage.getItem('vConsoleVisible');
+
+    // Show vConsole if it was visible before the refresh
+    if (vConsoleVisible === 'true') {
+      vConsole.show();
+    } else {
+      vConsole.hide(); // Hide it initially
+    }
+
+    // Function to update the visibility state in localStorage
+    function updateVConsoleState() {
+      const vcMask = document.querySelector('.vc-mask');
+      if (vcMask && vcMask.style.display === 'none') {
+        localStorage.setItem('vConsoleVisible', 'false');
+      } else {
+        localStorage.setItem('vConsoleVisible', 'true');
+      }
+    }
+
+    // MutationObserver to listen for changes in .vc-mask
+    const observer = new MutationObserver(() => {
+      updateVConsoleState();
+    });
+
+    // Start observing the .vc-mask for attribute changes
+    const vcMask = document.querySelector('.vc-mask');
+    if (vcMask) {
+      observer.observe(vcMask, {
+        attributes: true,
+        attributeFilter: ['style'], // Only watch for changes to the style attribute
+      });
+    }
+
+    // Add event listener for Ctrl + C to toggle vConsole
+    document.addEventListener('keydown', function (event) {
+      if (event.ctrlKey && event.key.toLowerCase() === 'c') {
+        const vcMask = document.querySelector('.vc-mask');
+
+        if (vcMask && vcMask.style.display === 'none') {
+          vConsole.show(); // Show vConsole if it's hidden
+        } else {
+          vConsole.hide(); // Hide vConsole if it's visible
+        }
+        updateVConsoleState(); // Update state after toggle
+      }
+    });
+  });
+}
 
 import 'virtual:uno.css';
 import "normalize.css";
@@ -19,8 +73,9 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    // console.log("router: ", to, from ,next)
-    return next();
+  if (typeof to.meta.requiresAuth === 'undefined') return next()
+  if (to.meta.requiresAuth === true && execVerifyToken() === true) return next();
+  return next(to.meta.redirect);
 });
 
 import EN from '../locales/en.json'

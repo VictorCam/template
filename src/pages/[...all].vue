@@ -1,4 +1,9 @@
 <script setup>
+definePage({
+  meta: {
+    requiresAuth: false
+  }
+})
 </script>
 
 <template>

@@ -16,6 +16,7 @@ if(users.value.length === 0) execFetchUsers()
 </script>
 
 <template>
+  {{ users }}
   <div class="absolute">
     <div class="flex flex-wrap items-center gap2.5 p2">
       <button class="btn" @click="increment">Increment</button>

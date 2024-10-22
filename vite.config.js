@@ -33,7 +33,7 @@ export default defineConfig({
       },
       presets: [
         presetIcons(),
-        presetUno(),
+        presetUno()
       ],
       theme: {
         colors: {
