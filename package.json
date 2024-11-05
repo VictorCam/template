@@ -7,12 +7,13 @@
     "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview --host",
-    "up": "npx taze major -I",
-    "size": "npx vite-bundle-visualizer"
+    "up": "npx taze latest -w",
+    "size": "npx vite-bundle-visualizer",
+    "deploy": "npx wrangler pages deploy dist"
   },
   "dependencies": {
-    "@vueuse/core": "^11.1.0",
-    "@vueuse/integrations": "^11.1.0",
+    "@vueuse/core": "^11.2.0",
+    "@vueuse/integrations": "^11.2.0",
     "async-validator": "^4.2.5",
     "js-cookie": "^3.0.5",
     "normalize.css": "^8.0.1",
@@ -21,19 +22,20 @@
     "vconsole": "^3.15.1",
     "vue": "^3.5.12",
     "vue-i18n": "^10.0.4",
-    "vue-router": "^4.4.5"
+    "vue-router": "^4.4.5",
+    "workbox-window": "^7.3.0"
   },
   "devDependencies": {
-    "@iconify/json": "^2.2.260",
+    "@iconify/json": "^2.2.268",
     "@vitejs/plugin-vue": "^5.1.4",
     "animated-unocss": "^0.0.6",
     "autoprefixer": "^10.4.20",
-    "eslint": "^9.13.0",
-    "eslint-plugin-vue": "^9.29.0",
-    "unocss": "^0.63.4",
+    "eslint": "^9.14.0",
+    "eslint-plugin-vue": "^9.30.0",
+    "unocss": "^0.64.0",
     "unplugin-vue-components": "^0.27.4",
     "unplugin-vue-router": "^0.10.8",
-    "vite": "^5.4.9",
+    "vite": "^5.4.10",
     "vite-plugin-pwa": "^0.20.5",
     "vite-plugin-webfont-dl": "^3.9.5"
   }
